@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+const basename = process.env.NODE_ENV !== 'production' ? '/final-project-team5-front' : '/final-project-team5-front/';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );

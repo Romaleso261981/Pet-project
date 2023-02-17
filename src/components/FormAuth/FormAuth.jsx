@@ -6,7 +6,7 @@ export const FormAuth = () => {
     <Container>
       <section className={styled.auth}>
         <div className={styled.google__auth}>
-          <p className={styled.google__auth_title}>Вы можете авторизоваться с помощью Google Account:</p>
+          <p className={styled.google__auth_title}>Ви можете авторизоватись за допомогою Google Account:</p>
           <button
             className={styled.google__auth_btn}
             type="button"
@@ -16,14 +16,14 @@ export const FormAuth = () => {
         </div>
         <div className={styled.form__wrapper}>
           <p className={styled.form__wrapper_text}>
-            Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+            Або зайти за допомогою e-mail и пароля, попередньо зареєструвавшись:
           </p>
           <form className={styled.form__auth}>
             <label
               htmlFor="email"
               className={styled.form__auth_label}
             >
-              Электронная почта:
+              Электронна пошта:
             </label>
             <input
               className={styled.form__auth_input}
@@ -49,7 +49,7 @@ export const FormAuth = () => {
                   className={styled.form__auth_submit}
                   type="submit"
                 >
-                  Войти
+                  Ввіти
                 </button>
               </li>
               <li className={styled.list__button_item}>
@@ -57,7 +57,7 @@ export const FormAuth = () => {
                   className={styled.form__auth_signup}
                   type="button"
                 >
-                  Регистрация
+                  Реєстрация
                 </button>
               </li>
             </ul>
