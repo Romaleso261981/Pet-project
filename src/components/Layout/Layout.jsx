@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Header } from './Header/Header';
+import { Header } from '../Header/Header';
 import { Container } from '../Container/Container';
 import { FormAuth } from '../FormAuth/FormAuth';
 import styled from './Layout.module.scss';
