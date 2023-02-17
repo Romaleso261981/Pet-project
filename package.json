@@ -6,14 +6,28 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/final-project-team5-front/",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.2",
+    "prettier": "2.8.4",
     "vite": "^4.0.0"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   }
