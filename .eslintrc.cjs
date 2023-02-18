@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: ['eslint:recommended', 'eslint-config-prettier', 'plugin:prettier/recommended'],
-  plagins: ['eslint-plugin-prettier'],
+  plugins: ['eslint-plugin-prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
