@@ -1,0 +1,79 @@
+.report {
+  color: #52555fb2;
+  border-color: transparent;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  margin-bottom: 43px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    margin-right: 37px;
+    margin-left: auto;
+    margin-bottom: -18px;
+  }
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+  color: #52555f;
+  margin-left: 20px;
+}
+
+.title {
+  color: #52555fb2;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-align: center;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 21px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.inputBalance {
+  border-color: transparent;
+  color: #000000;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  @media screen and (min-width: 768px) {
+  }
+}
+
+.buttonConfirm {
+  color: #52555fb2;
+  text-transform: uppercase;
+  border-color: transparent;
+  @media screen and (min-width: 768px) {
+  }
+}
+
+.flex {
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.containers {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 104px;
+  margin-left: 39px;
+  @media screen and (min-width: 768px) {
+    margin-top: 52px;
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+  }
+  @media screen and (min-width: 1280px) {
+    justify-content: center;
+  }
+}
