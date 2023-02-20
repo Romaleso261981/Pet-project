@@ -4,6 +4,7 @@ import { FormAuth } from "../FormAuth/FormAuth";
 import styled from "./Layout.module.scss";
 import { Container } from "components/Container";
 
+
 export const Layout = () => {
   return (
     <>
@@ -19,6 +20,7 @@ export const Layout = () => {
           <FormAuth />
           <Outlet />
         </Container>
+
       </main>
     </>
   );

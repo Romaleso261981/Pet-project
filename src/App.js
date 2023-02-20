@@ -1,23 +1,19 @@
-import './App.css';
-// import { ListExpenses } from "./components/ListExpenses/ListExpenses";
-import { Layout } from './components/Layout/Layout';
-// import { Routes, Route } from 'react-router-dom';
-// import { Balance } from './components/Balance/Balance';
+import { Loader } from "./components/Loader/Loader";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ProtectedRoute } from "routes/ProtectedRoute";
+import { Layout } from "./components/Layout/Layout";
+import Home from "./pages/Home/Home";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
+  const isLoggedIn = false;
+
   return (
     <>
-      {/* <Balance /> */}
-
       <Layout />
-      {/* <Routes>
-        <Route
-          path="/"
-          element={<Layout />}
-        ></Route>
-      </Routes> */}
+      <Home />
     </>
   );
 }
-
 export default App;
