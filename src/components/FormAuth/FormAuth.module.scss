@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 }
 
 .google__auth {
@@ -21,16 +20,24 @@
   }
 
   &_btn {
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 10px 19px;
+    border-radius: 26px;
     border: none;
     outline: none;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 0.02em;
-    color: #1612a4;
-    background: #55b2e8;
+    background: #f6f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_img {
+      margin-right: 10px;
+    }
+    &_title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: #000000;
+    }
   }
 }
 
@@ -39,8 +46,10 @@
   flex-direction: column;
 
   &_text {
+    font-weight: 400;
     font-size: 12px;
-    line-height: 1.16;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
     color: #52555f;
     margin-bottom: 20px;
   }
@@ -59,7 +68,7 @@
   &_input {
     max-width: 100%;
     padding: 17px 19px;
-    background: #55b2e8;
+    background: #f6f7fb;
     border-radius: 30px;
     border: none;
     outline: none;
