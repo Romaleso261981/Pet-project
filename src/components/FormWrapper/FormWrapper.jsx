@@ -1,5 +1,5 @@
-import { GoogleAuth } from "components/GoogleAuth";
-import { FormAuth } from "components/FormAuth/FormAuth";
+// import { GoogleAuth } from "components/GoogleAuth";
+import { FormAuth } from "../FormAuth/FormAuth";
 import styled from "./FormWrapper.module.scss";
 import { motion } from "framer-motion";
 
@@ -15,7 +15,7 @@ export const FormWrapper = () => {
         ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-      <GoogleAuth />
+      {/* <GoogleAuth /> */}
       <FormAuth />
     </motion.div>
   );

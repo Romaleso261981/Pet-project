@@ -1,6 +1,6 @@
 import { Background } from "../../components/Background/Background";
-// import { MainTitle } from "../../components/MainTitle";
-// import { FormWrapper } from "../../components/FormWrapper";
+import { MainTitle } from "../../components/MainTitle/MainTitle";
+import { FormWrapper } from "../../components/FormWrapper/FormWrapper";
 import styled from "./Home.module.scss";
 
 const Home = () => {
@@ -9,8 +9,8 @@ const Home = () => {
       <Background />
       <div className={styled.container}>
         <div className={styled.wrapper}>
-          {/* <MainTitle />
-          <FormWrapper /> */}
+          <MainTitle />
+          <FormWrapper />
         </div>
       </div>
     </>
