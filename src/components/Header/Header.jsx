@@ -1,15 +1,14 @@
-import { Container } from '../Container/Container';
-import logo from '../../assets/image/logo.svg';
-import styled from './Header.module.scss';
+import { Container } from "../Container/Container";
+import logo from "../../assets/image/logo.svg";
+import styled from "./Header.module.scss";
 export const Header = () => {
   return (
-    <Container>
-      <header className={styled.header}>
-        <img
-          src={logo}
-          alt="Logo"
-        />
-      </header>
-    </Container>
+    <header>
+      <Container>
+        <div className={styled.header}>
+          <img src={logo} alt="Logo" />
+        </div>
+      </Container>
+    </header>
   );
 };
