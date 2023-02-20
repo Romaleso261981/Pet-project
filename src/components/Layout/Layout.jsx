@@ -1,6 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
+<<<<<<< Updated upstream
 import { FormAuth } from "../FormAuth/FormAuth";
+=======
+import { Container } from "../Container/Container";
+>>>>>>> Stashed changes
 import styled from "./Layout.module.scss";
 import { Container } from "components/Container";
 
