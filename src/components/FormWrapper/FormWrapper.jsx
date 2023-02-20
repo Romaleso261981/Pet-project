@@ -1,5 +1,5 @@
 // import { GoogleAuth } from "components/GoogleAuth";
-import { FormAuth } from "../FormAuth/FormAuth";
+import { FormAuth } from "components/FormAuth/FormAuth";
 import styled from "./FormWrapper.module.scss";
 import { motion } from "framer-motion";
 

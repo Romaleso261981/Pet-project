@@ -1,31 +1,50 @@
+// import { Outlet } from "react-router-dom";
+// import { Header } from "../Header/Header";
+// import styled from "./Layout.module.scss";
+// import { Container } from "../../components/Container/Container";
+
+// export const Layout = () => {
+//   return (
+//     <>
+//       <Header />
+//       <main>
+//         <Container>
+//           <div className={styled.hero}>
+//             <div>
+//               <h1 className={styled.hero__title}>Kapu$ta</h1>
+//               <p className={styled.hero__text}>Smart Finance</p>
+//             </div>
+//           </div>
+//           <Outlet />
+//         </Container>
+//       </main>
+//     </>
+//   );
+// };
+
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import authOperations from "redux/auth/auth-operations";
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
-<<<<<<< Updated upstream
-import { FormAuth } from "../FormAuth/FormAuth";
-=======
-import { Container } from "../Container/Container";
->>>>>>> Stashed changes
-import styled from "./Layout.module.scss";
-import { Container } from "components/Container";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Layout = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // });
+
   return (
     <>
       <Header />
-      <main>
-        <Container>
-          <div className={styled.hero}>
-            <div>
-              <h1 className={styled.hero__title}>Kapu$ta</h1>
-              <p className={styled.hero__text}>Smart Finance</p>
-            </div>
-          </div>
-          <FormAuth />
-          <Outlet />
-        </Container>
-
-      </main>
+      <Outlet />
+      <ToastContainer />
     </>
   );
 };
+
+export default Layout;
