@@ -1,24 +1,24 @@
-import { Outlet } from 'react-router-dom';
-import { Header } from '../Header/Header';
-import { Container } from '../Container/Container';
-import { FormAuth } from '../FormAuth/FormAuth';
-import styled from './Layout.module.scss';
+import { Outlet } from "react-router-dom";
+import { Header } from "../Header/Header";
+import { FormAuth } from "../FormAuth/FormAuth";
+import styled from "./Layout.module.scss";
+import { Container } from "components/Container";
 
 export const Layout = () => {
   return (
     <>
       <Header />
       <main>
-        <div className={styled.header__hero}>
-          <div>
-            <Container>
-              <h1>Kapusta</h1>
-              <p className={styled.pre__title}>Smart Finance</p>
-            </Container>
+        <Container>
+          <div className={styled.hero}>
+            <div>
+              <h1 className={styled.hero__title}>Kapu$ta</h1>
+              <p className={styled.hero__text}>Smart Finance</p>
+            </div>
           </div>
-        </div>
-        <FormAuth />
-        <Outlet />
+          <FormAuth />
+          <Outlet />
+        </Container>
       </main>
     </>
   );
