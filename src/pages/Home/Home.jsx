@@ -1,6 +1,6 @@
 import { Background } from "../../components/Background/Background";
-import { MainTitle } from "../../components/MainTitle/MainTitle";
 import { FormWrapper } from "../../components/FormWrapper/FormWrapper";
+import { MainTitle } from "../../components/MainTitle/MainTitle";
 import styled from "./Home.module.scss";
 
 const Home = () => {
