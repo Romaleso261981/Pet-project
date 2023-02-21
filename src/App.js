@@ -67,7 +67,7 @@ export function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/wallet" />} />
+        <Route path="*" element={<h1>Невірно прописаний шлях</h1>} />
       </Route>
     </Routes>
   );
