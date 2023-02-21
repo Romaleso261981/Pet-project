@@ -27,7 +27,7 @@ export function App() {
         path="/"
         element={
           <Suspense fallback={<Loader />}>
-            <Layout />
+            <Home />
           </Suspense>
         }
       >
@@ -36,7 +36,7 @@ export function App() {
           element={
             <Suspense fallback={<Loader />}>
               <PublicRoute token={token}>
-                <Home />
+                <Layout />
               </PublicRoute>
             </Suspense>
           }
