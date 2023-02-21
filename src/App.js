@@ -70,6 +70,7 @@ export function App() {
         <Route path="*" element={<Navigate to="/wallet" />} />
       </Route>
     </Routes>
+
   );
 }
 export default App;
