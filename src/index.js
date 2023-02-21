@@ -7,21 +7,17 @@ import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 
-// const basename =
-//   process.env.NODE_ENV !== "production"
-//     ? "/final-project-team5-front"
-//     : "/final-project-team5-front/";
+const basename =
+  process.env.NODE_ENV !== "production" ? "/kapusta" : "/kapusta/";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      {/* <BrowserRouter basename={basename}> */}
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      {/* </BrowserRouter> */}
-    </PersistGate>
-  </Provider>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter basename={basename}>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );
