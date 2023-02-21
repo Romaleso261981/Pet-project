@@ -1,4 +1,10 @@
 .header {
-    padding: 12px 0;
-    display: flex;
+  padding: 12px 0;
+  display: flex;
+}
+
+.header__logo {
+  outline: none;
+  border: none;
+  background: white;
 }
