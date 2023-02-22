@@ -5,7 +5,7 @@ import { Loader } from "./components/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const token = false;
+const token = true;
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
@@ -21,7 +21,7 @@ const PublicRoute = ({ children, token }) => {
 };
 
 export function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <Routes>
