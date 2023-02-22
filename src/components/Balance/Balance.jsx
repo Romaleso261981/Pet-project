@@ -25,11 +25,10 @@ export const Balance = () => {
 
   const addUserBalance = () => {
     const newBalance = Number(balance);
-    if (newBalance < 0) {
+    if (newBalance <= 0) {
       return alert("Balance should be positive :)");
     }
     dispatch(addBalanceByUser(newBalance));
-    console.log(dispatch(addBalanceByUser(newBalance)));
   };
 
   return (
