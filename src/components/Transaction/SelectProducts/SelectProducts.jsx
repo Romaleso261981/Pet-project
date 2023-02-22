@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import { Field } from 'formik';
-import {
-    SelectDiv,
-    SelectProduct,
-} from './SelectProducts.styled';
+import styled from "./SelectProduct.module.scss";
 
 const productCategory = [
     'Transport',
@@ -20,7 +18,7 @@ const productCategory = [
     'Other',
 ];
 
-export function SelectProductsSt() {
+export function SelectProducts() {
     const [product, setProduct] = useState([]);
 
     const handleChange = (event) => {
@@ -28,8 +26,9 @@ export function SelectProductsSt() {
     };
     
     return (
-        <SelectDiv>
-            <SelectProduct
+        <div className={styled.wrapper}>
+            <Select
+                className={styled.select_product}
                 id='select-product'
                 displayEmpty
                 value={product}
@@ -49,6 +48,7 @@ export function SelectProductsSt() {
                 
                 {productCategory.map((name) => (
                     <MenuItem
+                        className={styled.products}
                         sx={{bgcolor: '#F5F6FB', color: '#C7CCDC'}}
                         key={name}
                         value={name}
@@ -56,7 +56,7 @@ export function SelectProductsSt() {
                     {name}
                     </MenuItem>
                 ))}
-            </SelectProduct>
-        </SelectDiv>
+            </Select>
+        </div>
     )
 }

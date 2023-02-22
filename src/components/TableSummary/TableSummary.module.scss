@@ -1,0 +1,29 @@
+.wrapper {
+    display: none;
+
+    @media screen and  (min-width: 768px) {
+        display: block;
+        box-sizing: border-box;
+        width: 230px;
+    }
+
+    @media screen and  (min-width: 1280px) {
+        width: 213px;
+        position: relative;
+        top: 110px;
+        right: 250px;
+    }
+}
+
+.table{
+    border-radius: 22px;
+    background-color: #F5F6FB;
+    border-collapse: separate;
+    border-spacing: 5px;
+    text-transform: uppercase;
+    & tr {
+        height: 40px;
+        border: 2px solid white;
+        border-collapse: collapse;
+    }
+}

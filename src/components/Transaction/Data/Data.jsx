@@ -1,5 +1,7 @@
 import { FaCalendarAlt } from "react-icons/fa";
-import { DivInput, Input, Wrapper } from "./Data.styled";
+import { Field } from "formik";
+import styled from "./Data.module.scss";
+
 
 export function Data() {
     const today = new Date();
@@ -10,12 +12,12 @@ export function Data() {
     if (mm < 10) mm = '0' + mm;
     
     return (
-        <Wrapper>
+        <div className={styled.wrapper}>
             <FaCalendarAlt />
             <p>{dd + '.' + mm + '.' + yyyy}</p>
-            <DivInput>
-                <Input type='text' name='date' value={dd + '.' + mm + '.' + yyyy}/>
-            </DivInput>
-        </Wrapper>
+            <div>
+                <Field className={styled.input} type='text' name='date' value={dd + '.' + mm + '.' + yyyy}/>
+            </div>
+        </div>
     )
 }

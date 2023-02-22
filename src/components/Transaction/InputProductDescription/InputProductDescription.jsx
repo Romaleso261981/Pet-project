@@ -1,28 +1,15 @@
-import { useState } from 'react';
 import { Field } from 'formik';
-import { 
-    DivProductDescription, 
-    ProductDescription,
-} from './InputProductDescription.styled';
-import { TextField } from './TextField';
+import styled from "./InputProductDescription.module.scss";
+import { Input } from './TextField';
 
 
-export function InputProductDescriptionSt() {
-    // const [productDescription, setProductDescription] = useState([]);
-
-    // const handleChange = (event) => {
-    //     setProductDescription(event.target.value);
-    // };
-    
+export function InputProductDescription() {
     return (
-        <DivProductDescription>
+        <div className={styled.wrapper}>
             <Field 
-                // value={productDescription}
-                // onChange={handleChange}
                 name='productDescription'
-                component={TextField}
-                // placeholder="Product description"
+                component={Input}
             />
-        </DivProductDescription>
+        </div>
     )
 }

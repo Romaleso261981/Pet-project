@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { 
-    ProductDescription,
-} from './InputProductDescription.styled';
+import TextField from '@mui/material/TextField';
+import styled from "./InputProductDescription.module.scss";
 
-export function TextField() {
+export function Input() {
     const [productDescription, setProductDescription] = useState([]);
 
     const handleChange = (event) => {
@@ -11,7 +10,8 @@ export function TextField() {
     };
 
     return (
-        <ProductDescription 
+        <TextField
+            className={styled.product_description}
             name='productDescription'
             value={productDescription}
             onChange={handleChange}

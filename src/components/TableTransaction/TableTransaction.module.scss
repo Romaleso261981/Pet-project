@@ -1,0 +1,34 @@
+.wrapper{
+    @media screen and (min-width: 768px) {
+        box-sizing: border-box;
+        max-width: 624px;
+        border-radius: 15px;
+        border: 1px solid #F5F6FB;
+        height: 328px;
+        overflow: auto;
+        scrollbar-color: #FF751D #F5F6FB;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-width: 746px;
+    }
+}
+
+.table{
+    @media screen and (min-width: 768px) {
+        & tr {
+            height: 40px;
+        }
+    }
+}
+
+.table__head{
+    background-color: #F5F6FB;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 768px) {
+    }
+
+    @media screen and (min-width: 1280px) {
+    }
+}
