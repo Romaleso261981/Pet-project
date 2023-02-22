@@ -1,13 +1,9 @@
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { IoTrashOutline } from "react-icons/io5";
-import { 
-    Wrapper,
-    TableSt, 
-    Head
-} from './TableSummary.styled';
-
+import styled from "./TableSummary.module.scss";
 
 function createData(month, sum) {
   return { month, sum };
@@ -24,25 +20,24 @@ const rows = [
 
 export default function TableSummary() {
   return (
-    <Wrapper>
-      <TableSt size="small">
-        <Head>
+    <div className={styled.wrapper}>
+      <Table size="small" className={styled.table}>
+        <TableHead>
             <TableRow>
-                <TableCell colspan="2" component="th" scope="row">Summary</TableCell>
+                <TableCell colSpan="2" component="th" scope="row">Summary</TableCell>
             </TableRow>
-        </Head>
+        </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow
               key={row.month}
             >
-
                 <TableCell>{row.month}</TableCell>
                 <TableCell>{row.sum}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-      </TableSt>
-    </Wrapper>
+      </Table>
+    </div>
   );
 }

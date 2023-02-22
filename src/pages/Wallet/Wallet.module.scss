@@ -1,3 +1,4 @@
+
 .container {
     min-width: 100%;
     position: absolute;
@@ -7,24 +8,56 @@
     margin: 0 auto;
     padding: 86px 20px 105px;
     max-width: 360px;
-  
+    
     @media screen and (min-width: 768px) {
-      max-width: 426px;
-      padding: 86px 0 0;
+      max-width: 768px;
+      padding: 86px 32px 0 32px;
     }
-  
-    @media screen and (min-width: 1024px) {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1024px;
-      padding: 117px 91px 125px 80px;
-    }
+    
+    // @media screen and (min-width: 1024px) {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   max-width: 1024px;
+    //   padding: 117px 91px 125px 80px;
+    // }
   
     @media screen and (min-width: 1280px) {
       display: flex;
       justify-content: space-between;
       max-width: 1280px;
-      padding: 117px 91px 125px 229px;
+      padding: 117px 91px 125px 91px;
     }
   }
+.transaction_all{
+  display: grid;
   
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
+}
+
+.transaction {
+  box-sizing: border-box;
+  width: 320px;
+  padding: 16px 20px;
+  margin: 0 auto 40px auto;
+  
+  @media screen and (min-width: 768px) {
+    display: grid;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    width: 704px;
+    padding: 24px 40px;
+    background-color: #ffffff;
+    border-radius: 0px 30px 30px 30px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1098px;
+    padding: 34px 32px;
+  }
+}
+
+.transaction__summary{
+  position: absolute;
+  top: -50px;
+}

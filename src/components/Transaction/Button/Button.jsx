@@ -1,23 +1,22 @@
-import Button from '@mui/material/Button';
-import { 
-    DivButton,
-} from './Button.styled';
+import styled from "./ButtonIC.module.scss";
 
 export function ButtonIC() {
     return (
-        <DivButton spacing='20px' direction="row">
-            <Button 
+        <div className={styled.wrapper} >
+            <button 
                 type="submit"
                 id="submit"
+                className={styled.button}
             >
                 input
-            </Button>
-            <Button
+            </button>
+            <button
                 type="reset"
                 id="reset"
+                className={styled.button}
                 >
                 clear
-            </Button>
-        </DivButton>
+            </button>
+        </div>
     )
 }
