@@ -49,7 +49,8 @@ export const Balance = () => {
             />
             <span className={style.uah}> UAH</span>
           </div>
-          {balance === 0 && <ModalWithoutBalance />}
+          {/* {balance === 0 && <ModalWithoutBalance />} */}
+          {false && <ModalWithoutBalance />}
 
           <button className={style.buttonConfirm} onClick={addUserBalance}>
             confirm
