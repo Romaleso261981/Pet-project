@@ -5,7 +5,7 @@ import { Loader } from "./components/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const token = true;
+const token = false;
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Layout = lazy(() => import("./components/Layout/Layout"));

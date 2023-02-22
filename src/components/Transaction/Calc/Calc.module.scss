@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const DivCalc = styled.div`
+.wrapper{
     display: flex;
     align-items: center;
     width: 183px;
@@ -12,17 +10,18 @@ export const DivCalc = styled.div`
         border: none;
     }
 
-    @media (min-width: 768px) {
+    @media screen and  (min-width: 768px) {
         width: 110px;
         margin-bottom: 0;
         margin: 0;
     }
 
-    @media (min-width: 1280px) {
+    @media screen and  (min-width: 1280px) {
         width: 120px;
     }
-`
-export const DivCalcInput = styled.div`
+}
+
+.wrapper__input{
     width: 125px;
 
     & input {
@@ -38,7 +37,7 @@ export const DivCalcInput = styled.div`
         border-left: 2px solid white;
     }
 
-    @media (min-width: 768px) {
+    @media screen and  (min-width: 768px) {
         width: 70px;
 
         & input {
@@ -53,15 +52,15 @@ export const DivCalcInput = styled.div`
         }
     }
 
-    @media (min-width: 1280px) {
+    @media screen and  (min-width: 1280px) {
         width: 80px;
         & input {
             padding-left: 30px;
         }
     }
-`
+}
 
-export const DivCalcIcon = styled.div`
+.wrapper__icon{
     box-sizing: border-box;
     width: 60px;
     height: 44px;
@@ -81,7 +80,7 @@ export const DivCalcIcon = styled.div`
         width: 20px;
     }
 
-    @media (min-width: 768px) {
+    @media screen and  (min-width: 768px) {
         width: 45px;
         padding: 10px;
         border-top: 2px solid #F5F6FB; 
@@ -93,7 +92,4 @@ export const DivCalcIcon = styled.div`
             stroke: #52555F;
         }
     }
-
-    @media (min-width: 1280px) {
-    }
-`
+}

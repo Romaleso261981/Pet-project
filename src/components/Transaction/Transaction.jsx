@@ -1,15 +1,14 @@
 import { Formik } from "formik";
 import { Form } from 'formik';
 import { 
-    GreyWrapper, 
     WrapperForm, 
     DivInputsAndBtn,
     DivProduct,
     DivInputs 
 } from './Transaction.styled';
-import { InputProductDescriptionSt } from './InputProductDescription/InputProductDescription';
-import { SelectProductsSt } from './SelectProducts/SelectProducts';
-import { CalcSt } from './Calc/Calc';
+import { InputProductDescription } from './InputProductDescription/InputProductDescription';
+import { SelectProducts } from './SelectProducts/SelectProducts';
+import { Calc } from './Calc/Calc';
 import { ButtonIC } from './Button/Button';
 import { GoBack } from "./GoBack/GoBack";
 import { Data } from "./Data/Data";
@@ -26,7 +25,6 @@ export function Transaction() {
 
     return (
         <>
-            <GreyWrapper></GreyWrapper>
             <div>
                 <GoBack />
 
@@ -40,10 +38,10 @@ export function Transaction() {
                                 <DivInputs>
                                     <Data />
                                     <DivProduct>
-                                        <InputProductDescriptionSt />
-                                        <SelectProductsSt />
+                                        <InputProductDescription />
+                                        <SelectProducts />
                                     </DivProduct>
-                                    <CalcSt />
+                                    <Calc />
                                 </DivInputs>
                                 <ButtonIC />
                             </DivInputsAndBtn>

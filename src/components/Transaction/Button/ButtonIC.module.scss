@@ -1,0 +1,33 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+
+}
+
+.button{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #52555F;
+    width: 130px;
+    height: 44px;
+    border: 0;
+    border-radius: 16px;
+    background-color: #F5F6FB;
+    box-shadow: 1px 3px 5px rgba(85, 82, 95, 0.35);
+    
+    &:hover{
+        background-color: #FF751D;
+        box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
+    }
+    
+    &:first-child{
+        margin-right: 20px;
+    }
+
+    @media screen and  (min-width: 768px) {
+        &:first-child{
+            margin-right: 15px;
+        }
+    }
+}

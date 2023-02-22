@@ -1,10 +1,7 @@
-import { Field } from "formik";
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
+.wrapper{
     display: none;
 
-    @media (min-width: 768px) {
+    @media screen and  (min-width: 768px) {
         height: 44px;
         display: flex;
         justify-content: center;
@@ -27,15 +24,12 @@ export const Wrapper = styled.div`
         }
     }
 
-    @media (min-width: 1280px) {
+    @media screen and  (min-width: 1280px) {
         margin-right: 32px;
     }
-`
+}
 
-export const DivInput = styled.div`
-`
-
-export const Input = styled(Field)`
+.input{
     bottom: 0;
     left: 0;
     position: absolute;
@@ -44,4 +38,4 @@ export const Input = styled(Field)`
     pointer-events: none;
     width: 100%;
     box-sizing: border-box;
-`
+}
