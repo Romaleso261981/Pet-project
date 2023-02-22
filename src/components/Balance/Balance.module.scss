@@ -38,13 +38,13 @@
 }
 
 .inputBalance {
+  width: 100px;
   border-color: transparent;
   color: #000000;
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
-  @media screen and (min-width: 768px) {
-  }
+  display: flex;
 }
 
 .buttonConfirm {
@@ -67,6 +67,9 @@
   flex-direction: column-reverse;
   margin-top: 104px;
   margin-left: 39px;
+  margin-bottom: 100px;
+
+  justify-content: center;
   @media screen and (min-width: 768px) {
     margin-top: 52px;
     display: flex;
@@ -75,5 +78,23 @@
   }
   @media screen and (min-width: 1280px) {
     justify-content: center;
+  }
+}
+
+.uah {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile {
+  display: flex;
+  @media screen and (max-width: 767px) {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 }
