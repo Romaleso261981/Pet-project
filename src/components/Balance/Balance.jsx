@@ -6,9 +6,23 @@ import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalan
 
 const Balance = () => {
   const [balance, setBalance] = useState(0);
+
   const handleChange = (e) => {
     setBalance(e.target.value);
   };
+
+  useEffect(() => {
+    setBalance(currentBalance);
+  }, [currentBalance]);
+
+  const addUserBalance = () => {
+    const newBalance = Number(balance);
+    if (newBalance <= 0) {
+      return alert("Balance should be positive :)");
+    }
+    dispatch(addBalanceByUser(newBalance));
+  };
+
   return (
     <Container>
       <div className={style.containers}>
@@ -37,6 +51,13 @@ const Balance = () => {
         <button className={style.report}>
           Reports <GoGraph className={style.icon} />
         </button>
+        {/* <NavLink
+          to="/report"
+          className={style.report}
+          end
+        >
+          Reports <GoGraph className={style.icon} />
+        </NavLink> */}
       </div>
     </Container>
   );

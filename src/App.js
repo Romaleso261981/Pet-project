@@ -5,21 +5,23 @@ import { Loader } from "./components/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const token = true;
+const token = false;
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
+const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
+const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
 
 const PrivateRoute = ({ children, token }) => {
-  return !token ? children : <Navigate to="/" />;
+  return !token ? children : <>Поміняйте token в APP на false</>;
 };
 
 const PublicRoute = ({ children, token }) => {
-  return token ? children : <>нетуда</>;
+  return token ? children : <>Поміняйте token в APP на true</>;
 };
 
 export function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <Routes>
@@ -27,7 +29,7 @@ export function App() {
         path="/"
         element={
           <Suspense fallback={<Loader />}>
-            <Home />
+            <Layout />
           </Suspense>
         }
       >
@@ -36,17 +38,7 @@ export function App() {
           element={
             <Suspense fallback={<Loader />}>
               <PublicRoute token={token}>
-                <Layout />
-              </PublicRoute>
-            </Suspense>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <Suspense fallback={<Loader />}>
-              <PublicRoute token={token}>
-                <>registry</>
+                <Home />
               </PublicRoute>
             </Suspense>
           }
@@ -54,16 +46,18 @@ export function App() {
         <Route
           path="/wallet"
           element={
-            <PrivateRoute token={token}>
-              <>Wallet</>
-            </PrivateRoute>
+            <Suspense fallback={<Loader />}>
+              <PrivateRoute token={token}>
+                <Wallet />
+              </PrivateRoute>
+            </Suspense>
           }
         />
         <Route
           path="/statistics"
           element={
             <PrivateRoute token={token}>
-              <>Static</>
+              <Statistics />
             </PrivateRoute>
           }
         />

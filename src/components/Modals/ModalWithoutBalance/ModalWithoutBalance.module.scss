@@ -7,7 +7,7 @@
   height: 152px;
   padding-top: 29px;
   display: block;
-  margin-top: 23px;
+  margin-top: -5px;
   position: absolute;
   z-index: 999;
   @media screen and (min-width: 768px) {
@@ -17,7 +17,7 @@
 }
 
 .container:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 20%;
   top: -23px;

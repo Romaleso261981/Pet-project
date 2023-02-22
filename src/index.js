@@ -7,16 +7,13 @@ import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 
-const basename =
-  process.env.NODE_ENV !== "production"
-    ? "/localhost:3000"
-    : "/kapusta-team5.netlify.app/";
+// const basename = process.env.NODE_ENV !== "production" ? "/" : "/";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename={basename}>
+        <BrowserRouter basename={"/"}>
           <App />
         </BrowserRouter>
       </PersistGate>
