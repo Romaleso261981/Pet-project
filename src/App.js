@@ -42,16 +42,6 @@ export function App() {
           }
         />
         <Route
-          path="/register"
-          element={
-            <Suspense fallback={<Loader />}>
-              <PublicRoute token={token}>
-                <>registry</>
-              </PublicRoute>
-            </Suspense>
-          }
-        />
-        <Route
           path="/wallet"
           element={
             <PrivateRoute token={token}>
@@ -70,7 +60,6 @@ export function App() {
         <Route path="*" element={<h1>Невірно прописаний шлях</h1>} />
       </Route>
     </Routes>
-
   );
 }
 export default App;

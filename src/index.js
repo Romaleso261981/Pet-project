@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 const basename =
   process.env.NODE_ENV !== "production"
     ? "/localhost:3000"
-    : "/kapusta-team5.netlify.app/";
+    : "/kapusta-team5.netlify.app";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
