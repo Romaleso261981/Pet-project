@@ -70,6 +70,7 @@ export function App() {
         <Route path="*" element={<h1>Невірно прописаний шлях</h1>} />
       </Route>
     </Routes>
+
   );
 }
 export default App;
