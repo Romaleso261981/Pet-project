@@ -8,7 +8,7 @@
     align-items: center;
   }
   ArrowBackIosIcon {
-    fill: #ff751d;
+    fill:var(--accent-color);
   }
   .container {
     width: 668px;
@@ -39,7 +39,7 @@
   .reportCard {
     text-align: center;
     height: 135px;
-    border-bottom: 1px solid #e0e5eb;
+    border-bottom: 1px solid var(--income-section-line);
     margin-bottom: 20px;
     font-size: 12px;
     align-items: 1.17;
@@ -54,7 +54,7 @@
     line-height: 16px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: #000000;
+    color:var(--black-text-color);
     min-width: 96px;
   }
   .reportMonthTitle {
@@ -74,18 +74,16 @@
     align-items: center;
     font-size: 14px;
     text-align: 1.17;
-    /* border: 1px solid tomato; */
   }
   .transactionWrapper.amountWrapper {
     display: block;
-    /* flex-basis: calc(100% / 2); */
   }
   .reportList {
     padding: 0px;
     display: flex;
     flex-wrap: wrap;
     margin: 0px;
-    color: #ff751d;
+    color:var(--accent-color);
     align-items: center;
     list-style: none;
     font-size: 12px;
@@ -100,7 +98,7 @@
     margin-bottom: 5px;
   }
   .iconSvg:hover {
-    fill: #ff751d;
+    fill:var(--accent-color);
     background-image: radial-gradient(
       75% 60% at 50% 50%,
       #ffdac0 15%,
@@ -115,7 +113,7 @@
   }
 
   .iconSvg:focus {
-    fill: #ff751d;
+    fill:var(--accent-color);
     background-image: radial-gradient(
       75% 60% at 50% 50%,
       #ffdac0 15%,
@@ -135,7 +133,7 @@
     padding-top: 10px;
   }
   .title {
-    color: rgba(82, 85, 95, 0.7);
+    color:var(--balans-form-color);
     margin-bottom: 5px;
   }
   .reportMonth {
@@ -149,22 +147,22 @@
   .amountSection {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #fff;
+    background-color:var(--white-color);
     font-weight: bold;
     font-size: 14px;
     line-height: 1.17;
-    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    box-shadow: 5px 10px 20px var(--form-wrapper-shadow);
     border-radius: 30px;
     margin-bottom: 30px;
   }
   .amountTitle {
-    color: #52555f;
+    color:var(--primary-text-color);
   }
   .amountExpense {
-    color: #e53935;
+    color:var(--balance-minus);
   }
   .amountIncome {
-    color: #407946;
+    color:var(--plus-balance-color);
   }
   .amountStrip {
     margin-left: 12px;
@@ -201,8 +199,8 @@
     align-items: 1.17;
   }
   .reportWrapper {
-    background: #ffffff;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    background:var(--white-color);
+    box-shadow: 0px 10px 60px var(--google-btn-shadow);
     border-radius: 30px;
     padding: 20px;
   }
