@@ -1,9 +1,10 @@
-import style from './Balance.module.scss';
-import { useState } from 'react';
-import { GoGraph } from 'react-icons/go';
-import { Container } from '../Container/Container';
-import ModalWithoutBalance from '../Modals/ModalWithoutBalance/ModalWithoutBalance';
-export const Balance = () => {
+import style from "./Balance.module.scss";
+import { useState } from "react";
+import { GoGraph } from "react-icons/go";
+import { Container } from "../Container/Container";
+import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
+
+const Balance = () => {
   const [balance, setBalance] = useState(0);
   const handleChange = (e) => {
     setBalance(e.target.value);
@@ -18,7 +19,7 @@ export const Balance = () => {
             type="number"
             name="balance"
             placeholder="0.00 UAH"
-            style={{ color: '#000000' }}
+            style={{ color: "#000000" }}
             value={balance}
             onChange={handleChange}
           />
@@ -26,6 +27,13 @@ export const Balance = () => {
 
           <button className={style.buttonConfirm}>confirm</button>
         </div>
+        {/* <NavLink
+          to="/report"
+          className={style.report}
+          end
+        >
+          Reports <GoGraph className={style.icon} />
+        </NavLink> */}
         <button className={style.report}>
           Reports <GoGraph className={style.icon} />
         </button>
@@ -33,3 +41,5 @@ export const Balance = () => {
     </Container>
   );
 };
+
+export default Balance;
