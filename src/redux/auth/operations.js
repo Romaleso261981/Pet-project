@@ -71,4 +71,17 @@ const refreshUser = createAsyncThunk(
   }
 );
 
-export {register, logIn, logOut, refreshUser}
+const googleAuth = createAsyncThunk(
+  "auth/googleAuth",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await API.post("/auth/google", credentials)
+      authToken.set(data.token)
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export { register, logIn, logOut, refreshUser, googleAuth }
