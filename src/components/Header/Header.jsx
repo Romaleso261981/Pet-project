@@ -42,6 +42,7 @@ export function Header() {
   const lang = "en";
 
   const handleExit = () => {
+    alert("ви дійсно хочете вийти");
     console.log("handleExit");
     // setPopup({
     //   isShow: true,
@@ -75,12 +76,7 @@ export function Header() {
               </Img>
               <Name>{user.email}</Name>
               <Line />
-              <Exit
-                type="button"
-                onClick={(e) => {
-                  console.log(e);
-                }}
-              >
+              <Exit type="button" onClick={handleExit}>
                 {lang === "en" ? (
                   <ExitText>Exit</ExitText>
                 ) : (
