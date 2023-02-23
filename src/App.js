@@ -1,8 +1,10 @@
 import { useEffect, lazy, useState, Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
+import { getMode } from "./redux/theme/themeSelector";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -22,10 +24,13 @@ const PublicRoute = ({ children, token }) => {
 };
 
 export function App() {
+  const selectedMode = useSelector(getMode);
+  const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
+  console.log(selectedMode);
   const isLoggedIn = true;
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMode}>
       <Routes>
         <Route
           path="/"

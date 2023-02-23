@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 
 import { authReducer } from "./auth/slice";
-
+import themeReducer from "./theme/themeSlice";
 import { balanceSlice } from "./balance/balanceSlice";
 
 import storage from "redux-persist/lib/storage";
@@ -27,6 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     balance: balanceSlice.reducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

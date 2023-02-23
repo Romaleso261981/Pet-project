@@ -61,5 +61,3 @@ export const darkTheme = {
     authFormInputText: "#000000",
   },
 };
-
-// background-color: #403d39;
