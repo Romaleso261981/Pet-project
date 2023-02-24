@@ -1,6 +1,10 @@
 .container {
-  background-color: #1d346a;
-  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  background-color: var(--triangle-up-color);
+  background: linear-gradient(
+    117.84deg,
+    var(--triangle-up-color) 2.84%,
+    var(--modal-balans-gradient) 67.28%
+  );
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   border-radius: 30px;
   width: 280px;
@@ -22,12 +26,12 @@
   left: 20%;
   top: -23px;
   border: 15px solid transparent;
-  border-bottom: 10px solid #1d346a;
+  border-bottom: 10px solid var(--triangle-up-color);
 }
 
 .helloText {
   text-align: center;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
@@ -35,7 +39,7 @@
 
 .descrText {
   text-align: center;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
