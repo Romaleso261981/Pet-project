@@ -1,6 +1,4 @@
 import Reports from "components/Reports/Reports";
-import { AnimatedCabbagesBg } from "../../components/AnimatedBg/AnimatedBg";
-import { AnimatedBottomCabbages } from "../../components/AnimatedCabbagesBottom/AnimatedCabbagesBottom";
 import styled from "./ReportsPage.module.scss";
 // import IncomeForm from 'components/IncomeForm/IncomeForm';
 // import CategoryList from '../../components/CategoryList/CategoryList';
@@ -14,8 +12,6 @@ const ReportsPage = () => {
   // });
   return (
     <>
-      <AnimatedCabbagesBg />
-      <AnimatedBottomCabbages />
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
         <Reports />
