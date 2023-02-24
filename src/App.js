@@ -8,9 +8,10 @@ import { getMode } from "./redux/theme/themeSelector";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const token = true;
+const token = false;
 
-const Home = lazy(() => import("./pages/Home/Home"));
+const LoginPage = lazy(() => import("./pages/Logins/Logins"));
+const Register = lazy(() => import("./pages/Register/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
 const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
@@ -20,7 +21,7 @@ const PrivateRoute = ({ children, token }) => {
 };
 
 const PublicRoute = ({ children, token }) => {
-  return token ? children : <>Поміняйте token в APP на true</>;
+  return !token ? children : <>Поміняйте token в APP на true</>;
 };
 
 export function App() {
@@ -45,8 +46,18 @@ export function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <PublicRoute token={token}>
-                  <Home />
+                  <LoginPage />
                 </PublicRoute>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PrivateRoute token={token}>
+                  <Register />
+                </PrivateRoute>
               </Suspense>
             }
           />
