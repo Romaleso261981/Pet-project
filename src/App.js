@@ -15,7 +15,7 @@ const LoginPage = lazy(() => import("./pages/Logins/Logins"));
 const Register = lazy(() => import("./pages/Register/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
-const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
+// const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
@@ -29,7 +29,6 @@ const PublicRoute = ({ children, token }) => {
 export function App() {
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
-  console.log(selectedMode);
   const isLoggedIn = true;
 
   return (
@@ -77,7 +76,7 @@ export function App() {
             path="/statistics"
             element={
               <PrivateRoute token={token}>
-                <Statistics />
+                <ReportsPage />
               </PrivateRoute>
             }
           />

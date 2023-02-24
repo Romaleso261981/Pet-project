@@ -1,18 +1,27 @@
-import React from 'react';
-import s from './ReportsHeader.module.scss';
+import React from "react";
+import s from "./ReportsHeader.module.scss";
 
 export default function ReportsHeader({ incomes, expenses }) {
   return (
     <div className={s.reportsHeder}>
       <div className={`${s.total} ${s.total__expenses}`}>
-        <p>
+        {/* <p>
           Expenses:
           <span>
             -
             {expenses.expenseTotal &&
               expenses.expenseTotal
                 .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+                .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+            UAH
+          </span>
+        </p> */}
+        <p>
+          Expenses:
+          <span>
+            -
+            {expenses &&
+              expenses.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
             UAH
           </span>
         </p>
@@ -20,12 +29,18 @@ export default function ReportsHeader({ incomes, expenses }) {
       <div className={`${s.total} ${s.total__incomes}`}>
         <p>
           Income:
-          <span>
+          {/* <span>
             +
             {incomes.incomeTotal &&
               incomes.incomeTotal
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+            UAH
+          </span> */}
+          <span>
+            +
+            {incomes &&
+              incomes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
             UAH
           </span>
         </p>

@@ -1,5 +1,4 @@
-
-import Reports from 'components/Reports/Reports';
+import Reports from "components/Reports/Reports";
 import styled from "./ReportsPage.module.scss";
 // import IncomeForm from 'components/IncomeForm/IncomeForm';
 // import CategoryList from '../../components/CategoryList/CategoryList';
@@ -17,7 +16,7 @@ const ReportsPage = () => {
         <div className={styled.wrapper}></div>
         <Reports />
       </div>
-    
+
       {/* <CategoryList /> */}
       {/* {isMobile ? <ChartCategory /> : <ChartCategoryMobile />} */}
     </>
