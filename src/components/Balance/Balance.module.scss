@@ -1,5 +1,5 @@
 .report {
-  color: #52555fb2;
+  color: var(--primary-text-color);
   border-color: transparent;
   font-weight: 400;
   font-size: 12px;
@@ -8,6 +8,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  text-decoration: none;
   @media screen and (min-width: 768px) {
     margin-right: 37px;
     margin-left: auto;
@@ -18,12 +19,12 @@
 .icon {
   height: 18px;
   width: 18px;
-  color: #52555f;
+  color: var(--primary-text-color);
   margin-left: 20px;
 }
 
 .title {
-  color: #52555fb2;
+  color: var(--primary-text-color);
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
@@ -40,7 +41,7 @@
 .inputBalance {
   width: 100px;
   border-color: transparent;
-  color: #000000;
+  color: var(--black-text-color);
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
@@ -48,7 +49,7 @@
 }
 
 .buttonConfirm {
-  color: #52555fb2;
+  color: var(--primary-text-color);
   text-transform: uppercase;
   border-color: transparent;
   @media screen and (min-width: 768px) {
