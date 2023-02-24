@@ -8,7 +8,7 @@ import { getMode } from "./redux/theme/themeSelector";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const token = false;
+const token = true;
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Layout = lazy(() => import("./components/Layout/Layout"));

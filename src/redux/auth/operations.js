@@ -1,69 +1,87 @@
-import axios from "axios";
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "";
+import { API, authToken } from "../../API";
+import { toast } from "react-toastify"
 
-const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
-};
-
-export const register = createAsyncThunk(
-  "auth/register",
-  async (credentials, thunkAPI) => {
-    try {
-      const res = await axios.post("/users/signup", credentials);
-      setAuthHeader(res.data.token);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        `Something went wrong! Please, try another name or password...`
-      );
-    }
-  }
-);
-
-export const logIn = createAsyncThunk(
-  "auth/login",
-  async (credentials, thunkAPI) => {
-    try {
-      const res = await axios.post("/users/login", credentials);
-      setAuthHeader(res.data.token);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        `Password is not correct! Please try again or go back to register form!`
-      );
-    }
-  }
-);
-
-export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
-    await axios.post("/users/logout");
-    clearAuthHeader();
+    const { data } = await API.post("auth/register", credentials)
+    return data
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    toast.error("Server error, please try again later")
+  }
+})
+
+const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials) => {
+    try {
+      const {data} = await API.post("users/login", credentials);
+      return data;
+    } catch (error) {
+     if (error.response.status === 401) {
+      toast.error('Server error, please try again later');
+    }
+    if (error.response.status !== 401) {
+      toast.error('Wrong email or password, please try again.');
+    }
+    }
+  }
+);
+
+const logOut = createAsyncThunk("auth/logout", async () => {
+  try {
+    await API.post("/users/logout");
+     authToken.unset();
+  } catch (error) {
+    toast.error('Server error, please try again later');
   }
 });
 
-export const refreshUser = createAsyncThunk(
+const refreshUser = createAsyncThunk(
   "auth/refresh",
-  async (_, thunkAPI) => {
-    const { token } = thunkAPI.getState().auth;
-    if (!token) {
-      return thunkAPI.rejectWithValue("No valid token");
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState()
+    const prevSid = state.auth.sid;
+    const prevRefresh = state.auth.refreshToken;
+    if (!prevRefresh || !prevSid) {
+      return rejectWithValue('something went wrong');
     }
-    setAuthHeader(token);
     try {
-      const res = await axios.get("/users/current");
-      return res.data;
+      const { data } = await API.post(
+        '/auth/refresh',
+        { sid: prevSid },
+        {
+          headers: {
+            Authorization: `Bearer ${prevRefresh}`,
+          },
+        }
+      );
+
+      authToken.set(data.newAccessToken);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      authToken.unset();
+      if (error.response.status !== 401) {
+        toast.error('We got an error! Dont worry and try again.');
+      }
+      return rejectWithValue('something went wrong');
     }
   }
 );
+
+const googleAuth = createAsyncThunk(
+  "auth/googleAuth",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await API.post("/auth/google", credentials)
+      authToken.set(data.token)
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export { register, logIn, logOut, refreshUser, googleAuth }
