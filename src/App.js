@@ -11,11 +11,10 @@ import "./App.css";
 
 const token = false;
 
-const LoginPage = lazy(() => import("./pages/Logins/Logins"));
-const Register = lazy(() => import("./pages/Register/Register"));
+const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
+const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
-const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
-// const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
+const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
@@ -73,7 +72,7 @@ export function App() {
             }
           />
           <Route
-            path="/statistics"
+            path="/reports"
             element={
               <PrivateRoute token={token}>
                 <ReportsPage />
