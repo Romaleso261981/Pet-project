@@ -1,0 +1,15 @@
+@import '../../sass/mixin';
+.backgroundChartCategoryMobile {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: block;
+}
+
+canvas {
+  width: 280px;
+  @include mq(tab) {
+    width: 605px;
+  }
+}

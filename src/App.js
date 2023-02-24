@@ -2,6 +2,7 @@ import { useEffect, lazy, useState, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
+
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import { getMode } from "./redux/theme/themeSelector";
@@ -15,6 +16,7 @@ const Register = lazy(() => import("./pages/Register/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
 const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
+const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
   return !token ? children : <>Поміняйте token в APP на false</>;
@@ -40,6 +42,21 @@ export function App() {
               <Layout />
             </Suspense>
           }
+     
+        />
+        <Route
+          path="reports"
+          element={
+            <PublicRoute restricted>
+              <ReportsPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/wallet"
+          element={
+            <Suspense fallback={<Loader />}>
+=======
         >
           <Route
             index
