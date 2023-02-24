@@ -1,7 +1,5 @@
 import { Background } from "../../components/Background/Background";
-import { Transaction } from "components/Transaction/Transaction";
-import TableTransaction from "components/TableTransaction/TableTransaction";
-import TableSummary from "components/TableSummary/TableSummary";
+import { Transactions } from "components/Transactions/Transactions";
 import styled from "./Wallet.module.scss";
 
 const Wallet = () => {
@@ -10,13 +8,7 @@ const Wallet = () => {
       <Background />
       <div className={styled.container}>
         <div className={styled.wrapper}>
-          <div className={styled.transaction_all}>
-            <div className={styled.transaction}>
-              <Transaction />
-              <TableTransaction />
-            </div>
-            <TableSummary className={styled.transaction__summary} />
-          </div>
+          <Transactions />
         </div>
       </div>
     </>
