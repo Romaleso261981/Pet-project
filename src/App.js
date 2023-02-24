@@ -42,21 +42,6 @@ export function App() {
               <Layout />
             </Suspense>
           }
-     
-        />
-        <Route
-          path="reports"
-          element={
-            <PublicRoute restricted>
-              <ReportsPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/wallet"
-          element={
-            <Suspense fallback={<Loader />}>
-=======
         >
           <Route
             index
