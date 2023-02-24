@@ -18,45 +18,37 @@ const productCategory = [
     'Other',
 ];
 
-export function SelectProducts() {
-    const [product, setProduct] = useState([]);
-
-    const handleChange = (event) => {
-        setProduct(event.target.value);
-    };
-    
+export function SelectProducts ({ form, field }) {
+    const { name, value } = field;
+    const { setFieldValue } = form;
+  
     return (
-        <div className={styled.wrapper}>
-            <Select
-                className={styled.select_product}
-                id='select-product'
-                displayEmpty
-                value={product}
-                onChange={handleChange}
-                input={<Field 
-                    component={OutlinedInput}
-                    name='selectProduct'
-                />}
-                renderValue={(selected) => {
-                    if (selected.length === 0) {
-                        return ('Product category');
-                    }
-                    
-                    return selected;
-                }}
-            >
+        <Select
+            required
+            className={styled.select_product}
+            displayEmpty
+            renderValue={(selected) => {
+                if (selected.length === 0) {
+                    return ('Product category');
+                }
                 
-                {productCategory.map((name) => (
-                    <MenuItem
-                        className={styled.products}
-                        sx={{bgcolor: '#F5F6FB', color: '#C7CCDC'}}
-                        key={name}
-                        value={name}
-                    >
+                return selected;
+            }}
+            name={name}
+            value={value}
+            onChange={e => {
+                setFieldValue(name, e.target.value);
+            }}
+        >
+            {productCategory.map((name) => (
+                <MenuItem
+                    sx={{fontSize: '12px', bgcolor: '#F5F6FB', color: '#C7CCDC'}}
+                    key={name}
+                    value={name}
+                >
                     {name}
-                    </MenuItem>
-                ))}
-            </Select>
-        </div>
-    )
-}
+                </MenuItem>
+            ))}
+        </Select>
+    );
+};

@@ -1,14 +1,23 @@
-import { Field } from 'formik';
+import TextField from '@mui/material/TextField';
 import styled from "./InputProductDescription.module.scss";
-import { Input } from './TextField';
 
+export function InputProductDescription({ form, field }) {
+    const { name, value } = field;
+    const { setFieldValue } = form;
 
-export function InputProductDescription() {
+    const handleChange = (e) => {
+        setFieldValue(name, e.target.value);
+    };
+
     return (
         <div className={styled.wrapper}>
-            <Field 
-                name='productDescription'
-                component={Input}
+            <TextField
+                required
+                className={styled.product_description}
+                name={name}
+                value={value}
+                onChange={handleChange}
+                placeholder="Product description"
             />
         </div>
     )

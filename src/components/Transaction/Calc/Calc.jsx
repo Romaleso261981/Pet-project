@@ -1,26 +1,27 @@
-import { useState } from 'react';
-import { Field } from 'formik';
 import TextField from '@mui/material/TextField';
 import { FaCalculator } from "react-icons/fa";
 import styled from "./Calc.module.scss";
 
-export function Calc() {
-    const [culc, setCulc] = useState([]);
+export function Calc({ form, field }) {
+    const { name, value } = field;
+    const { setFieldValue } = form;
 
-    const handleChange = (event) => {
-        setCulc(event.target.value);
+    const handleChange = (e) => {
+        setFieldValue(name, e.target.value);
     };
 
     return (
         <div className={styled.wrapper}>
             <div className={styled.wrapper__input}>
-                <Field
-                    value={culc}
+                <TextField
+                    required
+                    name={name}
+                    value={value}
                     onChange={handleChange}
-                    name='calc'
-                    component={TextField} 
                     placeholder="00.00 UAH"
-                    pattern="\d+(\.\d{1-2})?"
+                    inputProps={{
+                        pattern: "^[1-9]*[.]?[0-9]{1,2}$"
+                    }}
                 />
             </div>
             <div className={styled.wrapper__icon}>

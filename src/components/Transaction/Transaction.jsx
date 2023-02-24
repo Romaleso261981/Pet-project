@@ -1,5 +1,4 @@
-import { Formik } from "formik";
-import { Form } from 'formik';
+import { Formik, Form, Field } from "formik";
 import { 
     WrapperForm, 
     DivInputsAndBtn,
@@ -11,37 +10,40 @@ import { SelectProducts } from './SelectProducts/SelectProducts';
 import { Calc } from './Calc/Calc';
 import { ButtonIC } from './Button/Button';
 import { GoBack } from "./GoBack/GoBack";
-import { Data } from "./Data/Data";
+import { CurrentDate } from "./CurrentDate/CurrentDate";
 
 export function Transaction() {
-    
-    const handleSubmitQw = (e) => {
-        console.log(e.target)
-    };
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    let date = `${dd + '.' + mm + '.' + yyyy}`
 
-    const handleSubmit = (e) => {
-        console.log(e.target)
+
+    const handleSubmit = (values) => {
+        console.log(values)
     };
 
     return (
         <>
             <div>
                 <GoBack />
-
                 <WrapperForm>
                     <Formik
-                        onSubmit={data => console.log(data)}
-                        initialValues={{ date: '', productDescription: '', selectProduct: '', culc: '' }}
+                        onSubmit={handleSubmit}
+                        initialValues={{ date: date, productDescription: '', selectProduct: '', culc: '' }}
                     >
                         <Form>
                             <DivInputsAndBtn>
                                 <DivInputs>
-                                    <Data />
+                                    <CurrentDate>{date}</CurrentDate>
                                     <DivProduct>
-                                        <InputProductDescription />
-                                        <SelectProducts />
+                                        <Field name="productDescription" component={InputProductDescription} />
+                                        <Field name="selectProduct" component={SelectProducts} />
                                     </DivProduct>
-                                    <Calc />
+                                    <Field name="culc" component={Calc} />
                                 </DivInputs>
                                 <ButtonIC />
                             </DivInputsAndBtn>
