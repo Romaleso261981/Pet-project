@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ReportsHeader from "../ReportsHeader/ReportsHeader";
 import ReportsCategories from "../ReportsCategories/ReportsCategories";
-import {
-  incomesMonthSelector,
-  expensesMonthSelector,
-} from "../../redux/reports/reportsSelectot";
+// import {
+//   incomesMonthSelector,
+//   expensesMonthSelector,
+// } from "../../redux/reports/reportsSelectot";
 import ChartCategory from "../../components/ChartCategory/ChartCategory";
 import ChartCategoryMobile from "../../components/ChartCategoryMobile/ChartCategoryMobile";
 import { useMediaQuery } from "react-responsive";
