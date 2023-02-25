@@ -14,7 +14,11 @@ import {
   ControlsWrapper,
 } from "./Header.styled";
 // import { useAuth } from "hooks";
+<<<<<<< Updated upstream
 // import { useDispatch, useSelector } from "react-redux";
+=======
+import { useDispatch, useSelector } from "react-redux";
+>>>>>>> Stashed changes
 // import { useState } from "react";
 // import { getToken } from "redux/auth/authSelectors";
 // import { logoutUser } from "redux/auth/authOperations";
@@ -22,7 +26,7 @@ import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "components/Popup/Popup";
 import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
 // import { LangSwitcher } from "components/LanguageBtn/LangBtn";
-// import { getLang } from "redux/lang/langSelectors";
+import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
   // const dispatch = useDispatch();
@@ -38,8 +42,7 @@ export function Header() {
   //   action: null,
   // });
 
-  // const lang = useSelector(getLang).lang;
-  const lang = "en";
+  const lang = useSelector(getLang);
 
   const handleExit = () => {
     alert("ви дійсно хочете вийти");
