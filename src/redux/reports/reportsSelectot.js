@@ -1,29 +1,29 @@
-// const incomesMonthSelector = (state) => state;
-// const expensesMonthSelector = ({ reports }) => reports.expenses;
 
-// const totalIncomesMonthSelector = ({ reports }) => reports.incomes.incomeTotal;
-// const totalExpensesMonthSelector = ({ reports }) =>
-//   reports.expenses.expenseTotal;
+const incomesMonthSelector = (state) => state.incomes;
+const expensesMonthSelector = (state) => state.expenses;
 
-// const isLoadingSelector = ({ reports }) => reports.isLoading;
-// const errorSelector = ({ reports }) => reports.error;
+const totalIncomesMonthSelector = (state) => state.incomes.incomeTotal;
+const totalExpensesMonthSelector = (state) => state.expenses.expenseTotal;
 
-// export {
-//   //?Вибір доходів за місяця,
-//   incomesMonthSelector,
+const isLoadingSelector = (state) => state.isLoading;
+const errorSelector = (state) => state.error;
 
-//   //?витрати за місяця,
-//   expensesMonthSelector,
+export {
+  //?Вибір доходів за місяця,
+  incomesMonthSelector,
 
-//   //?Загальні надходження за місяця
-//   totalIncomesMonthSelector,
+  //?витрати за місяця,
+  expensesMonthSelector,
 
-//   //?загальні витрати за місяця,
-//   totalExpensesMonthSelector,
+  //?Загальні надходження за місяця
+  totalIncomesMonthSelector,
 
-//   //?завантаження
-//   isLoadingSelector,
+  //?загальні витрати за місяця,
+  totalExpensesMonthSelector,
 
-//   //?помилка
-//   errorSelector,
-// };
+  //?завантаження
+  isLoadingSelector,
+
+  //?помилка
+  errorSelector,
+};

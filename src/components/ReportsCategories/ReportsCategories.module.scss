@@ -21,14 +21,14 @@
 }
 
 .backgroundCategoryList {
-  background-color: #ffffff;
+  background-color:var(--white-color);
 
   @include mq(tab) {
     margin-top: 32px;
     margin-bottom: 40px;
     border-radius: 30px;
-    background-color: #ffffff;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    background-color:var(--white-color);
+    box-shadow: 0px 10px 60px var(--google-btn-shadow);
   }
 }
 
@@ -71,12 +71,12 @@
   cursor: pointer;
   .borderForHover {
     transform: scale(1.05);
-    background-color: var(--persik);
-    color: var(--white);
+    background-color: var(--secondary-accent-color);
+    color: var(--white-color);
   }
 }
 .borderForHover {
-  background-color: var(--grey);
+  background-color: var(--grey--report-bg-color);
   // background-color: red;
 }
 
