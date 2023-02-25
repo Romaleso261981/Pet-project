@@ -6,7 +6,7 @@ import { Loader } from "./components/Loader/Loader";
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import { getMode } from "./redux/theme/themeSelector";
-import { selectIsLoggedIn } from "./redux/auth/selectors";
+import { getToken } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -16,17 +16,17 @@ const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
-const PrivateRoute = ({ children, isLogin }) => {
-  return !isLogin ? children : <Navigate to="/" />;
+const PrivateRoute = ({ children, token }) => {
+  return token ? children : <Navigate to="/" />;
 };
 
-const PublicRoute = ({ children, isLogin }) => {
-  return isLogin ? children : <Navigate to="/register" />;
+const PublicRoute = ({ children, token }) => {
+  return !token ? children : <Navigate to="/wallet" />;
 };
 
 export function App() {
-  const isLogin = useSelector(selectIsLoggedIn);
-  console.log(isLogin);
+  const token = useSelector(getToken);
+  console.log(token);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
@@ -45,7 +45,7 @@ export function App() {
             index
             element={
               <Suspense fallback={<Loader />}>
-                <PublicRoute isLogin={isLogin}>
+                <PublicRoute token={token}>
                   <LoginPage />
                 </PublicRoute>
               </Suspense>
@@ -55,7 +55,7 @@ export function App() {
             path="/register"
             element={
               <Suspense fallback={<Loader />}>
-                <PrivateRoute isLogin={isLogin}>
+                <PrivateRoute token={token}>
                   <Register />
                 </PrivateRoute>
               </Suspense>
@@ -65,7 +65,7 @@ export function App() {
             path="/wallet"
             element={
               <Suspense fallback={<Loader />}>
-                <PrivateRoute isLogin={isLogin}>
+                <PrivateRoute token={token}>
                   <Wallet />
                 </PrivateRoute>
               </Suspense>
@@ -74,7 +74,7 @@ export function App() {
           <Route
             path="/reports"
             element={
-              <PrivateRoute isLogin={isLogin}>
+              <PrivateRoute token={token}>
                 <ReportsPage />
               </PrivateRoute>
             }

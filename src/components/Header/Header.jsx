@@ -14,15 +14,16 @@ import {
   ControlsWrapper,
 } from "./Header.styled";
 // import { useAuth } from "hooks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { useState } from "react";
-// import { getToken } from "redux/auth/authSelectors";
+import { getToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "components/Popup/Popup";
 import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
-// import { LangSwitcher } from "components/LanguageBtn/LangBtn";
-// import { getLang } from "redux/lang/langSelectors";
+import { Btn } from "../../components/Buttons/Btn";
+import { LangSwitcher } from "components/LanguageBtn/LangBtn";
+import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
   const dispatch = useDispatch();
@@ -30,19 +31,29 @@ export function Header() {
   const user = {
     email: "leso81@gmail.com",
   };
-  // const token = useSelector(getToken);
-  const token = true;
+  const token = useSelector(getToken);
   // const [popup, setPopup] = useState({
   //   isShow: false,
   //   title: "",
   //   action: null,
   // });
 
-  // const lang = useSelector(getLang).lang;
-  const lang = "en";
+  const lang = useSelector(getLang);
 
   const handleExit = () => {
     dispatch(logOut());
+    // setPopup({
+    //   isShow: true,
+    //   title:
+    //     "en" === "en"
+    //       ? "Do you really want to leave?"
+    //       : "Ви дійсно бажаєте вийти?",
+    //   // action: () => dispatch(logoutUser()),
+    // });
+    // document.querySelector("modal-root").classList.add("js-action");
+  };
+  const register = () => {
+    alert("registri");
     // setPopup({
     //   isShow: true,
     //   title:
@@ -65,8 +76,8 @@ export function Header() {
         </LogoContainer>
         <ControlsWrapper>
           <ThemeSwitcher />
-          {/* <LangSwitcher /> */}
-          {token && (
+          <LangSwitcher />
+          {token ? (
             <StyledContainer>
               <Img>
                 <Avatar>
@@ -86,6 +97,12 @@ export function Header() {
                 </ExitSvg>
               </Exit>
             </StyledContainer>
+          ) : (
+            <Btn
+              type="submit"
+              text={lang === "en" ? "register" : "Реєстрація"}
+              onClick={register}
+            />
           )}
         </ControlsWrapper>
       </StyledHeader>

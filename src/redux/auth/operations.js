@@ -17,7 +17,8 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
 
 const logIn = createAsyncThunk("auth/login", async (credentials) => {
   try {
-    const { data } = await API.post("users/login", credentials);
+    const data = await API.post("auth/login", credentials);
+    console.log("---------------------logIn", data);
     return data;
   } catch (error) {
     if (error.response.status === 401) {

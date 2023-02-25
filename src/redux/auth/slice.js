@@ -11,6 +11,7 @@ import {
 export const initialState = {
   user: {
     email: "",
+    token: null,
   },
   accessToken: null,
   refreshToken: null,
@@ -25,7 +26,8 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(Register.fulfilled, (state, { payload }) => {
-        state.isLogin = true;
+        state.isLogin = false;
+        state.isRegister = true;
       })
       .addCase(logIn.pending, (state) => {
         state.isLogin = true;
@@ -33,17 +35,19 @@ const authSlice = createSlice({
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
-        state.sid = payload.sid;
+        // state.sid = payload.sid;
         state.isLogin = true;
+        state.isRegister = true;
       })
       .addCase(logIn.rejected, (state) => {
         state.isLogin = false;
       })
       .addCase(logOut.fulfilled, (state) => ({
         ...state,
-        accessToken: null,
-        refreshToken: null,
-        sid: null,
+        // accessToken: null,
+        // refreshToken: null,
+        // sid: null,
+        isRegister: false,
         isLogin: false,
       }))
       .addCase(refreshUser.pending, (state) => ({
