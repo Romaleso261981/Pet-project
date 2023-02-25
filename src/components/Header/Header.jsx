@@ -14,10 +14,10 @@ import {
   ControlsWrapper,
 } from "./Header.styled";
 // import { useAuth } from "hooks";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { useState } from "react";
 // import { getToken } from "redux/auth/authSelectors";
-// import { logoutUser } from "redux/auth/authOperations";
+import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "components/Popup/Popup";
 import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
@@ -25,7 +25,7 @@ import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
 // import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { user } = useAuth();
   const user = {
     email: "leso81@gmail.com",
@@ -42,17 +42,16 @@ export function Header() {
   const lang = "en";
 
   const handleExit = () => {
-    alert("ви дійсно хочете вийти");
-    console.log("handleExit");
+    dispatch(logOut());
     // setPopup({
     //   isShow: true,
     //   title:
-    //     lang === "en"
+    //     "en" === "en"
     //       ? "Do you really want to leave?"
     //       : "Ви дійсно бажаєте вийти?",
     //   // action: () => dispatch(logoutUser()),
     // });
-    // document.querySelector("#modal").classList.add("js-action");
+    // document.querySelector("modal-root").classList.add("js-action");
   };
 
   return (

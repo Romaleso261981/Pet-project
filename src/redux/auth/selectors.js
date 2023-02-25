@@ -1,3 +1,3 @@
-export const selectIsLoggedIn = (state) => state.auth.isLogin
+export const selectIsLoggedIn = (state) => state.auth.isLogin;
 
-export const getToken = (state) => state.auth.accessToken
+export const getToken = (state) => state.auth.refreshToken;
