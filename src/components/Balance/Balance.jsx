@@ -56,7 +56,7 @@ const Balance = () => {
           </button>
         </div>
 
-        <NavLink to="/report" className={style.report} end>
+        <NavLink to="/Reports" className={style.report} end>
           Reports <GoGraph className={style.icon} />
         </NavLink>
       </div>

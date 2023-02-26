@@ -5,7 +5,6 @@ import styled from "./ReportsPage.module.scss";
 // import ChartCategory from '../../components/ChartCategory/ChartCategory';
 // import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
 // import { useMediaQuery } from 'react-responsive';
-// import Balance from '../../components/Balance/Balance';
 
 const ReportsPage = () => {
   // const isMobile = useMediaQuery({
@@ -15,7 +14,6 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
-        {/* <Balance /> */}
         <Reports />
       </div>
 
