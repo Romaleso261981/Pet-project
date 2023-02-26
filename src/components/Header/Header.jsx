@@ -9,6 +9,7 @@ import {
   Name,
   Line,
   Exit,
+  RegisterText,
   ExitText,
   ExitSvg,
   ControlsWrapper,
@@ -20,9 +21,9 @@ import { useState } from "react";
 import { getAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
+import rsvg from "../../assets/icons/symbol-defs.svg";
 import { Popup } from "components/Popup/Popup";
 import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
-import { Btn } from "../../components/Buttons/Btn";
 import { LangSwitcher } from "components/LanguageBtn/LangBtn";
 import { getLang } from "redux/lang/langSelectors";
 
@@ -90,11 +91,16 @@ export function Header() {
               </Exit>
             </StyledContainer>
           ) : (
-            <Btn
-              type="submit"
-              text={lang === "en" ? "register" : "Реєстрація"}
-              onClick={register}
-            />
+            <Exit type="button" onClick={register}>
+              {lang === "en" ? (
+                <ExitText>register</ExitText>
+              ) : (
+                <RegisterText>Реєстрація</RegisterText>
+              )}
+              <ExitSvg>
+                <use href={`${rsvg}#icon-registered`}></use>
+              </ExitSvg>
+            </Exit>
           )}
         </ControlsWrapper>
       </StyledHeader>
