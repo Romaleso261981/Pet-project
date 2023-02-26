@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
   align-items: center;
   z-index: 100;
   height: 56px;
-  padding: 0 20px;
+  padding: 0 10px;
   background-color: ${(p) => p.theme.colors.bodyColor};
 
   @media screen and (min-width: 768px) {
@@ -132,6 +132,15 @@ export const Exit = styled.button`
 `;
 
 export const ExitText = styled.p`
+  text-decoration: underline;
+
+  margin: 8px 0;
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+`;
+export const RegisterText = styled.p`
   text-decoration: underline;
 
   margin: 8px 0;
