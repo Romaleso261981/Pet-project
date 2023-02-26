@@ -11,10 +11,9 @@ import userBalance from "../../redux/balance/selectorBalance";
 
 const Balance = () => {
   const dispatch = useDispatch();
-  const currentBalance = useSelector(userBalance);
-  console.log(currentBalance);
+  const currentBalance = Number(useSelector(userBalance)).toFixed(2);
 
-  const [balance, setBalance] = useState("00.00");
+  const [balance, setBalance] = useState(currentBalance && "00.00");
 
   const handleChange = (e) => {
     setBalance(e.target.value);
@@ -25,6 +24,8 @@ const Balance = () => {
   }, [currentBalance]);
 
   const addUserBalance = () => {
+    setBalance((prev) => currentBalance);
+    console.log(currentBalance);
     const newBalance = Number(balance);
     if (newBalance < 0) {
       return alert("Balance should be positive :)");

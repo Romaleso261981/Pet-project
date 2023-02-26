@@ -1,15 +1,14 @@
-import { useEffect, lazy, useState, Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import { getMode } from "./redux/theme/themeSelector";
+import { getToken } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-
-const token = false;
 
 const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
 const Register = lazy(() => import("./pages/RegisterPage/Register"));
@@ -18,17 +17,18 @@ const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
-  return !token ? children : <>Поміняйте token в APP на false</>;
+  return token ? children : <Navigate to="/" />;
 };
 
 const PublicRoute = ({ children, token }) => {
-  return !token ? children : <>Поміняйте token в APP на true</>;
+  return !token ? children : <Navigate to="/wallet" />;
 };
 
 export function App() {
+  const token = useSelector(getToken);
+  console.log(token);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
-  const isLoggedIn = true;
 
   return (
     <ThemeProvider theme={themeMode}>
