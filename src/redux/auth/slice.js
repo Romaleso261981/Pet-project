@@ -13,11 +13,12 @@ export const initialState = {
     email: "",
     token: null,
   },
-  accessToken: null,
+  error: null,
+  isLoading: true,
+  isLoggedIn: false,
   refreshToken: null,
   sid: null,
-  isLogin: false,
-  isRegister: false,
+  accessToken: null,
 };
 
 const authSlice = createSlice({
@@ -33,8 +34,9 @@ const authSlice = createSlice({
         state.isLogin = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.accessToken = payload.accessToken;
-        state.refreshToken = payload.refreshToken;
+        state.accessToken = payload.payload.accessToken;
+        console.log(payload.payload.accessToken);
+        // state.refreshToken = payload.refreshToken;
         // state.sid = payload.sid;
         state.isLogin = true;
         state.isRegister = true;
@@ -44,9 +46,9 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => ({
         ...state,
-        // accessToken: null,
-        // refreshToken: null,
-        // sid: null,
+        accessToken: null,
+        refreshToken: null,
+        sid: null,
         isRegister: false,
         isLogin: false,
       }))

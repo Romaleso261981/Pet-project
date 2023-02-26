@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import Notiflix from "notiflix";
+import { notifySettings } from "../../utils/notifySettings";
 
 import { API, authToken } from "../../API";
 import { toast } from "react-toastify";
@@ -15,28 +17,55 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
   }
 });
 
-const logIn = createAsyncThunk("auth/login", async (credentials) => {
+const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
-    const data = await API.post("auth/login", credentials);
-    console.log("---------------------logIn", data);
+    const { data } = await API.post("auth/login", userData);
+    console.log(data);
+    authToken.set(data.accessToken);
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.success(
+          `Welcome back, ${data.payload.user.email}!`,
+          notifySettings
+        )
+      : Notiflix.Notify.success(
+          `Радо вітаємо, ${data.payload.user.email}!`,
+          notifySettings
+        );
     return data;
   } catch (error) {
-    if (error.response.status === 401) {
-      toast.error("Server error, please try again later");
-    }
-    if (error.response.status !== 401) {
-      toast.error("Wrong email or password, please try again.");
-    }
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
+      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+    return thunkAPI.rejectWithValue(error.request.status);
   }
 });
 
-const logOut = createAsyncThunk("auth/logout", async () => {
+const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await API.post("auth/logOut");
-    console.log("logOut ok");
-    // authToken.unset();
+    await API.post(`/auth/logout`);
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.info(
+          "Stay safe and see you again &#9996;",
+          notifySettings
+        )
+      : Notiflix.Notify.info(
+          "Бережіть себе і до зустрічі &#9996;",
+          notifySettings
+        );
+    authToken.unset();
   } catch (error) {
-    toast.error("Server error, please try again later");
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
+      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 

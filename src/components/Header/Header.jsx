@@ -15,8 +15,9 @@ import {
 } from "./Header.styled";
 // import { useAuth } from "hooks";
 import { useDispatch, useSelector } from "react-redux";
-// import { useState } from "react";
-import { getToken } from "../../redux/auth/selectors";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { getAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "components/Popup/Popup";
@@ -27,42 +28,33 @@ import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // const { user } = useAuth();
   const user = {
     email: "leso81@gmail.com",
   };
-  const token = useSelector(getToken);
-  // const [popup, setPopup] = useState({
-  //   isShow: false,
-  //   title: "",
-  //   action: null,
-  // });
+  const token = useSelector(getAccessToken);
+  const [popup, setPopup] = useState({
+    isShow: false,
+    title: "",
+    action: null,
+  });
 
   const lang = useSelector(getLang);
 
   const handleExit = () => {
-    dispatch(logOut());
-    // setPopup({
-    //   isShow: true,
-    //   title:
-    //     "en" === "en"
-    //       ? "Do you really want to leave?"
-    //       : "Ви дійсно бажаєте вийти?",
-    //   // action: () => dispatch(logoutUser()),
-    // });
-    // document.querySelector("modal-root").classList.add("js-action");
+    setPopup({
+      isShow: true,
+      title:
+        lang === "en"
+          ? "Do you really want to leave?"
+          : "Ви дійсно бажаєте вийти?",
+      action: () => dispatch(logOut()),
+    });
+    document.querySelector("#modal").classList.add("js-action");
   };
   const register = () => {
-    alert("registri");
-    // setPopup({
-    //   isShow: true,
-    //   title:
-    //     "en" === "en"
-    //       ? "Do you really want to leave?"
-    //       : "Ви дійсно бажаєте вийти?",
-    //   // action: () => dispatch(logoutUser()),
-    // });
-    // document.querySelector("modal-root").classList.add("js-action");
+    navigate("/register");
   };
 
   return (
@@ -106,7 +98,7 @@ export function Header() {
           )}
         </ControlsWrapper>
       </StyledHeader>
-      {false && <Popup />}
+      {popup.isShow && <Popup popup={popup} setPopup={setPopup} />}
     </>
   );
 }
