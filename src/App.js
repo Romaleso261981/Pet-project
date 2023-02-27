@@ -20,7 +20,7 @@ import "./App.css";
 const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
 const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
-const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
+const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
@@ -34,8 +34,7 @@ const PublicRoute = ({ children, token }) => {
 export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
-//   const token = useSelector(getToken);
-  const token = true;
+  const token = useSelector(getToken);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 

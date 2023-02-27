@@ -130,7 +130,7 @@ export const AuthForm = ({ formTitle, btnText, hintText }) => {
               type={isPasswordShown ? "text" : "password"}
               id="auth-password"
               name="password"
-              value={"examplepassword"}
+              value={password}
               minLength="8"
               placeholder={lang === "en" ? "Password" : "Пароль"}
               onChange={onInputChange}
