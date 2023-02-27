@@ -1,13 +1,13 @@
-import { Transactions } from "components/Transactions/Transactions";
-import TableTransaction from "components/TableTransaction/TableTransaction";
+// import { Transaction } from "components/Transaction/Transaction";
+// import TableTransaction from "components/TableTransaction/TableTransaction";
 import Balance from "components/Balance/Balance";
-import TableSummary from "components/TableSummary/TableSummary";
 import { notifySettings } from "../../utils/notifySettings";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelectors";
 import userBalance from "../../redux/balance/selectorBalance";
 import styled from "./Wallet.module.scss";
+import { Transactions } from "components/Transactions/Transactions";
 
 const Wallet = ({ isHintShown, setIsHintShown }) => {
   const savedBalance = Number(useSelector(userBalance)).toFixed(2);
@@ -36,7 +36,7 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
         <div className={styled.wrapper}>
           <div className={styled.transaction_all}>
             <div className={styled.transaction}>
-              <Transactions />
+              <Transaction />
               <TableTransaction />
             </div>
             <TableSummary className={styled.transaction__summary} />
@@ -46,5 +46,4 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
     </>
   );
 };
-
 export default Wallet;

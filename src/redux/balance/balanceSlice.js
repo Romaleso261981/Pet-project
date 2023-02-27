@@ -3,7 +3,7 @@ import addBalanceByUser from "./operations";
 
 export const balanceSlice = createSlice({
   name: "balance",
-  initialState: { balance: 100000, isLoading: false, error: null },
+  initialState: { balance: "00.00", isLoading: false, error: null },
   extraReducers: (builder) =>
     builder
       .addCase(addBalanceByUser.pending, (state, _) => (state.isLoading = true))

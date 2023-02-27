@@ -4,6 +4,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import styled from "./TableSummary.module.scss";
+import { useEffect, useState } from 'react';
+import { summaryTransaction } from 'services/transactionAPI';
 
 function createData(month, sum) {
   return { month, sum };
@@ -18,7 +20,31 @@ const rows = [
   createData('June', '18 000.00'),
 ];
 
-export default function TableSummary() {
+export default function TableSummary({transaction}) {
+  const [summaryList, setSummaryList] = useState([]);
+  
+  useEffect(() => {
+    async function getSummaryList({transaction}) {
+        try {
+          const data = await summaryTransaction({transaction});
+          const filterData = data.map(({_id, totalAmount}) => ({_id, totalAmount}));
+          if (filterData > 6) filterData.slice(0, 5);
+          const formatData = filterData.map(({_id, totalAmount}) => {
+            const date = new Date();
+            date.setMonth(_id.month - 1);
+            const month = date.toLocaleString('en-US', { month: 'long' });
+            const forMonth = {month, totalAmount};
+            return forMonth
+          })
+          setSummaryList(...summaryList, formatData)
+        } catch (error) {
+          console.log(error);
+        }
+    }
+    getSummaryList({transaction})
+  });
+
+
   return (
     <div className={styled.wrapper}>
       <Table size="small" className={styled.table}>
@@ -28,12 +54,10 @@ export default function TableSummary() {
             </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.month}
-            >
-                <TableCell>{row.month}</TableCell>
-                <TableCell>{row.sum}</TableCell>
+          {summaryList.map(summary => (
+            <TableRow key={summary.month} >
+              <TableCell>{summary.month}</TableCell>
+                <TableCell>{summary.totalAmount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
