@@ -1,10 +1,10 @@
-import { BtnElement } from 'components/Buttons/Btn.styled';
-import styled, { keyframes } from 'styled-components';
+import { BtnElement } from "components/Buttons/Btn.styled";
+import styled, { keyframes } from "styled-components";
 
 export const WrapBtn = styled.div`
   display: flex;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: center;
 `;
 export const Title = styled.p`
@@ -14,7 +14,7 @@ export const Title = styled.p`
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.02em;
-  color: ${p => p.theme.colors.TextGray};
+  color: ${(p) => p.theme.colors.TextGray};
   margin-top: 20px;
 `;
 
@@ -36,7 +36,7 @@ export const Close = styled(BtnElement)`
     display: flex;
     align-items: center;
     justify-content: center;
-    stroke: ${p => p.theme.colors.iconsFill};
+    stroke: ${(p) => p.theme.colors.iconsFill};
   }
 `;
 
@@ -52,7 +52,7 @@ export const Modal = styled.div`
   transform: translate(-50%, -50%);
   width: 340px;
   height: 154px;
-  background-color: ${p => p.theme.colors.bodyColor};
+  background-color: ${(p) => p.theme.colors.bodyColor};
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
   border-radius: 30px;
   padding: 20px;

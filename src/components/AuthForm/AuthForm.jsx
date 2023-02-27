@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-// import { loginUser, registerUser } from "redux/auth/authOperations";
+import { Register, logIn } from "../../redux/auth/operations";
 
 // import { NavLink } from "../NavLink/NavLink";
 import { Btn } from "../Buttons/Btn";
@@ -25,18 +25,12 @@ import {
   PasswordBtn,
   PasswordIcon,
 } from "./AuthForm.styled";
-// import { getlang } from "redux/lang/langSelectors";
+import { getLang } from "redux/lang/langSelectors";
 
-export const AuthForm = ({
-  formTitle,
-  btnText,
-  navLinkText,
-  navLinkAdress,
-  hintText,
-}) => {
+export const AuthForm = ({ formTitle, btnText, hintText }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const lang = useSelector(getLang).lang;
+  const lang = useSelector(getLang).lang;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -67,9 +61,9 @@ export const AuthForm = ({
       return null;
     }
     if (formTitle === "login") {
-      dispatch(loginUser({ email, password }));
+      dispatch(logIn({ email, password }));
     } else {
-      dispatch(registerUser({ email, password }));
+      dispatch(Register({ email, password }));
       navigate("/");
     }
 
@@ -86,12 +80,12 @@ export const AuthForm = ({
     <FormWrapper>
       {formTitle === "login" && (
         <>
-          {"en" === "en" ? (
+          {lang === "en" ? (
             <Hint>You can log in with your Google Account:</Hint>
           ) : (
             <Hint>Ви можете залогінитись через Google Account:</Hint>
           )}
-          <GoogleLoginLink href="https://kapusta-backend.goit.global/auth/google">
+          <GoogleLoginLink href="https://back.kapusta.click/auth/users/google">
             <FcGoogle />
             Google
           </GoogleLoginLink>
@@ -103,7 +97,7 @@ export const AuthForm = ({
           <InputWrapper>
             <Label htmlFor="auth-email">
               {error && <ErrorText>*</ErrorText>}
-              {"en" === "en" ? (
+              {lang === "en" ? (
                 <span>Email</span>
               ) : (
                 <span>Електронна скринька</span>
@@ -121,7 +115,7 @@ export const AuthForm = ({
                 setError(true);
               }}
             />
-            {error && "en" === "en" ? (
+            {error && lang === "en" ? (
               <ErrorText>This is a required field</ErrorText>
             ) : (
               error && <ErrorText>Це обов'язкове поле</ErrorText>
@@ -130,7 +124,7 @@ export const AuthForm = ({
           <InputWrapper>
             <Label htmlFor="auth-password">
               {error && <ErrorText>*</ErrorText>}
-              {"en" === "en" ? <span>Password</span> : <span>Пароль</span>}
+              {lang === "en" ? <span>Password</span> : <span>Пароль</span>}
             </Label>
             <Input
               type={isPasswordShown ? "text" : "password"}
@@ -138,7 +132,7 @@ export const AuthForm = ({
               name="password"
               value={password}
               minLength="8"
-              placeholder={"en" === "en" ? "Password" : "Пароль"}
+              placeholder={lang === "en" ? "Password" : "Пароль"}
               onChange={onInputChange}
               onInvalid={(e) => {
                 setError(true);
@@ -150,7 +144,7 @@ export const AuthForm = ({
                 alt="Button show/hide password"
               />
             </PasswordBtn>
-            {error && "en" === "en" ? (
+            {error && lang === "en" ? (
               <ErrorText>This is a required field</ErrorText>
             ) : (
               error && <ErrorText>Це обов'язкове поле</ErrorText>
