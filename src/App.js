@@ -1,63 +1,34 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { useEffect, lazy, useState, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Route,
-  Routes,
-  Navigate,
-  useSearchParams,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
-
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
-import { refreshUser } from "./redux/auth/operations";
 import { getMode } from "./redux/theme/themeSelector";
-import { getAccessToken } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
-const Register = lazy(() => import("./pages/RegisterPage/Register"));
+const token = false;
+
+const LoginPage = lazy(() => import("./pages/Logins/Logins"));
+const Register = lazy(() => import("./pages/Register/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
-const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
-const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
+const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
+const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
 
 const PrivateRoute = ({ children, token }) => {
-  return token ? children : <Navigate to="/" />;
+  return !token ? children : <>Поміняйте token в APP на false</>;
 };
 
 const PublicRoute = ({ children, token }) => {
-  return !token ? children : <Navigate to="/wallet" />;
+  return !token ? children : <>Поміняйте token в APP на true</>;
 };
 
 export function App() {
-  const dispatch = useDispatch();
-  const [isHintShown, setIsHintShown] = useState(false);
-  const token = useSelector(getAccessToken);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
-
-  useEffect(() => {
-    if (!token) {
-      setIsHintShown(false);
-      return;
-    }
-    dispatch(refreshUser());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const accessToken = searchParams.get("accessToken");
-    const refreshToken = searchParams.get("refreshToken");
-    const sid = searchParams.get("sid");
-    if (!accessToken) return;
-    dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    navigate("/wallet");
-  }, [searchParams, dispatch, navigate]);
+  console.log(selectedMode);
+  const isLoggedIn = true;
 
   return (
     <ThemeProvider theme={themeMode}>
@@ -84,7 +55,9 @@ export function App() {
             path="/register"
             element={
               <Suspense fallback={<Loader />}>
-                <Register />
+                <PrivateRoute token={token}>
+                  <Register />
+                </PrivateRoute>
               </Suspense>
             }
           />
@@ -93,19 +66,16 @@ export function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <PrivateRoute token={token}>
-                  <Wallet
-                    setIsHintShown={setIsHintShown}
-                    isHintShown={isHintShown}
-                  />
+                  <Wallet />
                 </PrivateRoute>
               </Suspense>
             }
           />
           <Route
-            path="/reports"
+            path="/statistics"
             element={
               <PrivateRoute token={token}>
-                <ReportsPage />
+                <Statistics />
               </PrivateRoute>
             }
           />

@@ -1,5 +1,5 @@
 import TableSummary from "components/TableSummary/TableSummary";
-import TableTransaction from "components/TableTransaction/TableTransaction";
+import { TableTransaction } from "components/TableTransaction/TableTransaction";
 import { TransactionForm } from "components/TransactionForm/TransactionForm";
 import styled from "./Transactions.module.scss";
 
@@ -8,10 +8,10 @@ export function Transactions() {
   const yyyy = today.getFullYear();
   let mm = today.getMonth() + 1;
   let dd = today.getDate();
-  if (dd < 10) dd = '0' + dd;
-  if (mm < 10) mm = '0' + mm;
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
   let date = {dd, mm, yyyy}
-  let transaction = 'expenses';
+  let transaction = "expenses";
 
   return (
     <>
@@ -24,4 +24,4 @@ export function Transactions() {
           </div>
     </>
   );
-};
+}

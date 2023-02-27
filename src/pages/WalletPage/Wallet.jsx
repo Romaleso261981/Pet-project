@@ -38,5 +38,3 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
     </>
   );
 };
-
-export default Wallet;

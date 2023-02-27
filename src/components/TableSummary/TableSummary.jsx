@@ -42,7 +42,7 @@ export default function TableSummary({transaction}) {
         }
     }
     getSummaryList({transaction})
-  }, []);
+  });
 
 
   return (

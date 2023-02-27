@@ -18,10 +18,9 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const { data } = await API.post("/auth/users/login", userData);
-    authToken.set(data.user.email);
-    console.log("operator login try");
-    localStorage.setItem("refreshToken", data.token);
+    authToken.set(data.token);
     const state = thunkAPI.getState();
+    localStorage.setItem("token", data.token);
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.success(
@@ -46,7 +45,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await API.post(`/auth/logout`);
+    await API.get(`/auth/users/logout`);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
@@ -60,6 +59,7 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
         );
     authToken.unset();
   } catch (error) {
+    console.log("catch logOut", error);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
@@ -72,34 +72,56 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    const prevSid = state.auth.sid;
-    const prevRefresh = state.auth.refreshToken;
-    if (!prevRefresh || !prevSid) {
-      return rejectWithValue("something went wrong");
-    }
     try {
-      const { data } = await API.post(
-        "/auth/refresh",
-        { sid: prevSid },
-        {
-          headers: {
-            Authorization: `Bearer ${prevRefresh}`,
-          },
-        }
-      );
-
-      authToken.set(data.newAccessToken);
+      const state = getState();
+      const token = state.auth.token;
+      setToken(token);
+      const { data } = await API.get("/users/current");
       return data;
-    } catch (error) {
-      authToken.unset();
-      if (error.response.status !== 401) {
-        toast.error("We got an error! Dont worry and try again.");
-      }
-      return rejectWithValue("something went wrong");
+    } catch ({ response }) {
+      const { status, data } = response;
+      const error = {
+        status,
+        message: data.message,
+      };
+      console.log(error.message);
+      const state = getState();
+      const { lang } = state.language.lang;
+      lang === "en"
+        ? Notiflix.Notify.failure(`Please login again!`, notifySettings)
+        : Notiflix.Notify.failure(
+            `Будь ласка, залогіньтесь знову!`,
+            notifySettings
+          );
+      return rejectWithValue(error);
     }
   }
 );
+
+// const refreshUser = createAsyncThunk(
+//   "auth/refresh",
+//   async (_, { getState, rejectWithValue }) => {
+//     const state = getState();
+//     const token = localStorage.getItem("token");
+//     console.log(token);
+//     const email = state.user.email;
+//     if (!token) {
+//       return rejectWithValue("something went wrong");
+//     }
+//     try {
+//       const { data } = await API.post("/auth/users/current", email);
+//       authToken.set(token);
+//       return data;
+//     } catch (error) {
+//       console.log("refreshUser catch", error);
+//       authToken.unset();
+//       if (error.response.status !== 401) {
+//         toast.error("We got an error! Dont worry and try again.");
+//       }
+//       return rejectWithValue("something went wrong");
+//     }
+//   }
+// );
 
 const googleAuth = createAsyncThunk(
   "auth/googleAuth",

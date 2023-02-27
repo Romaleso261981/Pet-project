@@ -18,7 +18,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { getAccessToken } from "../../redux/auth/selectors";
+import { getToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import rsvg from "../../assets/icons/symbol-defs.svg";
@@ -34,7 +34,7 @@ export function Header() {
   const user = {
     email: "leso81@gmail.com",
   };
-  const token = useSelector(getAccessToken);
+  const token = useSelector(getToken);
   const [popup, setPopup] = useState({
     isShow: false,
     title: "",
