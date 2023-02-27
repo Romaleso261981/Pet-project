@@ -13,14 +13,14 @@ import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import { refreshUser } from "./redux/auth/operations";
 import { getMode } from "./redux/theme/themeSelector";
-import { getAccessToken } from "./redux/auth/selectors";
+import { getToken } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
 const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
-const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
+const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
@@ -34,11 +34,12 @@ const PublicRoute = ({ children, token }) => {
 export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
-  const token = useSelector(getAccessToken);
+  const token = useSelector(getToken);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
   useEffect(() => {
+    console.log(token);
     if (!token) {
       setIsHintShown(false);
       return;
