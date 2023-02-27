@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8081/",
+  baseURL: "http://back.kapusta.click",
 });
 
 const authToken = {
@@ -25,7 +25,7 @@ API.interceptors.response.use(
         localStorage.setItem("refreshToken", data.refreshToken);
         return API(error.config);
       } catch (error) {
-        return Promise.reject(error);   
+        return Promise.reject(error);
       }
     }
     return Promise.reject(error);

@@ -6,9 +6,9 @@ import { API, authToken } from "../../API";
 import { toast } from "react-toastify";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
-  console.log("createAsyncThunk");
+  console.log("createAsyncThunk", credentials);
   try {
-    const { data } = await API.post("auth/register", credentials);
+    const { data } = await API.post("/auth/users/signup", credentials);
     console.log(data);
     return data;
   } catch (error) {
@@ -17,11 +17,10 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
   }
 });
 
-
-
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
-    const { data } = await API.post("auth/login", userData);
+    const { data } = await API.post("/auth/users/login", userData);
+    console.log(userData);
     console.log(data);
     authToken.set(data.accessToken);
     localStorage.setItem("refreshToken", data.refreshToken);
