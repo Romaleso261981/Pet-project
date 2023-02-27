@@ -11,7 +11,7 @@ import { deleteTransaction, fetchData } from "services/transactionAPI";
 
 const headers = ["date", "description", "category", "sum", ""];
 
-export default function TableTransaction({ transaction, date }) {
+export function TableTransaction({ transaction, date }) {
   const [transactionList, setTransactionList] = useState([]);
 
   useEffect(() => {

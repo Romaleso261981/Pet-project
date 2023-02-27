@@ -1,4 +1,5 @@
 import { Transactions } from "components/Transactions/Transactions";
+import { TableTransaction } from "components/TableTransaction/TableTransaction";
 import Balance from "../../components/Balance/Balance";
 import styled from "./Wallet.module.scss";
 
@@ -9,6 +10,7 @@ const Wallet = () => {
         <Balance />
         <div className={styled.wrapper}>
           <Transactions />
+          <TableTransaction />
         </div>
       </div>
     </>
