@@ -11,12 +11,11 @@ import {
 export const initialState = {
   user: {
     email: "",
-    token: null,
   },
   error: null,
   isLoading: true,
   isLoggedIn: false,
-  refreshToken: null,
+  token: null,
   sid: null,
   accessToken: null,
 };
@@ -26,18 +25,15 @@ const authSlice = createSlice({
   initialState,
   extraReducers: (builder) =>
     builder
-      .addCase(Register.fulfilled, (state, { payload }) => {
-        state.isLogin = false;
+      .addCase(Register.fulfilled, (state) => {
         state.isRegister = true;
       })
       .addCase(logIn.pending, (state) => {
         state.isLogin = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.accessToken = payload.payload.accessToken;
-        console.log(payload.payload.accessToken);
-        // state.refreshToken = payload.refreshToken;
-        // state.sid = payload.sid;
+        state.token = payload.token;
+        state.user.email = payload.user.email;
         state.isLogin = true;
         state.isRegister = true;
       })
@@ -46,9 +42,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => ({
         ...state,
-        accessToken: null,
-        refreshToken: null,
-        sid: null,
+        token: null,
         isRegister: false,
         isLogin: false,
       }))
@@ -58,17 +52,13 @@ const authSlice = createSlice({
       }))
       .addCase(refreshUser.fulfilled, (state, { payload }) => ({
         ...state,
-        accessToken: payload.newAccessToken,
-        refreshToken: payload.newRefreshToken,
-        sid: payload.newSid,
+        token: payload.token,
+        email: payload.user.email,
         isLogin: true,
       }))
       .addCase(refreshUser.rejected, (state) => ({
         ...state,
         isLogin: false,
-        accessToken: null,
-        refreshToken: null,
-        sid: null,
       }))
       .addCase(googleAuth.fulfilled, (state, action) => {
         const { user, accessToken, refreshToken, sid } = action.payload;

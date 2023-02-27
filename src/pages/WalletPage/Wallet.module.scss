@@ -28,6 +28,7 @@
       padding: 117px 91px 125px 91px;
     }
   }
+
 .transaction_all{
   display: grid;
   
@@ -39,7 +40,6 @@
 .transaction {
   box-sizing: border-box;
   width: 320px;
-  padding: 16px 20px;
   margin: 0 auto 40px auto;
   
   @media screen and (min-width: 768px) {

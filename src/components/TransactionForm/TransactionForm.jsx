@@ -4,26 +4,21 @@ import {
     DivInputsAndBtn,
     DivProduct,
     DivInputs 
-} from './Transaction.styled';
+} from './TransactionForm.styled';
 import { InputProductDescription } from './InputProductDescription/InputProductDescription';
 import { SelectProducts } from './SelectProducts/SelectProducts';
 import { Calc } from './Calc/Calc';
 import { ButtonIC } from './Button/Button';
 import { GoBack } from "./GoBack/GoBack";
 import { CurrentDate } from "./CurrentDate/CurrentDate";
+import { addTransaction } from "services/transactionAPI";
 
-export function Transaction() {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    let dd = today.getDate();
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-    let date = `${dd + '.' + mm + '.' + yyyy}`
-
-
-    const handleSubmit = (values) => {
-        console.log(values)
+export function TransactionForm({transaction, date, updateTable}) {
+    
+    const handleSubmit = async (values, {resetForm}) => {
+        await addTransaction(values);
+        updateTable()
+        resetForm();
     };
 
     return (
@@ -33,12 +28,12 @@ export function Transaction() {
                 <WrapperForm>
                     <Formik
                         onSubmit={handleSubmit}
-                        initialValues={{ date: date, productDescription: '', selectProduct: '', culc: '' }}
+                        initialValues={{ transaction: transaction, date: date, productDescription: '', selectProduct: '', culc: '' }}
                     >
                         <Form>
                             <DivInputsAndBtn>
                                 <DivInputs>
-                                    <CurrentDate>{date}</CurrentDate>
+                                    <CurrentDate date={date}></CurrentDate>
                                     <DivProduct>
                                         <Field name="productDescription" component={InputProductDescription} />
                                         <Field name="selectProduct" component={SelectProducts} />
