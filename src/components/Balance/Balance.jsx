@@ -5,15 +5,15 @@ import { GoGraph } from "react-icons/go";
 import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
 import { NavLink } from "react-router-dom";
-import { addBalanceByUser } from "redux/balance/operations";
+// import { addBalanceByUser } from "../../redux/balance/operations";
 
 import userBalance from "../../redux/balance/selectorBalance";
 
 const Balance = () => {
   const dispatch = useDispatch();
-  const currentBalance = useSelector(userBalance);
+  const currentBalance = Number(useSelector(userBalance)).toFixed(2);
 
-  const [balance, setBalance] = useState("00.00");
+  const [balance, setBalance] = useState(currentBalance && "00.00");
 
   const handleChange = (e) => {
     setBalance(e.target.value);
@@ -24,11 +24,13 @@ const Balance = () => {
   }, [currentBalance]);
 
   const addUserBalance = () => {
+    setBalance((prev) => currentBalance);
+    console.log(currentBalance);
     const newBalance = Number(balance);
     if (newBalance < 0) {
       return alert("Balance should be positive :)");
     }
-    dispatch(addBalanceByUser(newBalance));
+    // dispatch(addBalanceByUser(newBalance));
   };
 
   return (
@@ -55,7 +57,7 @@ const Balance = () => {
           </button>
         </div>
 
-        <NavLink to="/report" className={style.report} end>
+        <NavLink to="/Reports" className={style.report} end>
           Reports <GoGraph className={style.icon} />
         </NavLink>
       </div>

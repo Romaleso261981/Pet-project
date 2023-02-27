@@ -1,56 +1,86 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import Notiflix from "notiflix";
+import { notifySettings } from "../../utils/notifySettings";
 
 import { API, authToken } from "../../API";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
-
-const register = createAsyncThunk("auth/register", async (credentials) => {
+const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
-    const { data } = await API.post("auth/register", credentials)
-    return data
+    const { data } = await API.post("/auth/users/signup", credentials);
+    return data;
   } catch (error) {
-    toast.error("Server error, please try again later")
+    console.log("Register", error);
+    toast.error("Server error, please try again later");
   }
-})
+});
 
-const logIn = createAsyncThunk(
-  "auth/login",
-  async (credentials) => {
-    try {
-      const {data} = await API.post("users/login", credentials);
-      return data;
-    } catch (error) {
-     if (error.response.status === 401) {
-      toast.error('Server error, please try again later');
-    }
-    if (error.response.status !== 401) {
-      toast.error('Wrong email or password, please try again.');
-    }
-    }
-  }
-);
-
-const logOut = createAsyncThunk("auth/logout", async () => {
+const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
-    await API.post("/users/logout");
-     authToken.unset();
+    const { data } = await API.post("/auth/users/login", userData);
+    authToken.set(data.user.email);
+    console.log("operator login try");
+    localStorage.setItem("refreshToken", data.token);
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.success(
+          `Welcome back, ${data.user.email}!`,
+          notifySettings
+        )
+      : Notiflix.Notify.success(
+          `Радо вітаємо, ${data.user.email}!`,
+          notifySettings
+        );
+    return data;
   } catch (error) {
-    toast.error('Server error, please try again later');
+    console.log("operator login catch", error);
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
+      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+    return thunkAPI.rejectWithValue(error.request.status);
+  }
+});
+
+const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+  try {
+    await API.post(`/auth/logout`);
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.info(
+          "Stay safe and see you again &#9996;",
+          notifySettings
+        )
+      : Notiflix.Notify.info(
+          "Бережіть себе і до зустрічі &#9996;",
+          notifySettings
+        );
+    authToken.unset();
+  } catch (error) {
+    const state = thunkAPI.getState();
+    const { lang } = state.language.lang;
+    lang === "en"
+      ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
+      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
 const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
-    const state = getState()
+    const state = getState();
     const prevSid = state.auth.sid;
     const prevRefresh = state.auth.refreshToken;
     if (!prevRefresh || !prevSid) {
-      return rejectWithValue('something went wrong');
+      return rejectWithValue("something went wrong");
     }
     try {
       const { data } = await API.post(
-        '/auth/refresh',
+        "/auth/refresh",
         { sid: prevSid },
         {
           headers: {
@@ -64,9 +94,9 @@ const refreshUser = createAsyncThunk(
     } catch (error) {
       authToken.unset();
       if (error.response.status !== 401) {
-        toast.error('We got an error! Dont worry and try again.');
+        toast.error("We got an error! Dont worry and try again.");
       }
-      return rejectWithValue('something went wrong');
+      return rejectWithValue("something went wrong");
     }
   }
 );
@@ -75,13 +105,13 @@ const googleAuth = createAsyncThunk(
   "auth/googleAuth",
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await API.post("/auth/google", credentials)
-      authToken.set(data.token)
-      return data
+      const { data } = await API.post("/auth/google", credentials);
+      authToken.set(data.accessToken);
+      return data;
     } catch (error) {
-      return rejectWithValue(error.message)
+      return rejectWithValue(error.message);
     }
   }
-)
+);
 
-export { register, logIn, logOut, refreshUser, googleAuth }
+export { Register, logIn, logOut, refreshUser, googleAuth };

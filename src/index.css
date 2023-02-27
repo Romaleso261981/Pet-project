@@ -1,6 +1,5 @@
-@import './css/normalize.scss';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
+@import "./css/normalize.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 :root {
   --black-text-color: #000000;
   --primary-text-color: #52555f;
@@ -83,7 +82,7 @@
   --report-icon-color: #071f41;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --black-text-color: #fffcf2;
   --report-bg-color: #252422;
   --primary-text-color: #ccc5b9;
@@ -131,7 +130,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -143,7 +142,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 input::-webkit-outer-spin-button,
@@ -170,4 +170,8 @@ input::-webkit-inner-spin-button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--bg-thumb-hover);
+}
+
+#modal.js-action {
+  pointer-events: unset;
 }
