@@ -6,10 +6,8 @@ import { API, authToken } from "../../API";
 import { toast } from "react-toastify";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
-  console.log("createAsyncThunk", credentials);
   try {
     const { data } = await API.post("/auth/users/signup", credentials);
-    console.log(data);
     return data;
   } catch (error) {
     console.log("error");
@@ -20,23 +18,23 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const { data } = await API.post("/auth/users/login", userData);
-    console.log(userData);
-    console.log(data);
-    authToken.set(data.accessToken);
-    localStorage.setItem("refreshToken", data.refreshToken);
+    authToken.set(data.user.email);
+    console.log("operator login try");
+    localStorage.setItem("refreshToken", data.token);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.success(
-          `Welcome back, ${data.payload.user.email}!`,
+          `Welcome back, ${data.user.email}!`,
           notifySettings
         )
       : Notiflix.Notify.success(
-          `Радо вітаємо, ${data.payload.user.email}!`,
+          `Радо вітаємо, ${data.user.email}!`,
           notifySettings
         );
     return data;
   } catch (error) {
+    console.log("operator login catch");
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"

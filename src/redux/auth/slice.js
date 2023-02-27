@@ -11,7 +11,6 @@ import {
 export const initialState = {
   user: {
     email: "",
-    token: null,
   },
   error: null,
   isLoading: true,
@@ -26,18 +25,15 @@ const authSlice = createSlice({
   initialState,
   extraReducers: (builder) =>
     builder
-      .addCase(Register.fulfilled, (state, { payload }) => {
-        state.isLogin = false;
+      .addCase(Register.fulfilled, (state) => {
         state.isRegister = true;
       })
       .addCase(logIn.pending, (state) => {
         state.isLogin = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.accessToken = payload.payload.accessToken;
-        console.log(payload.payload.accessToken);
-        // state.refreshToken = payload.refreshToken;
-        // state.sid = payload.sid;
+        state.accessToken = payload.token;
+        state.user.email = payload.user.email;
         state.isLogin = true;
         state.isRegister = true;
       })
