@@ -34,7 +34,8 @@ const PublicRoute = ({ children, token }) => {
 export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
-  const token = useSelector(getToken);
+//   const token = useSelector(getToken);
+  const token = true;
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
