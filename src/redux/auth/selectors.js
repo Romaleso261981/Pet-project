@@ -6,4 +6,3 @@ export const getSid = (state) => state.auth.sid;
 export const getAccessToken = (state) => state.auth.accessToken;
 export const getEmail = (state) => state.auth.user.email;
 export const getToken = (state) => state.auth.user.token;
-export const getBalance = (state) => state.auth.balance;
