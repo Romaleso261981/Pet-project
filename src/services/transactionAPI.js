@@ -1,18 +1,16 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://back.kapusta.click/api/';
-const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjhiZDdjNDMzYWRiMTU0ZTRkZmUwYiIsImlhdCI6MTY3NzI0NTg1NiwiZXhwIjoxNjc3Mjg5MDU2fQ.FXXde6gGf-GZfiA0-4TvowczTsTeUXkvmYB_EiCdlpE';
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
 export const fetchData = async ({transaction, date}) => {
     try {
         const bodyRequest = {
             type: transaction,
-            month: Number(date.mm),
+            month: date.mm,
             year: date.yyyy
         }
         const response = await axios.get(
-            `finances`, {params: bodyRequest});
+            `/`, {params: bodyRequest});
         return response.data;
     } catch (error) {
         console.log(error);
@@ -26,11 +24,11 @@ export const addTransaction = async ({transaction, date, productDescription, sel
             description: productDescription, 
             category: selectProduct, 
             amount: culc,
-            month: Number(date.mm),
+            month: date.mm,
             year: date.yyyy
         }
         const response = await axios.post(
-            `finances/expenses`, bodyRequest);
+            `/${transaction}`, bodyRequest);
         return response.data.results;
     } catch (error) {
         console.log(error);
@@ -40,8 +38,22 @@ export const addTransaction = async ({transaction, date, productDescription, sel
 export const deleteTransaction = async (_id) => {
     try {
         const response = await axios.delete(
-            `/finances/${_id}`);
+            `/${_id}`);
         return response.data.results;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const summaryTransaction = async ({transaction}) => {
+    try {
+        const bodyRequest = {
+            type: transaction,
+            countmonth: 6
+        }
+        const response = await axios.get(
+            `/summary`, {params: bodyRequest});
+        return response.data;
     } catch (error) {
         console.log(error);
     }
