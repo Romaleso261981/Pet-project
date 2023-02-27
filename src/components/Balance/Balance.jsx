@@ -6,8 +6,9 @@ import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
 import { NavLink } from "react-router-dom";
 // import { addBalanceByUser } from "../../redux/balance/operations";
-
+import GooBack from 'components/GooBack/GooBack';
 import userBalance from "../../redux/balance/selectorBalance";
+import Wallet from "pages/WalletPage/Wallet";
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -56,11 +57,15 @@ const Balance = () => {
             confirm
           </button>
         </div>
-
-        <NavLink to="/Reports" className={style.report} end>
-          Reports <GoGraph className={style.icon} />
-        </NavLink>
+        {Wallet && (
+          <NavLink to="/Reports" className={style.report} end>
+            Reports <GoGraph className={style.icon} />
+          </NavLink>
+        )}
+        {!Wallet && GooBack}
       </div>
+
+
     </Container>
   );
 };

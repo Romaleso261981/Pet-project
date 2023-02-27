@@ -18,14 +18,14 @@ const ReportsBalance = () => {
         <div className={s.wrapPagination}>
           <Pagination />
         </div>
-      )}
+       )} 
       <Balance isReportsPage={isReportsPage} />
 
-      {isReportsPage && (
+      {/* {isReportsPage && ( */}
         <div className={s.goBack}>
           <GooBack title={!mob && 'Main page'} isReportsPage={isReportsPage} />{' '}
         </div>
-      )}
+      {/* )} */}
     </section>
   );
 };

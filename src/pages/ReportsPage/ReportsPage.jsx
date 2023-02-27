@@ -1,5 +1,5 @@
 import Reports from "components/Reports/Reports";
-import ReportsBalance from "components/ReportsBalance/ReportsBalance";
+import Balance from "components/Balance/Balance";
 import styled from "./ReportsPage.module.scss";
 
 
@@ -17,7 +17,7 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
-        <ReportsBalance />
+        <Balance />
         <Reports />
       </div>
 

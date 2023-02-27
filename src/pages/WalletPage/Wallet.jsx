@@ -1,4 +1,4 @@
-import { Transaction } from "components/Transaction/Transaction";
+import { Transactions } from "components/Transactions/Transactions";
 import TableTransaction from "components/TableTransaction/TableTransaction";
 import Balance from "components/Balance/Balance";
 import TableSummary from "components/TableSummary/TableSummary";
@@ -36,7 +36,7 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
         <div className={styled.wrapper}>
           <div className={styled.transaction_all}>
             <div className={styled.transaction}>
-              <Transaction />
+              <Transactions />
               <TableTransaction />
             </div>
             <TableSummary className={styled.transaction__summary} />
