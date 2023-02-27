@@ -19,7 +19,7 @@ const headers = [
 
 export default function TableTransaction({transaction, date}) { 
   const [transactionList, setTransactionList] = useState([]);
-
+  
   useEffect(() => {
     async function getTransactionForMonth({transaction, date}) {
         try {
@@ -31,7 +31,7 @@ export default function TableTransaction({transaction, date}) {
         }
     }
     getTransactionForMonth({transaction, date})
-  }, []);
+  });
 
   async function onDelete(_id) {
     await deleteTransaction(_id);
