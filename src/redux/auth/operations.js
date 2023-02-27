@@ -17,11 +17,14 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
   }
 });
 
+
+
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const { data } = await API.post("auth/login", userData);
     console.log(data);
     authToken.set(data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
@@ -106,7 +109,7 @@ const googleAuth = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await API.post("/auth/google", credentials);
-      authToken.set(data.token);
+      authToken.set(data.accessToken);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

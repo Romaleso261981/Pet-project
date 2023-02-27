@@ -85,7 +85,7 @@ export const AuthForm = ({ formTitle, btnText, hintText }) => {
           ) : (
             <Hint>Ви можете залогінитись через Google Account:</Hint>
           )}
-          <GoogleLoginLink href="https://kapusta-backend.goit.global/auth/google">
+          <GoogleLoginLink href="https://back.kapusta.click/auth/users/google">
             <FcGoogle />
             Google
           </GoogleLoginLink>
