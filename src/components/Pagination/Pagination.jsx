@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getEmail } from '../../redux/auth/selectors';
-import { getPeriod } from '../../redux/reports/reportsOperation';
-import { userBalance } from '../../redux/balance/selectorBalance';
-import icon from '../../assets/icons/icon.svg';
-import s from './Pagination.module.scss';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEmail } from "../../redux/auth/selectors";
+import { getPeriod } from "../../redux/reports/reportsOperation";
+import userBalance from "../../redux/balance/selectorBalance";
+import icon from "../../assets/icons/icon.svg";
+import s from "./Pagination.module.scss";
 
 const month = [
-  { id: 1, label: 'January' },
-  { id: 2, label: 'February' },
-  { id: 3, label: 'March' },
-  { id: 4, label: 'April' },
-  { id: 5, label: 'May' },
-  { id: 6, label: 'June' },
-  { id: 7, label: 'July' },
-  { id: 8, label: 'August' },
-  { id: 9, label: 'September' },
-  { id: 10, label: 'October' },
-  { id: 11, label: 'November' },
-  { id: 12, label: 'December' },
+  { id: 1, label: "January" },
+  { id: 2, label: "February" },
+  { id: 3, label: "March" },
+  { id: 4, label: "April" },
+  { id: 5, label: "May" },
+  { id: 6, label: "June" },
+  { id: 7, label: "July" },
+  { id: 8, label: "August" },
+  { id: 9, label: "September" },
+  { id: 10, label: "October" },
+  { id: 11, label: "November" },
+  { id: 12, label: "December" },
 ];
 
 const Pagination = () => {
@@ -28,12 +28,12 @@ const Pagination = () => {
   const email = useSelector(getEmail);
 
   const [nameMonth, setNameMonth] = useState(
-    month.find(el => el.id === new Date().getMonth() + 1)
+    month.find((el) => el.id === new Date().getMonth() + 1)
   );
 
   const [year, setYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(
-    `${year}-${nameMonth.id.toString().padStart(2, '0')}`
+    `${year}-${nameMonth.id.toString().padStart(2, "0")}`
   );
 
   const nextMnth = () => {
@@ -55,7 +55,7 @@ const Pagination = () => {
   };
 
   useEffect(() => {
-    setSelectedDate(`${year}-${nameMonth.id.toString().padStart(2, '0')}`);
+    setSelectedDate(`${year}-${nameMonth.id.toString().padStart(2, "0")}`);
   }, [nameMonth, year]);
   useEffect(() => {
     if (!email) {
