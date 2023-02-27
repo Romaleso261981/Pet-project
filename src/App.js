@@ -20,7 +20,7 @@ import "./App.css";
 const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
 const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
-const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
+const Wallet = lazy(() => import("./pages/Wallet/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
 const PrivateRoute = ({ children, token }) => {
