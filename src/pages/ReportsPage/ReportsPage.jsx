@@ -1,11 +1,13 @@
 import Reports from "components/Reports/Reports";
+import ReportsBalance from "components/ReportsBalance/ReportsBalance";
 import styled from "./ReportsPage.module.scss";
+
+
 // import IncomeForm from 'components/IncomeForm/IncomeForm';
 // import CategoryList from '../../components/CategoryList/CategoryList';
 // import ChartCategory from '../../components/ChartCategory/ChartCategory';
 // import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
 // import { useMediaQuery } from 'react-responsive';
-// import Balance from '../../components/Balance/Balance';
 
 const ReportsPage = () => {
   // const isMobile = useMediaQuery({
@@ -15,7 +17,7 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
-        {/* <Balance /> */}
+        <ReportsBalance />
         <Reports />
       </div>
 
