@@ -14,11 +14,7 @@ import {
   ControlsWrapper,
 } from "./Header.styled";
 // import { useAuth } from "hooks";
-<<<<<<< Updated upstream
-// import { useDispatch, useSelector } from "react-redux";
-=======
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> Stashed changes
 // import { useState } from "react";
 // import { getToken } from "redux/auth/authSelectors";
 // import { logoutUser } from "redux/auth/authOperations";
