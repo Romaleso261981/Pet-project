@@ -1,18 +1,24 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://kapusta-team5.netlify.app/kapusta";
+// axios.defaults.baseURL = "https://kapusta.click/";
 
-const balanceEndpoint = "/api/auth/users/balance";
+const balanceEndpoint = "/auth/users/balance";
+
+export const addBalance = (balance) => {
+  return axios.put(balanceEndpoint, { balance });
+};
 
 const addBalanceByUser = createAsyncThunk(
   "balance/addBalanceByUser",
-  async (balance, thunkAPI) => {
+  async (balance, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(balanceEndpoint, { balance });
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const { data } = await addBalance(balance);
+
+      return data.userBalance;
+    } catch (error) {
+      console.log(error);
+      rejectWithValue(error);
     }
   }
 );

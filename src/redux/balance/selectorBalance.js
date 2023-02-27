@@ -1,3 +1,3 @@
-const userBalance = ({ balance }) => balance.balance;
+const userBalance = (state) => state.balance.balance;
 
 export default userBalance;
