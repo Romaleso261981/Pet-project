@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://back.kapusta.click",
+  baseURL: "https://back.kapusta.click",
 });
 
 const authToken = {
