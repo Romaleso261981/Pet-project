@@ -13,7 +13,7 @@ import {
 
 import { authReducer } from "./auth/slice";
 import themeReducer from "./theme/themeSlice";
-import { balanceSlice } from "./balance/balanceSlice";
+import balanceReducer from "./balance/balanceSlice";
 import languageReducer from "./lang/langSlice";
 import storage from "redux-persist/lib/storage";
 
@@ -26,7 +26,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    balance: balanceSlice.reducer,
+    balance: balanceReducer,
     language: languageReducer,
     theme: themeReducer,
   },
