@@ -34,7 +34,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
         );
     return data;
   } catch (error) {
-    console.log("operator login catch");
+    console.log("operator login catch", error);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
