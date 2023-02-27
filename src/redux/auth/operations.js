@@ -10,7 +10,7 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
     const { data } = await API.post("/auth/users/signup", credentials);
     return data;
   } catch (error) {
-    console.log("error");
+    console.log("Register", error);
     toast.error("Server error, please try again later");
   }
 });
