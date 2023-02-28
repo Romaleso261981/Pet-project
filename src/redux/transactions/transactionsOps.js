@@ -1,11 +1,11 @@
-import Notiflix from 'notiflix';
-import { notifySettings } from '../../utils/notifySettings';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from 'redux/auth/authOperations';
-import { API_TRANSACTION } from 'api/apiTransactionCategories';
+import Notiflix from "notiflix";
+import { notifySettings } from "../../utils/notifySettings";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { instance } from "redux/auth/authOperations";
+import { API_TRANSACTION } from "api/apiTransactionCategories";
 
 export const addTransactionOp = createAsyncThunk(
-  'transactions/ADD',
+  "transactions/ADD",
 
   async ({ type, transaction }, thunkAPI) => {
     try {
@@ -16,9 +16,9 @@ export const addTransactionOp = createAsyncThunk(
       const summary = await instance.get(`transaction/${type}`);
       return { type, data, monthsStats: summary.data.monthsStats };
     } catch (error) {
-       const state = thunkAPI.getState();
+      const state = thunkAPI.getState();
       const { lang } = state.language.lang;
-      lang === 'en'
+      lang === "en"
         ? Notiflix.Notify.warning(
             `Server error (during fetching categories): ${error.message}`,
             notifySettings
@@ -33,14 +33,13 @@ export const addTransactionOp = createAsyncThunk(
 );
 
 export const fetchUserBalance = createAsyncThunk(
-  'auth/balance',
+  "auth/balance",
   async ({ balance }, { getState, rejectWithValue }) => {
     const state = getState();
     const { lang } = state.language.lang;
     try {
-      // console.log(typeof balance);
       if (balance < 1) {
-        lang === 'en'
+        lang === "en"
           ? Notiflix.Notify.warning(
               `Ballance must be greater than or equal to 1`,
               notifySettings
@@ -51,33 +50,31 @@ export const fetchUserBalance = createAsyncThunk(
             );
         return;
       }
-      const { data } = await instance.patch('/user/balance', {
+      const { data } = await instance.patch("/user/balance", {
         newBalance: +balance,
       });
-      // console.log(data);
       return data;
     } catch ({ response }) {
-       const state = getState();
-       const { lang } = state.language.lang;
+      const state = getState();
+      const { lang } = state.language.lang;
       const { status, data } = response;
       const error = {
         status,
         message: data.message,
       };
-      lang === 'en'?
-        Notiflix.Notify.warning(`${error.message}`, notifySettings) :
-       Notiflix.Notify.warning(`Щось пішло не так...`, notifySettings) ;
-      return rejectWithValue(error)
-        ;
+      lang === "en"
+        ? Notiflix.Notify.warning(`${error.message}`, notifySettings)
+        : Notiflix.Notify.warning(`Щось пішло не так...`, notifySettings);
+      return rejectWithValue(error);
     }
   }
 );
 
 export const fetchExpenseTransactions = createAsyncThunk(
-  'transactions/getExpense',
+  "transactions/getExpense",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get('transaction/expense');
+      const { data } = await instance.get("transaction/expense");
       return data;
     } catch ({ response }) {
       const { status, data } = response;
@@ -91,10 +88,10 @@ export const fetchExpenseTransactions = createAsyncThunk(
 );
 
 export const fetchIncomeTransactions = createAsyncThunk(
-  'transactions/getIncome',
+  "transactions/getIncome",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get('transaction/income');
+      const { data } = await instance.get("transaction/income");
       return data;
     } catch ({ response }) {
       const { status, data } = response;
@@ -108,7 +105,7 @@ export const fetchIncomeTransactions = createAsyncThunk(
 );
 
 export const removeTransaction = createAsyncThunk(
-  'transactions/remove',
+  "transactions/remove",
   async ({ id, type }, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`transaction/${id}`);
@@ -130,7 +127,7 @@ export const removeTransaction = createAsyncThunk(
 );
 
 export const fetchCategoriesOp = createAsyncThunk(
-  'transactions/fetchCategories',
+  "transactions/fetchCategories",
   async (type, thunkAPI) => {
     try {
       const { data } = await instance.get(
@@ -142,9 +139,9 @@ export const fetchCategoriesOp = createAsyncThunk(
         return {
           value: i,
           label:
-            lang === 'en'
+            lang === "en"
               ? API_TRANSACTION[type].apiCategories[option]
-              : API_TRANSACTION[type].apiCategoriesUK[option] ?? 'Other',
+              : API_TRANSACTION[type].apiCategoriesUK[option] ?? "Other",
         };
       });
       return { type, optionsArray };

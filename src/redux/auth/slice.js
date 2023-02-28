@@ -15,9 +15,9 @@ export const initialState = {
   error: null,
   isLoading: true,
   isLoggedIn: false,
-  token: null,
-  sid: null,
   accessToken: null,
+  refreshToken: null,
+  sid: null,
 };
 
 const authSlice = createSlice({
@@ -32,7 +32,7 @@ const authSlice = createSlice({
         state.isLogin = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.token = payload.token;
+        state.accessToken = payload.accessToken;
         state.user.email = payload.user.email;
         state.isLogin = true;
         state.isRegister = true;
@@ -42,7 +42,8 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => ({
         ...state,
-        token: null,
+        accessToken: null,
+        refreshToken: null,
         isRegister: false,
         isLogin: false,
       }))

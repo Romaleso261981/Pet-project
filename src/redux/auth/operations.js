@@ -18,7 +18,8 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const { data } = await API.post("/auth/users/login", userData);
-    authToken.set(data.token);
+    console.log(data.accessToken);
+    authToken.set(data.accessToken);
     const state = thunkAPI.getState();
     localStorage.setItem("token", data.token);
     const { lang } = state.language.lang;
@@ -45,8 +46,8 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await API.get(`/auth/users/logout`);
     const state = thunkAPI.getState();
+    await API.get(`auth/users/logout`);
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.info(
@@ -57,9 +58,8 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
           "Бережіть себе і до зустрічі &#9996;",
           notifySettings
         );
-    authToken.unset();
   } catch (error) {
-    console.log("catch logOut", error);
+    console.log("logOut catch");
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
