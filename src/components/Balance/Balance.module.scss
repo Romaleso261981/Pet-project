@@ -60,7 +60,8 @@
   text-transform: uppercase;
   border-color: transparent;
 
-  @media screen and (min-width: 768px) {}
+  @media screen and (min-width: 768px) {
+  }
 }
 
 .flex {
@@ -73,9 +74,6 @@
 
   @media screen and (min-width: 1280px) {
     // margin-left: 473px;
-    
-    
-    
   }
 }
 
