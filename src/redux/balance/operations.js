@@ -21,16 +21,16 @@ const addBalanceByUser = createAsyncThunk(
 );
 
 const getBalance = createAsyncThunk(
-  'balance/getBalance',
+  "balance/getBalance",
   async (balance, { rejectWithValue }) => {
     try {
-      const { data } = await API.get('/api/finances/reports?month=2&year=2023');
-      alert(data)
-      console.log(data);
-      return data;
+      const { data } = await API.get(
+        "/api/finances/summary?type=expenses&countmonth=6 "
+      );
+      return data[0].totalAmount;
     } catch (error) {
       rejectWithValue(error);
     }
-  },
+  }
 );
 export { addBalanceByUser, getBalance };

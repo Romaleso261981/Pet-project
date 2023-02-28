@@ -1,52 +1,62 @@
 import style from "./Balance.module.scss";
+import Notiflix from "notiflix";
 import { GoGraph } from "react-icons/go";
 import { NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
-import {addBalanceByUser} from "../../redux/balance/operations";
-import {getBalance} from "../../redux/balance/operations";
-import {userBalance} from "../../redux/balance/selectorBalance";
-import {getData} from "../../redux/balance/selectorBalance";
-
-
+import { Popup } from "../../components/Popup/Popup";
+import { addBalanceByUser } from "../../redux/balance/operations";
+import { getBalance } from "../../redux/balance/operations";
+import { userBalance } from "../../redux/balance/selectorBalance";
+import { getLang } from "../../redux/lang/langSelectors";
+import { getData } from "../../redux/balance/selectorBalance";
 
 const Balance = () => {
   const dispatch = useDispatch();
-  const currentBalance = useSelector(userBalance);
-  const arr = useSelector(getData);
   const location = useLocation();
-  console.log(arr);
-  console.log(location.pathname);
+  const currentBalance = useSelector(userBalance);
+  const lang = useSelector(getLang);
+  const [balance, setBalance] = useState(currentBalance ?? 0);
+
   const walletPage = location.pathname === "/reports";
-  // const walletPage = location.pathname === "/wallet";
 
-  const [balance, setBalance] = useState("00.00");
-
-  // const addUserBalance = () => {
-  //   const newBalance = Number(balance);
-  //   if (newBalance < 0) {
-  //     return alert("Balance should be positive :)");
-  //   }
-  //   dispatch(addBalanceByUser(newBalance));
-  // };
-  const getUserBalance = () => {
-    console.log("getUserBalance");
-    // const newBalance = Number(balance);
-    // if (newBalance < 0) {
-    //   return alert("Balance should be positive :)");
-    // }
-    dispatch(getBalance());
+  const handleChange = ({ target: { value } }) => {
+    if (+value === 0) {
+      lang === "en"
+        ? Notiflix.Notify.warning(`Balance cannot be "0"!`, notifySettings)
+        : Notiflix.Notify.warning(
+            `Баланс не повинен бути рівним "0"!`,
+            notifySettings
+          );
+    }
+    setBalance(Number(value).toFixed(2));
   };
 
-  const handleChange = (e) => {
-    setBalance(e.target.value);
+  const onClick = () => {
+    if (+balance === 0) {
+      setBalance((prev) => currentBalance);
+      return;
+    }
+    if (+balance === +currentBalance) {
+      lang === "en"
+        ? Notiflix.Notify.warning(
+            `New balance cannot be the same!`,
+            notifySettings
+          )
+        : Notiflix.Notify.warning(
+            `Оновлений баланс має відрізнятись від попереднього!`,
+            notifySettings
+          );
+      return;
+    }
+    dispatch(addBalanceByUser({ balance }));
   };
 
   useEffect(() => {
-    setBalance(currentBalance);
+    dispatch(getBalance());
+   
   }, [currentBalance]);
-
 
   return (
     <div className={style.containers}>
@@ -57,18 +67,15 @@ const Balance = () => {
             className={style.inputBalance}
             type="number"
             name="balance"
-            placeholder="00.00"
             style={{ color: "#000000" }}
             value={balance}
             onChange={handleChange}
           />
           <span className={style.uah}> UAH</span>
         </div>
-        {(currentBalance === "00.00" || balance === "00.00") && (
-          <ModalWithoutBalance />
-        )}
+        {(currentBalance === 0 || balance === 0) && <ModalWithoutBalance />}
 
-        <button className={style.buttonConfirm} onClick={getUserBalance}>
+        <button className={style.buttonConfirm} onClick={onClick}>
           confirm
         </button>
       </div>
@@ -77,8 +84,8 @@ const Balance = () => {
           Reports <GoGraph className={style.icon} />
         </NavLink>
       )}
-
-      {walletPage}
+     
+      {/* {walletPage} */}
     </div>
   );
 };

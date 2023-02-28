@@ -3,17 +3,16 @@ import { addBalanceByUser, getBalance } from "./operations";
 
 export const balanceSlice = createSlice({
   name: "balance",
-  initialState: { balance: "00.00", arr: [], isLoading: false, error: null },
+  initialState: { balance: 0, arr: [], isLoading: false, error: null },
   extraReducers: (builder) =>
     builder
       .addCase(addBalanceByUser.pending, (state, _) => {
         state.isLoading = true;
       })
-      .addCase(getBalance.fulfilled, (state, { payload }) => (
-        {
-        ...state,
-        arr: payload,
-      }))
+      .addCase(getBalance.fulfilled, (state, { payload }) => {
+       return { ...state,
+        balance: payload,}
+      })
       .addCase(addBalanceByUser.fulfilled, (state, action) => {
         (state.isLoading = false),
           (state.balance = action.payload),
