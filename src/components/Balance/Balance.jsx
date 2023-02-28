@@ -7,13 +7,17 @@ import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
 import addBalanceByUser from "../../redux/balance/operations";
 import userBalance from "../../redux/balance/selectorBalance";
-
 const Balance = () => {
   const dispatch = useDispatch();
   const currentBalance = useSelector(userBalance);
   const location = useLocation();
+<<<<<<< Updated upstream
   console.log(location.pathname);
+  const walletPage = location.pathname === "/reports";
+=======
+  // console.log(location.pathname);
   const walletPage = location.pathname === "/wallet";
+>>>>>>> Stashed changes
 
   const [balance, setBalance] = useState("00.00");
 
@@ -57,13 +61,13 @@ const Balance = () => {
           confirm
         </button>
       </div>
-      {walletPage && (
+      {!walletPage && (
         <NavLink to="/reports" className={style.report}>
           Reports <GoGraph className={style.icon} />
         </NavLink>
       )}
 
-      {!walletPage && <h1>hello</h1>}
+      {walletPage}
     </div>
   );
 };

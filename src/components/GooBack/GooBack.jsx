@@ -10,7 +10,7 @@ const GooBack = ({ title, isReportsPage = false }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    locRef.current = location.state?.from ?? '/transactions';
+    locRef.current = location.state?.from ?? '/wallet';
     // eslint-disable-next-line
   }, []);
   const handleClick = () => {

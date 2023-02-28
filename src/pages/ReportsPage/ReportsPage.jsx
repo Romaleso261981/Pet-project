@@ -16,14 +16,13 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
-        {/* <ReportsBalance /> */}
-        <h1>ReportsBalance</h1>
+        <ReportsBalance />
         <Reports />
       </div>
 
       {/* <CategoryList /> */}
-      <h1>CategoryList</h1>
-      {true ? <h1>ChartCategory</h1> : <h1>ChartCategoryMobile</h1>}
+      {/* <h1>CategoryList</h1>
+      {true ? <h1>ChartCategory</h1> : <h1>ChartCategoryMobile</h1>} */}
       {/* {isMobile ? <ChartCategory /> : <ChartCategoryMobile />} */}
     </>
   );

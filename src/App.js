@@ -36,7 +36,6 @@ export function App() {
   const [isHintShown, setIsHintShown] = useState(false);
   const token = useSelector(selectAccessToken);
   // const token = null;
-  console.log(token);
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
