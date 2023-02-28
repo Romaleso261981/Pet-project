@@ -7,8 +7,6 @@ import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
 import addBalanceByUser from "../../redux/balance/operations";
 import userBalance from "../../redux/balance/selectorBalance";
-import GooBack from 'components/GooBack/GooBack';
-import Pagination from 'components/Pagination/Pagination'
 const Balance = () => {
   const dispatch = useDispatch();
   const currentBalance = useSelector(userBalance);
@@ -64,11 +62,7 @@ const Balance = () => {
         </NavLink>
       )}
 
-      {walletPage && (<div className={s.goBack}>
-        <GooBack title={!mob && 'Main page'} walletPage={walletPage}/>{' '}
-        </div>) && (<div className={s.wrapPagination}>
-          <Pagination />
-        </div>)}
+      {walletPage}
     </div>
   );
 };
