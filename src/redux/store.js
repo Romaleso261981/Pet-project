@@ -28,9 +28,9 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     balance: balanceReducer,
+    reports: reportsReducer,
     language: languageReducer,
     theme: themeReducer,
-    reports: reportsReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,

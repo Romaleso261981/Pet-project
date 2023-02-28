@@ -1,3 +1,4 @@
 const userBalance = (state) => state.balance.balance;
+const getData = (state) => state.arr;
 
-export default userBalance;
+export  {userBalance, getData};

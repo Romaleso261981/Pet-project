@@ -124,7 +124,6 @@ const transactionsSlice = createSlice({
       .addCase(fetchUserBalance.fulfilled, (state, { payload }) => {
         state.error = null;
         state.isLoadinng = false;
-        // console.log('payload', payload);
         payload && (state.balance = payload.newBalance);
       })
       .addCase(fetchUserBalance.rejected, (state, { payload }) => {

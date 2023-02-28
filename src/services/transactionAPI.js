@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
-const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmM4YzFkYmRiY2VjYTQyMTdkNTExYyIsImlhdCI6MTY3NzU4NDM1NiwiZXhwIjoxNjc3NjcwNzU2fQ.fBuy7bHGygi3MpqBFcbYtgL6E_Bj1FAQKavj3v6EsWo';
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const fetchData = async ({ transaction, date }) => {
   try {
@@ -35,6 +33,7 @@ export const addTransaction = async ({
       year: date.yyyy,
     };
     const response = await axios.post(`/${transaction}`, bodyRequest);
+    console.log(response);
     return response.data.results;
   } catch (error) {
     console.log(error);
