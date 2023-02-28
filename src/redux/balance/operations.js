@@ -19,11 +19,11 @@ const addBalanceByUser = createAsyncThunk(
     }
   }
 );
+
 const getBalance = createAsyncThunk(
   'balance/getBalance',
   async (balance, { rejectWithValue }) => {
     try {
-      console.log("getBalance");
       const { data } = await API.get('/api/finances/reports?month=2&year=2023');
       alert(data)
       console.log(data);
