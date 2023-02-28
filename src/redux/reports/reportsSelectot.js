@@ -1,7 +1,5 @@
-
-const incomesMonthSelector = (state) => state.incomes;
-const expensesMonthSelector = (state) => state.expenses;
-
+const incomesMonthSelector = (state) => state.reports.incomes;
+const expensesMonthSelector = (state) => state.reports.expenses;
 const totalIncomesMonthSelector = (state) => state.incomes.incomeTotal;
 const totalExpensesMonthSelector = (state) => state.expenses.expenseTotal;
 

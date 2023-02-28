@@ -2,7 +2,6 @@ import Reports from "components/Reports/Reports";
 import ReportsBalance from "components/ReportsBalance/ReportsBalance";
 import styled from "./ReportsPage.module.scss";
 
-
 // import IncomeForm from 'components/IncomeForm/IncomeForm';
 // import CategoryList from '../../components/CategoryList/CategoryList';
 // import ChartCategory from '../../components/ChartCategory/ChartCategory';
@@ -17,7 +16,7 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <div className={styled.wrapper}></div>
-        <ReportsBalance />
+        {/* <ReportsBalance /> */}
         <Reports />
       </div>
 

@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getPeriod } from './reportsOperation';
+import { createSlice } from "@reduxjs/toolkit";
+import { getPeriod } from "./reportsOperation";
 
 const initialState = {
-  incomes: {},
-  expenses: {},
+  incomes: 10,
+  expenses: 10,
   error: null,
   isLoading: false,
 };
 
 const reports = createSlice({
-  name: 'reports',
+  name: "reports",
   initialState,
   extraReducers: {
     [getPeriod.pending]: (state, _) => ({
