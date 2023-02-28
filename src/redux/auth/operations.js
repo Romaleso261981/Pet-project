@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Notiflix from "notiflix";
+import { toast } from "react-toastify";
 import { notifySettings } from "../../utils/notifySettings";
 
 import { API, authToken } from "../../API";
-import { toast } from "react-toastify";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
@@ -39,7 +39,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
-      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+      : Notiflix.Notify.failure("Щось пішло не так...", notifySettings);
     return thunkAPI.rejectWithValue(error.request.status);
   }
 });
@@ -47,7 +47,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
-    await API.get(`auth/users/logout`);
+    await API.get("auth/users/logout");
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.info(
@@ -64,7 +64,7 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
-      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+      : Notiflix.Notify.failure("Щось пішло не так...", notifySettings);
     return thunkAPI.rejectWithValue(error);
   }
 });
@@ -74,7 +74,7 @@ const refreshUser = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const state = getState();
-      const token = state.auth.token;
+      const { token } = state.auth;
       setToken(token);
       const { data } = await API.get("/users/current");
       return data;
@@ -88,9 +88,9 @@ const refreshUser = createAsyncThunk(
       const state = getState();
       const { lang } = state.language.lang;
       lang === "en"
-        ? Notiflix.Notify.failure(`Please login again!`, notifySettings)
+        ? Notiflix.Notify.failure("Please login again!", notifySettings)
         : Notiflix.Notify.failure(
-            `Будь ласка, залогіньтесь знову!`,
+            "Будь ласка, залогіньтесь знову!",
             notifySettings
           );
       return rejectWithValue(error);

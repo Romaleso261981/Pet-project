@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://back.kapusta.click/api/finances";
+axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
 export const fetchData = async ({ transaction, date }) => {
   try {
@@ -9,7 +9,7 @@ export const fetchData = async ({ transaction, date }) => {
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await axios.get(`/`, { params: bodyRequest });
+    const response = await axios.get('/', { params: bodyRequest });
     return response.data;
   } catch (error) {
     // console.log(error);
@@ -54,7 +54,7 @@ export const summaryTransaction = async ({ transaction }) => {
       type: transaction,
       countmonth: 6,
     };
-    const response = await axios.get(`/summary`, { params: bodyRequest });
+    const response = await axios.get('/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
     // console.log(error);

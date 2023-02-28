@@ -1,5 +1,5 @@
-import { BtnElement } from "components/Buttons/Btn.styled";
-import styled, { keyframes } from "styled-components";
+import { BtnElement } from 'components/Buttons/Btn.styled';
+import styled, { keyframes } from 'styled-components';
 
 export const WrapBtn = styled.div`
   display: flex;

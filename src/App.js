@@ -52,14 +52,14 @@ export function App() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const accessToken = searchParams.get("accessToken");
-    const refreshToken = searchParams.get("refreshToken");
-    const sid = searchParams.get("sid");
-    if (!accessToken) return;
-    dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    navigate("/wallet");
-  }, [searchParams, dispatch, navigate]);
+  // useEffect(() => {
+  //   const accessToken = searchParams.get("accessToken");
+  //   const refreshToken = searchParams.get("refreshToken");
+  //   const sid = searchParams.get("sid");
+  //   if (!accessToken) return;
+  //   dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
+  //   navigate("/wallet");
+  // }, [searchParams, dispatch, navigate]);
 
   return (
     <ThemeProvider theme={themeMode}>
