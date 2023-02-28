@@ -27,15 +27,15 @@ export const Label = styled.label`
   gap: 10px;
   height: 28px;
   /* width: 52px; */
-  background-color: ${p => p.theme.colors.PrimaryGray};
+  background-color: ${(p) => p.theme.colors.PrimaryGray};
   border-radius: 50px;
-  border: 2px solid ${props => props.theme.colors.btnsBorder};
+  border: 2px solid ${(props) => props.theme.colors.btnsBorder};
   cursor: pointer;
 
   & svg {
     width: 16px;
     height: 16px;
-    fill: ${p => p.theme.colors.PrimaryBlack};
+    fill: ${(p) => p.theme.colors.PrimaryBlack};
   }
 
   & svg:first-of-type {
@@ -51,7 +51,7 @@ export const Ball = styled.span`
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: ${p => p.theme.colors.PrimaryOrange};
+  background-color: ${(p) => p.theme.colors.PrimaryOrange};
   border-radius: 50%;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;

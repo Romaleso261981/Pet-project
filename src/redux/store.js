@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
 import {
   persistStore,
@@ -9,19 +9,19 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from 'redux-persist';
 
-import { authReducer } from "./auth/slice";
-import themeReducer from "./theme/themeSlice";
-import balanceReducer from "./balance/balanceSlice";
-import languageReducer from "./lang/langSlice";
-import reportsReducer from "./reports/reportsSlice";
-import storage from "redux-persist/lib/storage";
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from './auth/slice';
+import themeReducer from './theme/themeSlice';
+import balanceReducer from './balance/balanceSlice';
+import languageReducer from './lang/langSlice';
+import reportsReducer from './reports/reportsSlice';
 
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["accessToken", "refreshToken", "sid", "user"],
+  whitelist: ['accessToken', 'refreshToken', 'sid', 'user'],
 };
 
 export const store = configureStore({
@@ -32,10 +32,9 @@ export const store = configureStore({
     theme: themeReducer,
     reports: reportsReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
 
 export const persistor = persistStore(store);

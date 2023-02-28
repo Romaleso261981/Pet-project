@@ -1,9 +1,9 @@
-import Notiflix from "notiflix";
-import { notifySettings } from "../../utils/notifySettings";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import Notiflix from 'notiflix';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { notifySettings } from '../../utils/notifySettings';
 
 export const getPeriod = createAsyncThunk(
-  "transactions/ADD",
+  'transactions/ADD',
 
   async (type, { rejectWithValue, getState }) => {
     try {
@@ -13,16 +13,16 @@ export const getPeriod = createAsyncThunk(
     } catch (error) {
       const state = getState();
       const { lang } = state.language.lang;
-      lang === "en"
+      lang === 'en'
         ? Notiflix.Notify.warning(
-            `Server error (during fetching categories): ${error.message}`,
-            notifySettings
-          )
+          `Server error (during fetching categories): ${error.message}`,
+          notifySettings,
+        )
         : Notiflix.Notify.warning(
-            `Помилка сервера: ${error.message}`,
-            notifySettings
-          );
+          `Помилка сервера: ${error.message}`,
+          notifySettings,
+        );
       return rejectWithValue({ error });
     }
-  }
+  },
 );

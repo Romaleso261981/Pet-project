@@ -1,82 +1,82 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import Notiflix from "notiflix";
-import { notifySettings } from "../../utils/notifySettings";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import Notiflix from 'notiflix';
+import { toast } from 'react-toastify';
+import { notifySettings } from '../../utils/notifySettings';
 
-import { API, authToken } from "../../API";
-import { toast } from "react-toastify";
+import { API, authToken } from '../../API';
 
-const Register = createAsyncThunk("auth/register", async (credentials) => {
+const Register = createAsyncThunk('auth/register', async (credentials) => {
   try {
-    const { data } = await API.post("/auth/users/signup", credentials);
+    const { data } = await API.post('/auth/users/signup', credentials);
     return data;
   } catch (error) {
-    console.log("Register", error);
-    toast.error("Server error, please try again later");
+    console.log('Register', error);
+    toast.error('Server error, please try again later');
   }
 });
 
-const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
+const logIn = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
   try {
-    const { data } = await API.post("/auth/users/login", userData);
+    const { data } = await API.post('/auth/users/login', userData);
     console.log(data.accessToken);
     authToken.set(data.accessToken);
     const state = thunkAPI.getState();
-    localStorage.setItem("token", data.token);
+    localStorage.setItem('token', data.token);
     const { lang } = state.language.lang;
-    lang === "en"
+    lang === 'en'
       ? Notiflix.Notify.success(
-          `Welcome back, ${data.user.email}!`,
-          notifySettings
-        )
+        `Welcome back, ${data.user.email}!`,
+        notifySettings,
+      )
       : Notiflix.Notify.success(
-          `Радо вітаємо, ${data.user.email}!`,
-          notifySettings
-        );
+        `Радо вітаємо, ${data.user.email}!`,
+        notifySettings,
+      );
     return data;
   } catch (error) {
-    console.log("operator login catch", error);
+    console.log('operator login catch', error);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
-    lang === "en"
+    lang === 'en'
       ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
-      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+      : Notiflix.Notify.failure('Щось пішло не так...', notifySettings);
     return thunkAPI.rejectWithValue(error.request.status);
   }
 });
 
-const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
-    await API.get(`auth/users/logout`);
+    await API.get('auth/users/logout');
     const { lang } = state.language.lang;
-    lang === "en"
+    lang === 'en'
       ? Notiflix.Notify.info(
-          "Stay safe and see you again &#9996;",
-          notifySettings
-        )
+        'Stay safe and see you again &#9996;',
+        notifySettings,
+      )
       : Notiflix.Notify.info(
-          "Бережіть себе і до зустрічі &#9996;",
-          notifySettings
-        );
+        'Бережіть себе і до зустрічі &#9996;',
+        notifySettings,
+      );
   } catch (error) {
-    console.log("logOut catch");
+    console.log('logOut catch');
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
-    lang === "en"
+    lang === 'en'
       ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
-      : Notiflix.Notify.failure(`Щось пішло не так...`, notifySettings);
+      : Notiflix.Notify.failure('Щось пішло не так...', notifySettings);
     return thunkAPI.rejectWithValue(error);
   }
 });
 
 const refreshUser = createAsyncThunk(
-  "auth/refresh",
+  'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     try {
       const state = getState();
-      const token = state.auth.token;
+      const { token } = state.auth;
       setToken(token);
-      const { data } = await API.get("/users/current");
+      const { data } = await API.get('/users/current');
       return data;
     } catch ({ response }) {
       const { status, data } = response;
@@ -87,15 +87,15 @@ const refreshUser = createAsyncThunk(
       console.log(error.message);
       const state = getState();
       const { lang } = state.language.lang;
-      lang === "en"
-        ? Notiflix.Notify.failure(`Please login again!`, notifySettings)
+      lang === 'en'
+        ? Notiflix.Notify.failure('Please login again!', notifySettings)
         : Notiflix.Notify.failure(
-            `Будь ласка, залогіньтесь знову!`,
-            notifySettings
-          );
+          'Будь ласка, залогіньтесь знову!',
+          notifySettings,
+        );
       return rejectWithValue(error);
     }
-  }
+  },
 );
 
 // const refreshUser = createAsyncThunk(
@@ -124,16 +124,18 @@ const refreshUser = createAsyncThunk(
 // );
 
 const googleAuth = createAsyncThunk(
-  "auth/googleAuth",
+  'auth/googleAuth',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await API.post("/auth/google", credentials);
+      const { data } = await API.post('/auth/google', credentials);
       authToken.set(data.accessToken);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
-export { Register, logIn, logOut, refreshUser, googleAuth };
+export {
+  Register, logIn, logOut, refreshUser, googleAuth,
+};

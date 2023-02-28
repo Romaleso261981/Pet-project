@@ -7,21 +7,21 @@ const isLoadingSelector = (state) => state.isLoading;
 const errorSelector = (state) => state.error;
 
 export {
-  //?Вибір доходів за місяця,
+  // ?Вибір доходів за місяця,
   incomesMonthSelector,
 
-  //?витрати за місяця,
+  // ?витрати за місяця,
   expensesMonthSelector,
 
-  //?Загальні надходження за місяця
+  // ?Загальні надходження за місяця
   totalIncomesMonthSelector,
 
-  //?загальні витрати за місяця,
+  // ?загальні витрати за місяця,
   totalExpensesMonthSelector,
 
-  //?завантаження
+  // ?завантаження
   isLoadingSelector,
 
-  //?помилка
+  // ?помилка
   errorSelector,
 };

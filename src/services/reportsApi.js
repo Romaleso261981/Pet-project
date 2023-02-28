@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // type === income OR expense
 export async function getTransactionsSummaryByYear(year, type) {
@@ -18,7 +18,7 @@ export async function getTransactionsByMonth(month, year) {
 
 export async function getTransactionsByCategory(category, month, year) {
   const { data } = await axios.get(
-    `/report/amountByDescription/${category}/${month}/${year}`
+    `/report/amountByDescription/${category}/${month}/${year}`,
   );
   return data;
 }
