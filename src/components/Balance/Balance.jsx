@@ -4,12 +4,10 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
-import {addBalanceByUser} from "../../redux/balance/operations";
-import {getBalance} from "../../redux/balance/operations";
-import {userBalance} from "../../redux/balance/selectorBalance";
-import {getData} from "../../redux/balance/selectorBalance";
-
-
+import { addBalanceByUser } from "../../redux/balance/operations";
+import { getBalance } from "../../redux/balance/operations";
+import { userBalance } from "../../redux/balance/selectorBalance";
+import { getData } from "../../redux/balance/selectorBalance";
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -47,7 +45,6 @@ const Balance = () => {
     setBalance(currentBalance);
   }, [currentBalance]);
 
-
   return (
     <div className={style.containers}>
       <div className={style.flex}>
@@ -63,14 +60,15 @@ const Balance = () => {
             onChange={handleChange}
           />
           <span className={style.uah}> UAH</span>
-        </div>
-        {(currentBalance === "00.00" || balance === "00.00") && (
-          <ModalWithoutBalance />
-        )}
 
-        <button className={style.buttonConfirm} onClick={getUserBalance}>
-          confirm
-        </button>
+          {(currentBalance === "00.00" || balance === "00.00") && (
+            <ModalWithoutBalance />
+          )}
+
+          <button className={style.buttonConfirm} onClick={getUserBalance}>
+            confirm
+          </button>
+        </div>
       </div>
       {!walletPage && (
         <NavLink to="/reports" className={style.report}>
