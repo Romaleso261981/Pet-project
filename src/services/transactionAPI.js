@@ -22,7 +22,7 @@ export const addTransaction = async ({
   productDescription,
   selectProduct,
   culc,
-}) => {
+  }) => {
   try {
     const bodyRequest = {
       type: transaction,
@@ -58,5 +58,6 @@ export const summaryTransaction = async ({ transaction }) => {
     const response = await axios.get('/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
+    console.log(error);
   }
 };

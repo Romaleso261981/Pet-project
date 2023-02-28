@@ -5,10 +5,10 @@
     @media screen and (min-width: 768px) {
         box-sizing: border-box;
         max-width: 624px;
-        border: 1px solid #F5F6FB;
+        border: 1px solid var(----input-border);
         height: 328px;
         overflow: auto;
-        scrollbar-color: #FF751D #F5F6FB;
+        scrollbar-color: var(--accent-color) #F5F6FB;
     }
 
     @media screen and (min-width: 1280px) {
@@ -25,7 +25,7 @@
 }
 
 .table__head{
-    background-color: #F5F6FB;
+    background-color: var(--list-accent);
     text-transform: uppercase;
 
     @media screen and (min-width: 768px) {

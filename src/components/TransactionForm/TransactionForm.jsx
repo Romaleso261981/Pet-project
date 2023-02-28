@@ -11,6 +11,7 @@ import styled from "./TransactionForm.module.scss";
 export function TransactionForm({transaction, date}) {
     
     const handleSubmit = async (values, {resetForm}) => {
+        values.transaction = transaction;
         await addTransaction(values);
         resetForm();
     };
@@ -22,7 +23,7 @@ export function TransactionForm({transaction, date}) {
                 <div className={styled.wrapper}>
                     <Formik
                         onSubmit={handleSubmit}
-                        initialValues={{ transaction: transaction, date: date, productDescription: '', selectProduct: '', culc: ''}}
+                        initialValues={{ date: date, productDescription: '', selectProduct: '', culc: ''}}
                     >
                         <Form>
                             <div className={styled.inputsAndBtn}>
