@@ -1,13 +1,16 @@
 {
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "airbnb/base"
   ],
-  "import/order": [
+  "import": [
     "error",
     {
       "groups": [["builtin", "external"]],
@@ -16,6 +19,7 @@
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y"],
   "rules": {
+    "semi": "error",
     "strict": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
