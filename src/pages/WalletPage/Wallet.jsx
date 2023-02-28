@@ -36,10 +36,10 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
         <div className={styled.wrapper}>
           <div className={styled.transaction_all}>
             <div className={styled.transaction}>
-              <Transaction />
-              <TableTransaction />
+              <Transactions />
+              {/* <TableTransaction /> */}
             </div>
-            <TableSummary className={styled.transaction__summary} />
+            {/* <TableSummary className={styled.transaction__summary} /> */}
           </div>
         </div>
       </div>

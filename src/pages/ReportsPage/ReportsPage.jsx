@@ -14,11 +14,12 @@ const ReportsPage = () => {
   // });
   return (
     <>
-      <div className={styled.container}>
-        <div className={styled.wrapper}></div>
+      <div className={styled.wrapper}></div>
         <ReportsBalance />
         <Reports />
-      </div>
+      {/* <div className={styled.container}>
+        
+      </div> */}
 
       {/* <CategoryList /> */}
       {/* <h1>CategoryList</h1>
