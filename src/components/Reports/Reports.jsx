@@ -13,8 +13,10 @@ import { useMediaQuery } from "react-responsive";
 
 export default function Reports() {
   const incomesResponse = useSelector(incomesMonthSelector);
+  console.log(incomesResponse);
   // const incomesResponse = 10;
   const expensesResponse = useSelector(expensesMonthSelector);
+  console.log(expensesResponse);
   // const expensesResponse = 10;
 
   const [incomes, setIncomes] = useState({});
@@ -42,7 +44,11 @@ export default function Reports() {
 
         {curCategory &&
           (isMobile ? (
-            <ChartCategory curCategory={curCategory} />
+            <ChartCategory
+              curCategory={curCategory}
+              incomes={incomes}
+              expenses={expenses}
+            />
           ) : (
             <ChartCategoryMobile curCategory={curCategory} />
           ))}

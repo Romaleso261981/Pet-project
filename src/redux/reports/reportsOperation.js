@@ -1,19 +1,28 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import hendlerError from 'redux/error/handleError';
-// import { getPeriodTransactions } from '/api';
+import Notiflix from "notiflix";
+import { notifySettings } from "../../utils/notifySettings";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getPeriod = 1
-  // createAsyncThunk(
-//   'reports/getPeriodTransactions',
-//   async (date, { rejectWithValue, dispatch }) => {
-//     try {
-//       const { data } = await getPeriodTransactions(date);
-//       return data;
-//     } catch (err) {
-//       setTimeout(() => {
-//         dispatch(hendlerError({ err, cb: getPeriod }));
-//       }, 0);
-//       return rejectWithValue(err);
-//     }
-//   }
-// );
+export const getPeriod = createAsyncThunk(
+  "transactions/ADD",
+
+  async (type, { rejectWithValue, getState }) => {
+    try {
+      const { data } = await instance.post();
+      const summary = await instance.get(`transaction/${type}`);
+      return { type, data, monthsStats: summary.data.monthsStats };
+    } catch (error) {
+      const state = getState();
+      const { lang } = state.language.lang;
+      lang === "en"
+        ? Notiflix.Notify.warning(
+            `Server error (during fetching categories): ${error.message}`,
+            notifySettings
+          )
+        : Notiflix.Notify.warning(
+            `Помилка сервера: ${error.message}`,
+            notifySettings
+          );
+      return rejectWithValue({ error });
+    }
+  }
+);
