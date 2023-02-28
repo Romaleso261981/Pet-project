@@ -3,25 +3,40 @@ import { GoGraph } from "react-icons/go";
 import { NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
-import addBalanceByUser from "../../redux/balance/operations";
-import userBalance from "../../redux/balance/selectorBalance";
+import {addBalanceByUser} from "../../redux/balance/operations";
+import {getBalance} from "../../redux/balance/operations";
+import {userBalance} from "../../redux/balance/selectorBalance";
+import {getData} from "../../redux/balance/selectorBalance";
+
+
+
 const Balance = () => {
   const dispatch = useDispatch();
   const currentBalance = useSelector(userBalance);
+  const arr = useSelector(getData);
   const location = useLocation();
+  console.log(arr);
   console.log(location.pathname);
   const walletPage = location.pathname === "/reports";
+  // const walletPage = location.pathname === "/wallet";
 
   const [balance, setBalance] = useState("00.00");
 
-  const addUserBalance = () => {
-    const newBalance = Number(balance);
-    if (newBalance < 0) {
-      return alert("Balance should be positive :)");
-    }
-    dispatch(addBalanceByUser(newBalance));
+  // const addUserBalance = () => {
+  //   const newBalance = Number(balance);
+  //   if (newBalance < 0) {
+  //     return alert("Balance should be positive :)");
+  //   }
+  //   dispatch(addBalanceByUser(newBalance));
+  // };
+  const getUserBalance = () => {
+    console.log("getUserBalance");
+    // const newBalance = Number(balance);
+    // if (newBalance < 0) {
+    //   return alert("Balance should be positive :)");
+    // }
+    dispatch(getBalance());
   };
 
   const handleChange = (e) => {
@@ -31,6 +46,7 @@ const Balance = () => {
   useEffect(() => {
     setBalance(currentBalance);
   }, [currentBalance]);
+
 
   return (
     <div className={style.containers}>
@@ -52,7 +68,7 @@ const Balance = () => {
           <ModalWithoutBalance />
         )}
 
-        <button className={style.buttonConfirm} onClick={addUserBalance}>
+        <button className={style.buttonConfirm} onClick={getUserBalance}>
           confirm
         </button>
       </div>

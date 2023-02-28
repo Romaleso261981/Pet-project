@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 
+import { authToken } from "./API";
+
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import { refreshUser } from "./redux/auth/operations";
@@ -35,8 +37,8 @@ export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
   const token = useSelector(selectAccessToken);
-  // const token = null;
   console.log(token);
+  // const token = null;
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
@@ -52,14 +54,17 @@ export function App() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const accessToken = searchParams.get("accessToken");
-  //   const refreshToken = searchParams.get("refreshToken");
-  //   const sid = searchParams.get("sid");
-  //   if (!accessToken) return;
-  //   dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-  //   navigate("/wallet");
-  // }, [searchParams, dispatch, navigate]);
+  useEffect(() => {
+    authToken.set(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjhiZDdjNDMzYWRiMTU0ZTRkZmUwYiIsImlhdCI6MTY3NzU5MDMwOCwiZXhwIjoxNjc3Njc2NzA4fQ.Kn7ypCw-cWj8ZrQsrglKNUrdzII0osK3KfyyUVsHbCI"
+    );
+    // const accessToken = searchParams.get("accessToken");
+    // const refreshToken = searchParams.get("refreshToken");
+    // const sid = searchParams.get("sid");
+    // if (!accessToken) return;
+    // dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
+    // navigate("/wallet");
+  }, [searchParams, dispatch, navigate]);
 
   return (
     <ThemeProvider theme={themeMode}>

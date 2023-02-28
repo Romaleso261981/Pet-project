@@ -10,7 +10,6 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
     const { data } = await API.post("/auth/users/signup", credentials);
     return data;
   } catch (error) {
-    console.log("Register", error);
     toast.error("Server error, please try again later");
   }
 });
@@ -18,10 +17,10 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const { data } = await API.post("/auth/users/login", userData);
-    console.log(data.accessToken);
     authToken.set(data.accessToken);
     const state = thunkAPI.getState();
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.success(
@@ -34,7 +33,6 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
         );
     return data;
   } catch (error) {
-    console.log("operator login catch", error);
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
@@ -47,7 +45,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
-    await API.get("auth/users/logout");
+    await API.get("/auth/users/logout");
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.info(
@@ -59,7 +57,6 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
           notifySettings
         );
   } catch (error) {
-    console.log("logOut catch");
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
     lang === "en"
@@ -84,7 +81,6 @@ const refreshUser = createAsyncThunk(
         status,
         message: data.message,
       };
-      console.log(error.message);
       const state = getState();
       const { lang } = state.language.lang;
       lang === "en"
@@ -98,30 +94,6 @@ const refreshUser = createAsyncThunk(
   }
 );
 
-// const refreshUser = createAsyncThunk(
-//   "auth/refresh",
-//   async (_, { getState, rejectWithValue }) => {
-//     const state = getState();
-//     const token = localStorage.getItem("token");
-//     console.log(token);
-//     const email = state.user.email;
-//     if (!token) {
-//       return rejectWithValue("something went wrong");
-//     }
-//     try {
-//       const { data } = await API.post("/auth/users/current", email);
-//       authToken.set(token);
-//       return data;
-//     } catch (error) {
-//       console.log("refreshUser catch", error);
-//       authToken.unset();
-//       if (error.response.status !== 401) {
-//         toast.error("We got an error! Dont worry and try again.");
-//       }
-//       return rejectWithValue("something went wrong");
-//     }
-//   }
-// );
 
 const googleAuth = createAsyncThunk(
   "auth/googleAuth",

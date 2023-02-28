@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmail } from "../../redux/auth/selectors";
 import { getPeriod } from "../../redux/reports/reportsOperation";
-import userBalance from "../../redux/balance/selectorBalance";
+import {userBalance} from "../../redux/balance/selectorBalance";
 import icon from "../../assets/icons/icon.svg";
 import s from "./Pagination.module.scss";
 
@@ -27,7 +27,7 @@ const Pagination = () => {
 
   // const email = "leso81@gmail.com";
   const email = useSelector(getEmail) || "le@gmail.com";
-  console.log(email);
+  // console.log(email);
 
   const [nameMonth, setNameMonth] = useState(
     month.find((el) => el.id === new Date().getMonth() + 1)

@@ -20,7 +20,9 @@ const ReportsPage = () => {
         </div>
         
         <Reports />
-      </div>
+      {/* <div className={styled.container}>
+        
+      </div> */}
 
       {/* <CategoryList /> */}
       {/* <h1>CategoryList</h1>

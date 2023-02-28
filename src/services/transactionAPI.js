@@ -12,7 +12,7 @@ export const fetchData = async ({ transaction, date }) => {
     const response = await axios.get('/', { params: bodyRequest });
     return response.data;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
 
@@ -33,6 +33,7 @@ export const addTransaction = async ({
       year: date.yyyy,
     };
     const response = await axios.post(`/${transaction}`, bodyRequest);
+    console.log(response);
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -57,6 +58,5 @@ export const summaryTransaction = async ({ transaction }) => {
     const response = await axios.get('/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
-    // console.log(error);
   }
 };
