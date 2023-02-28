@@ -5,11 +5,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container } from "../Container/Container";
 import ModalWithoutBalance from "../Modals/ModalWithoutBalance/ModalWithoutBalance";
-import { NavLink } from "react-router-dom";
-// import { addBalanceByUser } from "../../redux/balance/operations";
-import GooBack from 'components/GooBack/GooBack';
+import addBalanceByUser from "../../redux/balance/operations";
 import userBalance from "../../redux/balance/selectorBalance";
-import Wallet from "pages/WalletPage/Wallet";
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -56,20 +53,18 @@ const Balance = () => {
           <ModalWithoutBalance />
         )}
 
-          <button className={style.buttonConfirm} onClick={addUserBalance}>
-            confirm
-          </button>
-        </div>
-        {Wallet && (
-          <NavLink to="/Reports" className={style.report} end>
-            Reports <GoGraph className={style.icon} />
-          </NavLink>
-        )}
-        {!Wallet && GooBack}
+        <button className={style.buttonConfirm} onClick={addUserBalance}>
+          confirm
+        </button>
       </div>
+      {walletPage && (
+        <NavLink to="/reports" className={style.report}>
+          Reports <GoGraph className={style.icon} />
+        </NavLink>
+      )}
 
-
-    </Container>
+      {!walletPage && <h1>hello</h1>}
+    </div>
   );
 };
 
