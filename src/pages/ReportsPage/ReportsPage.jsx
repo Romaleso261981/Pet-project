@@ -15,8 +15,10 @@ const ReportsPage = () => {
   return (
     <>
       <div className={styled.container}>
-        <div className={styled.wrapper}></div>
-        <ReportsBalance />
+        <div>
+          <ReportsBalance />
+        </div>
+        
         <Reports />
       </div>
 
