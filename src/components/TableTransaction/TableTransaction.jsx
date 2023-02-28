@@ -33,7 +33,7 @@ export function TableTransaction({ transaction, date }) {
       }
     }
     getTransactionForMonth({transaction, date})
-  });
+  }, [transaction]);
 
   async function onDelete(_id) {
     await deleteTransaction(_id);
@@ -60,7 +60,7 @@ export function TableTransaction({ transaction, date }) {
                 </TableCell>
                 <TableCell>{description}</TableCell>
                 <TableCell>{category}</TableCell>
-                <TableCell>- {amount}</TableCell>
+                <TableCell>{(transaction == 'expenses') ? '-' : '+'} {amount}</TableCell>
                 <TableCell>
                   <button
                     type="button"
