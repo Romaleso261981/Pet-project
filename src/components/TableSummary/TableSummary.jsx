@@ -7,19 +7,6 @@ import styled from "./TableSummary.module.scss";
 import { useEffect, useState } from 'react';
 import { summaryTransaction } from 'services/transactionAPI';
 
-function createData(month, sum) {
-  return { month, sum };
-}
-
-const rows = [
-  createData('November', '10 000.00'),
-  createData('October', '30 000.00'),
-  createData('September', '30 000.00'),
-  createData('August', '20 000.00'),
-  createData('July', '15 000.00'),
-  createData('June', '18 000.00'),
-];
-
 export default function TableSummary({transaction}) {
   const [summaryList, setSummaryList] = useState([]);
   
@@ -28,22 +15,25 @@ export default function TableSummary({transaction}) {
         try {
           const data = await summaryTransaction({transaction});
           const filterData = data.map(({_id, totalAmount}) => ({_id, totalAmount}));
-          if (filterData > 6) filterData.slice(0, 5);
-          const formatData = filterData.map(({_id, totalAmount}) => {
+          if (filterData.length > 6) filterData.slice(0, 5);
+          
+          filterData.map(({_id, totalAmount}) => {
+            const forMonth = {}
+
             const date = new Date();
             date.setMonth(_id.month - 1);
             const month = date.toLocaleString('en-US', { month: 'long' });
-            const forMonth = {month, totalAmount};
-            return forMonth
+
+            forMonth.month = month;
+            forMonth.totalAmount = totalAmount;
+            setSummaryList([...summaryList, forMonth]);
           })
-          setSummaryList(...summaryList, formatData)
         } catch (error) {
           console.log(error);
         }
     }
     getSummaryList({transaction})
-  });
-
+  },[]);
 
   return (
     <div className={styled.wrapper}>
@@ -54,12 +44,14 @@ export default function TableSummary({transaction}) {
             </TableRow>
         </TableHead>
         <TableBody>
-          {summaryList.map(summary => (
-            <TableRow key={summary.month} >
-              <TableCell>{summary.month}</TableCell>
-                <TableCell>{summary.totalAmount}</TableCell>
-            </TableRow>
-          ))}
+          {summaryList.map(
+            ({ month, totalAmount }) => (
+              <TableRow key={month}>
+                <TableCell>{month}</TableCell>
+                <TableCell>{totalAmount}</TableCell>
+              </TableRow>
+            )
+          )}
         </TableBody>
       </Table>
     </div>

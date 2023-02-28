@@ -12,6 +12,7 @@ export const fetchData = async ({ transaction, date }) => {
     const response = await axios.get('/', { params: bodyRequest });
     return response.data;
   } catch (error) {
+    console.log(error);
   }
 };
 
