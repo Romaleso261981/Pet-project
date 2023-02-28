@@ -19,7 +19,8 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
     const { data } = await API.post("/auth/users/login", userData);
     authToken.set(data.accessToken);
     const state = thunkAPI.getState();
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.success(
@@ -44,7 +45,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
-    await API.get("auth/users/logout");
+    await API.get("/auth/users/logout");
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.info(

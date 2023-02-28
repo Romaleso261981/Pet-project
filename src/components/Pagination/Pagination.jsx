@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmail } from "../../redux/auth/selectors";
 import { getPeriod } from "../../redux/reports/reportsOperation";
-import userBalance from "../../redux/balance/selectorBalance";
+import {userBalance} from "../../redux/balance/selectorBalance";
 import icon from "../../assets/icons/icon.svg";
 import s from "./Pagination.module.scss";
 
