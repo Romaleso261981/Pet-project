@@ -1,21 +1,20 @@
-import axios from 'axios';
+import { API } from "../../API";
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.baseURL = "https://kapusta.click/";
 
-const balanceEndpoint = '/auth/users/balance';
+// const balanceEndpoint = ;
 
-export const addBalance = (balance) => axios.put(balanceEndpoint, { balance });
+// export const addBalance = (balance) => ;
 
 const addBalanceByUser = createAsyncThunk(
   'balance/addBalanceByUser',
   async (balance, { rejectWithValue }) => {
     try {
-      const { data } = await addBalance(balance);
-
+      const { data } = await API.put('auth/users/balance', { balance });
+      console.log(data);
       return data.userBalance;
     } catch (error) {
-      console.log(error);
       rejectWithValue(error);
     }
   },

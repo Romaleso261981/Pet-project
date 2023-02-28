@@ -10,7 +10,6 @@ export const ThemeSwitcher = () => {
   const [mode, setMode] = useState("dark");
 
   const toggleTheme = () => {
-    console.log("toggleTheme");
     const newTheme = mode === "light" ? "dark" : "light";
     setMode(newTheme);
   };

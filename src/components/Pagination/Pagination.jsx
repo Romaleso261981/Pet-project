@@ -27,7 +27,7 @@ const Pagination = () => {
 
   // const email = "leso81@gmail.com";
   const email = useSelector(getEmail) || "le@gmail.com";
-  console.log(email);
+  // console.log(email);
 
   const [nameMonth, setNameMonth] = useState(
     month.find((el) => el.id === new Date().getMonth() + 1)

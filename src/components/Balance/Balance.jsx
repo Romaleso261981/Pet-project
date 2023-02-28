@@ -11,8 +11,13 @@ const Balance = () => {
   const dispatch = useDispatch();
   const currentBalance = useSelector(userBalance);
   const location = useLocation();
+<<<<<<< Updated upstream
   console.log(location.pathname);
   const walletPage = location.pathname === "/reports";
+=======
+  // console.log(location.pathname);
+  const walletPage = location.pathname === "/wallet";
+>>>>>>> Stashed changes
 
   const [balance, setBalance] = useState("00.00");
 
