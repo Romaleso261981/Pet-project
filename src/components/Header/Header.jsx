@@ -69,7 +69,7 @@ export function Header() {
         </LogoContainer>
         <ControlsWrapper>
           <ThemeSwitcher />
-          <LangSwitcher />
+          {/* <LangSwitcher /> */}
           {token ? (
             <StyledContainer>
               <Img>
