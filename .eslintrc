@@ -10,16 +10,8 @@
   "import/order": [
     "error",
     {
-      "groups": [
-        "index",
-        "sibling",
-        "parent",
-        "internal",
-        "external",
-        "builtin",
-        "object",
-        "type"
-      ]
+      "groups": [["builtin", "external"]],
+      "newlines-between": "always"
     }
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y"],
