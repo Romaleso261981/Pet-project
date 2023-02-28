@@ -59,7 +59,7 @@ export function App() {
   //   dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
   //   navigate("/wallet");
   // }, [searchParams, dispatch, navigate]);
-
+  
   return (
     <ThemeProvider theme={themeMode}>
       <Routes>
