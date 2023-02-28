@@ -1,3 +1,4 @@
+@import '../../sass/mixin';
 .report {
   color: var(--primary-text-color);
   border-color: transparent;
@@ -106,5 +107,31 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+  }
+}
+
+.wrapPagination {
+  position: relative;
+  left: 9px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+
+  @include mq(tab) {
+    left: 0px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.goBack {
+  position: absolute;
+  top: 16px;
+  left: 0px;
+
+  @include mq(tab) {
+    position: relative;
+    top: 0px;
+    display: flex;
   }
 }

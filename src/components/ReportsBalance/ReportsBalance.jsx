@@ -13,7 +13,7 @@ const ReportsBalance = () => {
 
   return (
     <section className={s.section}>
-      {/* {!isReportsPage && <LinkReports location={location} />} */}
+      {!isReportsPage && <LinkReports location={location} />}
       {isReportsPage && (
         <div className={s.wrapPagination}>
           <Pagination />
@@ -21,11 +21,11 @@ const ReportsBalance = () => {
        )} 
       <Balance isReportsPage={isReportsPage} />
 
-      {/* {isReportsPage && ( */}
+      {isReportsPage && (
         <div className={s.goBack}>
           <GooBack title={!mob && 'Main page'} isReportsPage={isReportsPage} />{' '}
         </div>
-      {/* )} */}
+       )}
     </section>
   );
 };
