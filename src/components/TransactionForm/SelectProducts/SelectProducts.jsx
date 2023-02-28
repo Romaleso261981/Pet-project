@@ -1,8 +1,5 @@
-import { useState } from 'react';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { Field } from 'formik';
 import styled from "./SelectProduct.module.scss";
 
 const productCategory = [

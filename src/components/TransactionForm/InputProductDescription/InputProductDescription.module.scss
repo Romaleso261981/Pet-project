@@ -3,10 +3,10 @@
     width: 280px;
     height: 44px;
     border-radius: 12px 12px 0px 0px;
-    border-top: 2px solid white; 
-    border-bottom: 1px solid white; 
-    border-right: 2px solid white; 
-    border-left: 2px solid white;
+    border-top: 2px solid var(--input-border); 
+    border-bottom: 1px solid var(--input-border); 
+    border-right: 2px solid var(--input-border); 
+    border-left: 2px solid var(--input-border);
 
     & fieldset { 
         border: none;
@@ -15,10 +15,7 @@
     @media screen and  (min-width: 768px) {
         width: 185px;
         border-radius: 12px 0 0 0;
-        border-top: 2px solid #F5F6FB; 
-        border-bottom: 2px solid #F5F6FB; 
-        border-right: 2px solid #F5F6FB; 
-        border-left: 2px solid #F5F6FB;
+        border-bottom: 2px solid var(--input-border); 
     }
 
     @media screen and  (min-width: 1280px) {
@@ -29,13 +26,21 @@
 .product_description {
     width: 280px;
     justify-content: center;
+    color: var(--placeholder-text);
     
     & input {
-        color: #C7CCDC;
         box-sizing: border-box;
         height: 44px;
 
         padding-left: 20px;
         font-size: 12px;
+    }
+
+    @media screen and  (min-width: 768px) {
+        width: 185px;
+    }
+
+    @media screen and  (min-width: 1280px) {
+        width: 290px;
     }
 }

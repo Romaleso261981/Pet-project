@@ -11,13 +11,13 @@ export default function TableSummary({transaction}) {
   const [summaryList, setSummaryList] = useState([]);
   
   useEffect(() => {
-    async function getSummaryList({transaction}) {
+    async function getSummaryList({typeTransaction}) {
         try {
           const data = await summaryTransaction({transaction});
           const filterData = data.map(({_id, totalAmount}) => ({_id, totalAmount}));
           if (filterData.length > 6) filterData.slice(0, 5);
           
-          filterData.map(({_id, totalAmount}) => {
+          const necessaryData = filterData.map(({_id, totalAmount}) => {
             const forMonth = {}
 
             const date = new Date();
@@ -26,14 +26,15 @@ export default function TableSummary({transaction}) {
 
             forMonth.month = month;
             forMonth.totalAmount = totalAmount;
-            setSummaryList([...summaryList, forMonth]);
+            return forMonth
           })
+          setSummaryList(necessaryData);
         } catch (error) {
           console.log(error);
         }
     }
     getSummaryList({transaction})
-  },[]);
+  }, [transaction]);
 
   return (
     <div className={styled.wrapper}>

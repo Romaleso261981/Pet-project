@@ -18,13 +18,13 @@
 
 .table{
     border-radius: 22px;
-    background-color: #F5F6FB;
+    background-color: var(--list-accent);
     border-collapse: separate;
     border-spacing: 5px;
     text-transform: uppercase;
     & tr {
         height: 40px;
-        border: 2px solid white;
+        border: 2px solid var(--white-color);
         border-collapse: collapse;
     }
 }
