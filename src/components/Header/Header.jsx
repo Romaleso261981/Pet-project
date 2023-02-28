@@ -91,7 +91,7 @@ export function Header() {
               </Exit>
             </StyledContainer>
           ) : (
-            <Exit type="button" onClick={register}>
+            <Exit type="button" onClick={(e)=>{console.log(e)}}>
               {lang === "en" ? (
                 <ExitText>register</ExitText>
               ) : (
