@@ -2,7 +2,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import styled from "./SelectProduct.module.scss";
 
-const productCategory = [
+const productCategoryToExpenses = [
     'Transport',
     'Products',
     'Alcohol',
@@ -15,7 +15,13 @@ const productCategory = [
     'Other',
 ];
 
-export function SelectProducts ({ form, field }) {
+const productCategoryToIncome = [
+    'Salary',
+    'Add. Income',
+];
+
+
+export function SelectProducts ({ form, field, transaction }) {
     const { name, value } = field;
     const { setFieldValue } = form;
   
@@ -37,7 +43,18 @@ export function SelectProducts ({ form, field }) {
                 setFieldValue(name, e.target.value);
             }}
         >
-            {productCategory.map((name) => (
+            {(transaction == 'expenses') ?
+            productCategoryToExpenses.map((name) => (
+                <MenuItem
+                    sx={{fontSize: '12px', bgcolor: '#F5F6FB', color: '#C7CCDC'}}
+                    key={name}
+                    value={name}
+                >
+                    {name}
+                </MenuItem>
+            ))
+            :
+            productCategoryToIncome.map((name) => (
                 <MenuItem
                     sx={{fontSize: '12px', bgcolor: '#F5F6FB', color: '#C7CCDC'}}
                     key={name}

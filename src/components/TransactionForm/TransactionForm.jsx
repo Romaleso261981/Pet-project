@@ -31,7 +31,7 @@ export function TransactionForm({transaction, date}) {
                                     <CurrentDate date={date}></CurrentDate>
                                     <div className={styled.product}>
                                         <Field name="productDescription" component={InputProductDescription} />
-                                        <Field name="selectProduct" component={SelectProducts} />
+                                        <Field name="selectProduct" component={SelectProducts} transaction={transaction}/>
                                     </div>
                                     <Field name="culc" component={Calc} />
                                 </div>
