@@ -6,7 +6,9 @@ export const balanceSlice = createSlice({
   initialState: { balance: "00.00", isLoading: false, error: null },
   extraReducers: (builder) =>
     builder
-      .addCase(addBalanceByUser.pending, (state, _) => (state.isLoading = true))
+      .addCase(addBalanceByUser.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(addBalanceByUser.fulfilled, (state, action) => {
         (state.isLoading = false),
           (state.balance = action.payload),
@@ -16,3 +18,5 @@ export const balanceSlice = createSlice({
         (state.isLoading = false), (state.error = action.payload);
       }),
 });
+
+export default balanceSlice.reducer;
