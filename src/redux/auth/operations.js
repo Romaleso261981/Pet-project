@@ -8,6 +8,7 @@ import { API, authToken } from "../../API";
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await API.post("/auth/users/signup", credentials);
+    console.log(data);
     return data;
   } catch (error) {
     toast.error("Server error, please try again later");
@@ -19,7 +20,6 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
     const { data } = await API.post("/auth/users/login", userData);
     authToken.set(data.accessToken);
     const state = thunkAPI.getState();
-    localStorage.setItem("accessToken", data.accessToken);
     localStorage.setItem("refreshToken", data.refreshToken);
     const { lang } = state.language.lang;
     lang === "en"
@@ -93,7 +93,6 @@ const refreshUser = createAsyncThunk(
     }
   }
 );
-
 
 const googleAuth = createAsyncThunk(
   "auth/googleAuth",
