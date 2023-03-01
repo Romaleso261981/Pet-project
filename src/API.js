@@ -13,9 +13,15 @@ const authToken = {
     API.defaults.headers.common.Authorization = '';
   },
 };
+
+// reports*****************************
 const getPeriodTransactions = async date => {
-  return await axios.get(`api/finances/reports?month=${date}&year=${date}`);
+  return await API.get(`api/finances/reports?${date} `);
 };
+
+
+
+
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
