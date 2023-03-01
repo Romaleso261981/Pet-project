@@ -1,4 +1,4 @@
-import API from "../API";
+import {API} from "../API";
 const month = 6;
 const year = 2023;
 

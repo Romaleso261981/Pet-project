@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import API from '../API';
+import {API} from '../API';
 
 // axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
