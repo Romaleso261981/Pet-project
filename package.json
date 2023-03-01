@@ -41,12 +41,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
+    "netlify": "netlify",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy -p",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "deploy": "netlify deploy -p"
   },
   "browserslist": {
     "production": [
@@ -61,22 +60,8 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.35.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-import": "^0.13.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.8.4",
-    "recharts": "^2.1.13"
-  },
-  "lint-staged": {
-    "*{.js,.jsx}": "eslint --cache --fix",
-    "*.{js,css,scss,md}": "prettier --write"
+    "husky": "^4.3.8",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.4.1"
   }
 }
