@@ -54,17 +54,14 @@ export function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    authToken.set(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjhiZDdjNDMzYWRiMTU0ZTRkZmUwYiIsImlhdCI6MTY3NzU5MDMwOCwiZXhwIjoxNjc3Njc2NzA4fQ.Kn7ypCw-cWj8ZrQsrglKNUrdzII0osK3KfyyUVsHbCI"
-    );
-    // const accessToken = searchParams.get("accessToken");
-    // const refreshToken = searchParams.get("refreshToken");
-    // const sid = searchParams.get("sid");
-    // if (!accessToken) return;
-    // dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    // navigate("/wallet");
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+    const sid = searchParams.get('sid');
+    if (!accessToken) return;
+    dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
+    navigate('/wallet');
   }, [searchParams, dispatch, navigate]);
-
+  
   return (
     <ThemeProvider theme={themeMode}>
       <Routes>
