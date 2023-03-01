@@ -7,11 +7,11 @@ import styled from "./TableSummary.module.scss";
 import { useEffect, useState } from 'react';
 import { summaryTransaction } from 'services/transactionAPI';
 
-export default function TableSummary({transaction}) {
+export default function TableSummary({transaction, needUpdate}) {
   const [summaryList, setSummaryList] = useState([]);
   
   useEffect(() => {
-    async function getSummaryList({typeTransaction}) {
+    async function getSummaryList({transaction}) {
         try {
           const data = await summaryTransaction({transaction});
           const filterData = data.map(({_id, totalAmount}) => ({_id, totalAmount}));
@@ -34,7 +34,7 @@ export default function TableSummary({transaction}) {
         }
     }
     getSummaryList({transaction})
-  }, [transaction]);
+  }, [transaction, needUpdate]);
 
   return (
     <div className={styled.wrapper}>

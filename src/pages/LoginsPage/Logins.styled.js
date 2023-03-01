@@ -28,7 +28,6 @@ export const ContentWrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    /* justify-content: space-between; */
     align-items: center;
     gap: 157px;
   }

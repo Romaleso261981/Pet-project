@@ -37,7 +37,6 @@ export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
   const token = useSelector(selectAccessToken);
-  console.log(token);
   // const token = null;
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
@@ -55,17 +54,14 @@ export function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    authToken.set(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjhiZDdjNDMzYWRiMTU0ZTRkZmUwYiIsImlhdCI6MTY3NzU5MDMwOCwiZXhwIjoxNjc3Njc2NzA4fQ.Kn7ypCw-cWj8ZrQsrglKNUrdzII0osK3KfyyUVsHbCI"
-    );
-    // const accessToken = searchParams.get("accessToken");
-    // const refreshToken = searchParams.get("refreshToken");
-    // const sid = searchParams.get("sid");
-    // if (!accessToken) return;
-    // dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    // navigate("/wallet");
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+    const sid = searchParams.get('sid');
+    if (!accessToken) return;
+    dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
+    navigate('/wallet');
   }, [searchParams, dispatch, navigate]);
-
+  
   return (
     <ThemeProvider theme={themeMode}>
       <Routes>
@@ -87,14 +83,14 @@ export function App() {
               </Suspense>
             }
           />
-          <Route
+          {/* <Route
             path="/register"
             element={
               <Suspense fallback={<Loader />}>
                 <Register />
               </Suspense>
             }
-          />
+          /> */}
           <Route
             path="/wallet"
             element={

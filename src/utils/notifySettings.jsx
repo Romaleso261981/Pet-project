@@ -1,6 +1,6 @@
 export const notifySettings = {
   width: "320px",
-  position: "right-top",
+  position: "center-top",
   distance: "10px",
   opacity: 1,
   fontSize: "14px",

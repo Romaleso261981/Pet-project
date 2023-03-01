@@ -1,5 +1,3 @@
-// import { Transaction } from "components/Transaction/Transaction";
-// import TableTransaction from "components/TableTransaction/TableTransaction";
 import Balance from "components/Balance/Balance";
 import { notifySettings } from "../../utils/notifySettings";
 import { useEffect } from "react";
@@ -35,11 +33,7 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
         <Balance />
         <div className={styled.wrapper}>
           <div className={styled.transaction_all}>
-            <div className={styled.transaction}>
-              <Transactions />
-              {/* <TableTransaction /> */}
-            </div>
-            {/* <TableSummary className={styled.transaction__summary} /> */}
+            <Transactions />
           </div>
         </div>
       </div>

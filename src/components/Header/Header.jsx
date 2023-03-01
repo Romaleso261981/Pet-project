@@ -18,10 +18,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from '../../hooks/useAuth';
 import { selectAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
-import rsvg from "../../assets/icons/symbol-defs.svg";
 import { Popup } from "components/Popup/Popup";
 import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
 import { LangSwitcher } from "components/LanguageBtn/LangBtn";
@@ -29,33 +29,27 @@ import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const { user } = useAuth();
-  const user = {
-    email: "leso81@gmail.com",
-  };
+  const { user } = useAuth();
   const token = useSelector(selectAccessToken);
+  
   const [popup, setPopup] = useState({
     isShow: false,
-    title: "",
+    title: '',
     action: null,
   });
 
-  const lang = useSelector(getLang);
+  const lang = useSelector(getLang).lang;
 
   const handleExit = () => {
     setPopup({
       isShow: true,
       title:
-        lang === "en"
-          ? "Do you really want to leave?"
-          : "Ви дійсно бажаєте вийти?",
+        lang === 'en'
+          ? 'Do you really want to leave?'
+          : 'Ви дійсно бажаєте вийти?',
       action: () => dispatch(logOut()),
     });
-    document.querySelector("#modal").classList.add("js-action");
-  };
-  const register = () => {
-    navigate("/register");
+    document.querySelector('#modal').classList.add('js-action');
   };
 
   return (
@@ -69,8 +63,8 @@ export function Header() {
         </LogoContainer>
         <ControlsWrapper>
           <ThemeSwitcher />
-          {/* <LangSwitcher /> */}
-          {token ? (
+          <LangSwitcher />
+          {token && (
             <StyledContainer>
               <Img>
                 <Avatar>
@@ -80,7 +74,7 @@ export function Header() {
               <Name>{user.email}</Name>
               <Line />
               <Exit type="button" onClick={handleExit}>
-                {lang === "en" ? (
+                {lang === 'en' ? (
                   <ExitText>Exit</ExitText>
                 ) : (
                   <ExitText>Вийти</ExitText>
@@ -90,17 +84,6 @@ export function Header() {
                 </ExitSvg>
               </Exit>
             </StyledContainer>
-          ) : (
-            <Exit type="button" onClick={(e)=>{console.log(e)}}>
-              {lang === "en" ? (
-                <ExitText>register</ExitText>
-              ) : (
-                <RegisterText>Реєстрація</RegisterText>
-              )}
-              <ExitSvg>
-                <use href={`${rsvg}#icon-registered`}></use>
-              </ExitSvg>
-            </Exit>
           )}
         </ControlsWrapper>
       </StyledHeader>

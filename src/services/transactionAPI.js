@@ -9,7 +9,7 @@ export const fetchData = async ({ transaction, date }) => {
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await axios.get('/', { params: bodyRequest });
+    const response = await axios.get('/finances/', { params: bodyRequest });
     return response.data;
   } catch (error) {
     console.log(error);
@@ -32,8 +32,8 @@ export const addTransaction = async ({
       month: date.mm,
       year: date.yyyy,
     };
+
     const response = await axios.post(`/${transaction}`, bodyRequest);
-    console.log(response);
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -55,7 +55,7 @@ export const summaryTransaction = async ({ transaction }) => {
       type: transaction,
       countmonth: 6,
     };
-    const response = await axios.get('/summary', { params: bodyRequest });
+    const response = await axios.get('/finances/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
     console.log(error);

@@ -4,3 +4,6 @@ export const selectRefreshToken = (state) => state.auth.refreshToken;
 export const selectAccessToken = (state) => state.auth.accessToken;
 export const getSid = (state) => state.auth.sid;
 export const getEmail = (state) => state.auth.user.email;
+export const getLoadingStatus = (state) => state.auth.user.email;
+export const getLogStatus = (state) => state.auth.user.email;
+export const getUser = (state) => state.auth.user;
