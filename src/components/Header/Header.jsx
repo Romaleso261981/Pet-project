@@ -18,6 +18,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from '../../hooks/useAuth';
 import { selectAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
@@ -29,11 +30,9 @@ import { getLang } from "redux/lang/langSelectors";
 
 export function Header() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const { user } = useAuth();
-  const user = {
-    email: "leso81@gmail.com",
-  };
+  // const navigate = useNavigate();
+  const { user } = useAuth();
+  console.log(user);
   const token = useSelector(selectAccessToken);
   const [popup, setPopup] = useState({
     isShow: false,
@@ -54,9 +53,9 @@ export function Header() {
     });
     document.querySelector("#modal").classList.add("js-action");
   };
-  const register = () => {
-    navigate("/register");
-  };
+  // const register = () => {
+  //   navigate("/register");
+  // };
 
   return (
     <>
@@ -91,7 +90,12 @@ export function Header() {
               </Exit>
             </StyledContainer>
           ) : (
-            <Exit type="button" onClick={(e)=>{console.log(e)}}>
+            <Exit
+              type="button"
+              onClick={(e) => {
+                console.log(e);
+              }}
+            >
               {lang === "en" ? (
                 <ExitText>register</ExitText>
               ) : (
