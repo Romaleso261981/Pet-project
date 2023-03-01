@@ -86,14 +86,14 @@ export function App() {
               </Suspense>
             }
           />
-          <Route
+          {/* <Route
             path="/register"
             element={
               <Suspense fallback={<Loader />}>
                 <Register />
               </Suspense>
             }
-          />
+          /> */}
           <Route
             path="/wallet"
             element={

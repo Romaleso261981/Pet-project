@@ -15,7 +15,7 @@ export const Container = styled.main`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 117px 91px 125px 91px;
+    padding: 117px 91px 258px 91px;
   }
 `;
 
@@ -28,6 +28,7 @@ export const ContentWrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
+    /* justify-content: space-between; */
     align-items: center;
     gap: 157px;
   }

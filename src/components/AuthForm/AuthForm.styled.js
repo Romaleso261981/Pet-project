@@ -7,7 +7,7 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${(p) => p.theme.colors.PrimaryWhite};
+  background-color: ${p => p.theme.colors.PrimaryWhite};
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 30px;
   padding: 40px 20px;
@@ -32,7 +32,7 @@ export const Hint = styled.p`
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: ${(p) => p.theme.colors.TextGray};
+  color: ${p => p.theme.colors.TextGray};
 `;
 
 export const HintLeft = styled.p`
@@ -43,7 +43,7 @@ export const HintLeft = styled.p`
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: ${(p) => p.theme.colors.TextGray};
+  color: ${p => p.theme.colors.TextGray};
   text-align: start;
 `;
 
@@ -81,20 +81,20 @@ export const Input = styled.input`
   padding: 17px 18px;
   width: 100%;
   font-size: 14px;
-  font-family: "Roboto";
-  background-color: ${(p) => p.theme.colors.SecondGray};
+  font-family: 'Roboto';
+  background-color: ${p => p.theme.colors.SecondGray};
   border-radius: 30px;
   border: none;
-  color: ${(p) => p.theme.colors.authFormInputText};
+  color: ${p => p.theme.colors.authFormInputText};
   margin-bottom: 4px;
 
   &::placeholder {
-    color: ${(p) => p.theme.colors.placeholderGrey};
+    color: ${p => p.theme.colors.placeholderGrey};
   }
 
   &:focus {
-    color: ${(p) => p.theme.colors.authFormInputText};
-    outline: 1px solid ${(p) => p.theme.colors.PrimaryOrange};
+    color: ${p => p.theme.colors.authFormInputText};
+    outline: 1px solid ${p => p.theme.colors.PrimaryOrange};
     -moz-outline-radius: 30px;
   }
 `;
@@ -106,7 +106,6 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   justify-content: stretch;
   align-items: flex-start;
-  /* gap: 12px; */
 `;
 
 export const Label = styled.label`
@@ -115,9 +114,8 @@ export const Label = styled.label`
   align-items: center;
   font-weight: 400;
   font-size: 10px;
-  /* line-height: 1.15; */
   letter-spacing: 0.04em;
-  color: ${(p) => p.theme.colors.PrimaryBlack};
+  color: ${p => p.theme.colors.PrimaryBlack};
   margin-bottom: 12px;
 
   @media screen and (min-width: 768px) {
@@ -130,7 +128,7 @@ export const ErrorText = styled.span`
   font-size: 10px;
   line-height: 1.16;
   letter-spacing: 0.04em;
-  color: ${(p) => p.theme.colors.inputErrorRed};
+  color: ${p => p.theme.colors.inputErrorRed};
 `;
 
 export const GoogleLoginLink = styled.a`
@@ -148,24 +146,23 @@ export const GoogleLoginLink = styled.a`
   line-height: 1.17;
   letter-spacing: 0.02em;
   transition: 350ms ease-in-out;
-  color: ${(p) => p.theme.colors.PrimaryBlack};
-  background-color: ${(p) => p.theme.colors.PrimaryGray};
+  color: ${p => p.theme.colors.PrimaryBlack};
+  background-color: ${p => p.theme.colors.PrimaryGray};
   padding: 10px 16px;
   border-radius: 26px;
-  /* border: none; */
-  border: 2px solid ${(props) => props.theme.colors.btnsBorder};
+  border: 2px solid ${props => props.theme.colors.btnsBorder};
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
   cursor: pointer;
 
   &:hover,
   &:focus {
     color: white;
-    background-color: ${(p) => p.theme.colors.PrimaryOrange};
+    background-color: ${p => p.theme.colors.PrimaryOrange};
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
   }
 
   &:active {
-    background-color: ${(p) => p.theme.colors.PrimaryOrange};
+    background-color: ${p => p.theme.colors.PrimaryOrange};
     color: white;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
   }
@@ -182,8 +179,6 @@ export const GoogleLoginLink = styled.a`
 `;
 
 export const PasswordBtn = styled.button`
-  /* width: 16px;
-  height: 16px; */
   position: absolute;
   right: 0;
   top: 0;
@@ -191,10 +186,6 @@ export const PasswordBtn = styled.button`
   border: none;
   background-color: transparent;
 
-  @media screen and (min-width: 768px) {
-    /* width: 20px;
-    height: 20px; */
-  }
 `;
 export const PasswordIcon = styled.img`
   width: 16px;
