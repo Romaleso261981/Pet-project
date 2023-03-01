@@ -31,6 +31,7 @@ export function Header() {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const token = useSelector(selectAccessToken);
+  
   const [popup, setPopup] = useState({
     isShow: false,
     title: '',
