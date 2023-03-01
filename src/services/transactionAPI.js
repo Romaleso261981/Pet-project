@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
+// axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
 export const fetchData = async ({ transaction, date }) => {
   try {
