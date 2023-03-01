@@ -9,7 +9,6 @@
   align-items: flex-end;
   justify-content: center;
   text-decoration: none;
-
   @media screen and (min-width: 768px) {
     margin-right: 37px;
     margin-left: auto;
@@ -35,7 +34,6 @@
   line-height: 1.16;
   text-align: center;
   margin-bottom: 20px;
-
   @media screen and (min-width: 768px) {
     margin-bottom: -20px;
     margin-right: 21px;
@@ -59,21 +57,18 @@
   color: var(--primary-text-color);
   text-transform: uppercase;
   border-color: transparent;
-
   @media screen and (min-width: 768px) {
   }
 }
 
 .flex {
   text-align: center;
-
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: baseline;
   }
-
   @media screen and (min-width: 1280px) {
-    // margin-left: 473px;
+    margin-left: 473px;
   }
 }
 
@@ -84,7 +79,6 @@
   margin-left: 39px;
   margin-bottom: 150px;
   justify-content: center;
-
   @media screen and (min-width: 768px) {
     justify-content: space-between;
     flex-direction: row;
@@ -94,7 +88,6 @@
     margin-right: 32px;
     margin-bottom: 60px;
   }
-
   @media screen and (min-width: 1280px) {
     margin-right: 96px;
   }

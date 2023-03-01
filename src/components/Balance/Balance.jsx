@@ -15,7 +15,7 @@ const Balance = () => {
   const arr = useSelector(getData);
   const location = useLocation();
   console.log(arr);
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const walletPage = location.pathname === "/reports";
   // const walletPage = location.pathname === "/wallet";
 
