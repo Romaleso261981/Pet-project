@@ -27,40 +27,41 @@ import hendlerError from 'redux/error/handleError';
 //     }
 //   },
 // // );
-// export const getPeriod = createAsyncThunk(
-//   'reports/getPeriodTransactions',
-//   async (date, { rejectWithValue, getState }) => {
-//     try {
-//       const { data } = await getPeriodTransactions(date);
-//       return data;
-//     } catch (error) {
-//       const state = getState();
-//       const { lang } = state.language.lang;
-//       lang === 'en'
-//         ? Notiflix.Notify.warning(
-//           `Server error (during fetching categories): ${error.message}`,
-//           notifySettings,
-//         )
-//         : Notiflix.Notify.warning(
-//           `Помилка сервера: ${error.message}`,
-//           notifySettings,
-//         );
-//       return rejectWithValue({ error });
-//     }
-//   }
-// );
 
 export const getPeriod = createAsyncThunk(
   'reports/getPeriodTransactions',
-  async (date, { rejectWithValue, dispatch }) => {
+  async (date, { rejectWithValue, getState, }) => {
     try {
       const { data } = await getPeriodTransactions(date);
       return data;
-    } catch (err) {
-      setTimeout(() => {
-        dispatch(hendlerError({ err, cb: getPeriod }));
-      }, 0);
-      return rejectWithValue(err);
+    } catch (error) {
+      const state = getState();
+      const { lang } = state.language.lang;
+      lang === 'en'
+        ? Notiflix.Notify.warning(
+          `Server error (during fetching categories): ${error.message}`,
+          notifySettings,
+        )
+        : Notiflix.Notify.warning(
+          `Помилка сервера: ${error.message}`,
+          notifySettings,
+        );
+      return rejectWithValue({ error });
     }
   }
 );
+
+// export const getPeriod = createAsyncThunk(
+//   'reports/getPeriodTransactions',
+//   async (date, { rejectWithValue, dispatch }) => {
+//     try {
+//       const { data } = await getPeriodTransactions(date);
+//       return data;
+//     } catch (err) {
+//       setTimeout(() => {
+//         dispatch(hendlerError({ err, cb: getPeriod }));
+//       }, 0);
+//       return rejectWithValue(err);
+//     }
+//   }
+// );

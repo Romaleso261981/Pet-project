@@ -14,7 +14,7 @@ const authToken = {
   },
 };
 const getPeriodTransactions = async date => {
-  return await axios.get(`api/finances/reports?month=2&year=2023`);
+  return await axios.get(`api/finances/reports?month=${date}&year=${date}`);
 };
 API.interceptors.response.use(
   (response) => response,
