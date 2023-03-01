@@ -9,13 +9,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "import": [
-    "error",
-    {
-      "groups": [["builtin", "external"]],
-      "newlines-between": "always"
-    }
-  ],
+  "import": [],
   "plugins": ["react", "react-hooks", "jsx-a11y"],
   "rules": {
     "semi": "error",
