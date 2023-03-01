@@ -11,8 +11,9 @@ import { deleteTransaction, fetchData } from "services/transactionAPI";
 
 const headers = ["date", "description", "category", "sum", ""];
 
-export function TableTransaction({ transaction, date }) {
+export function TableTransaction({ transaction, date, needUpdate, updateData }) {
   const [transactionList, setTransactionList] = useState([]);
+  const [updateList, setUpdateList] = useState(0);
   
   useEffect(() => {
     async function getTransactionForMonth({ transaction, date }) {
@@ -33,10 +34,12 @@ export function TableTransaction({ transaction, date }) {
       }
     }
     getTransactionForMonth({transaction, date})
-  }, [transaction]);
-
+  }, [transaction, needUpdate, updateList]);
+  
   async function onDelete(_id) {
     await deleteTransaction(_id);
+    updateData(true)
+    setUpdateList(updateList^1);
   }
 
   return (

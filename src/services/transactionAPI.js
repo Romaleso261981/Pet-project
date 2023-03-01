@@ -33,8 +33,8 @@ export const addTransaction = async ({
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await axios.post(`/finances/${transaction}`, bodyRequest);
-    console.log(response);
+
+    const response = await axios.post(`/${transaction}`, bodyRequest);
     return response.data.results;
   } catch (error) {
     console.log(error);
