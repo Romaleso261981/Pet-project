@@ -54,14 +54,14 @@ export function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const accessToken = searchParams.get('accessToken');
-    const refreshToken = searchParams.get('refreshToken');
-    const sid = searchParams.get('sid');
+    const accessToken = searchParams.get("accessToken");
+    const refreshToken = searchParams.get("refreshToken");
+    const sid = searchParams.get("sid");
     if (!accessToken) return;
     dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    navigate('/wallet');
+    navigate("/wallet");
   }, [searchParams, dispatch, navigate]);
-  
+
   return (
     <ThemeProvider theme={themeMode}>
       <Routes>
