@@ -1,7 +1,6 @@
-// import axios from 'axios';
-import {API} from '../API';
+import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
+axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
 export const fetchData = async ({ transaction, date }) => {
   try {
@@ -10,7 +9,7 @@ export const fetchData = async ({ transaction, date }) => {
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await API.get('/finances/', { params: bodyRequest });
+    const response = await axios.get('/finances/', { params: bodyRequest });
     return response.data;
   } catch (error) {
     console.log(error);
