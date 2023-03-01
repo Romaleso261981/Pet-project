@@ -33,7 +33,6 @@ export const addTransaction = async ({
       year: date.yyyy,
     };
     const response = await axios.post(`/${transaction}`, bodyRequest);
-    console.log(response);
     return response.data.results;
   } catch (error) {
     console.log(error);

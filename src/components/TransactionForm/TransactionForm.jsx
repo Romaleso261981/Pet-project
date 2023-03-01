@@ -3,23 +3,22 @@ import { InputProductDescription } from './InputProductDescription/InputProductD
 import { SelectProducts } from './SelectProducts/SelectProducts';
 import { Calc } from './Calc/Calc';
 import { ButtonIC } from './Button/Button';
-import { GoBack } from "./GoBack/GoBack";
 import { CurrentDate } from "./CurrentDate/CurrentDate";
 import { addTransaction } from "services/transactionAPI";
 import styled from "./TransactionForm.module.scss";
 
-export function TransactionForm({transaction, date}) {
+export function TransactionForm({transaction, date, updateData}) {
     
     const handleSubmit = async (values, {resetForm}) => {
         values.transaction = transaction;
         await addTransaction(values);
+        updateData(true);
         resetForm();
     };
 
     return (
         <>
             <div>
-                {/* <GoBack /> */}
                 <div className={styled.wrapper}>
                     <Formik
                         onSubmit={handleSubmit}

@@ -7,6 +7,7 @@ import styled from "./Transactions.module.scss";
 
 export function Transactions() {
   const [typeTransaction, setTypeTransaction] = useState('expenses');
+  const [needUpdate, setNeedUpdate] = useState(0);
 
   const today = new Date();
   const yyyy = today.getFullYear();
@@ -21,15 +22,32 @@ export function Transactions() {
     setTypeTransaction(id);
   }
 
+  function updateData (value) {
+    if (value) setNeedUpdate(needUpdate^1)
+  }
+
   return (
     <>
       <TypeTransaction onClick={handleClick}/>
       <div className={styled.transaction_all}>
         <div className={styled.transaction}>
-          <TransactionForm transaction={typeTransaction} date={date} />
-          <TableTransaction transaction={typeTransaction} date={date} />
+          <TransactionForm 
+            transaction={typeTransaction}
+            date={date}
+            updateData={updateData}
+          />
+          <TableTransaction
+            transaction={typeTransaction}
+            date={date}
+            updateData={updateData}
+            needUpdate={needUpdate}
+          />
         </div>
-        <TableSummary className={styled.transaction__summary} transaction={typeTransaction}/>
+        <TableSummary 
+          className={styled.transaction__summary} 
+          transaction={typeTransaction}
+          needUpdate={needUpdate}
+        />
       </div>
     </>
   );
