@@ -1,6 +1,6 @@
 .container {
     min-width: 100%;
-    // position: absolute;
+    position: absolute;
     top: 56px;
     justify-content: center;
     padding: 0px 20px 0px 20px;
@@ -20,28 +20,3 @@
             padding: 0px 125px 0px 125px;
         }
         }
-
-.wrapper {
-    // margin: 0 auto;
-    // padding: 86px 20px 105px;
-    // max-width: 360px;
-
-    // @media screen and (min-width: 768px) {
-    //     max-width: 426px;
-    //     padding: 86px 0 0;
-    // }
-
-    // @media screen and (min-width: 1024px) {
-    //     display: flex;
-    //     justify-content: center;
-    //     max-width: 1024px;
-    //     padding: 117px 91px 125px 80px;
-    // }
-
-    // @media screen and (min-width: 1280px) {
-    //     display: flex;
-    //     justify-content: center;
-    //     max-width: 1280px;
-    //     padding: 117px 0px 125px 0px;
-    // }
-}

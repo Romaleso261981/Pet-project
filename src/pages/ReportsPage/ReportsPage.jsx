@@ -10,7 +10,7 @@ const ReportsPage = () => {
     <>
       <div className={styled.container}>
         <ReportsBalance />
-        <div className={styled.wrapper}>
+        <div>
           <Reports />
         </div>
         

@@ -13,7 +13,9 @@ const authToken = {
     API.defaults.headers.common.Authorization = '';
   },
 };
-
+const getPeriodTransactions = async date => {
+  return await axios.get(`api/finances/reports?month=2&year=2023`);
+};
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -31,4 +33,4 @@ API.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { API, authToken };
+export { API, authToken, getPeriodTransactions };
