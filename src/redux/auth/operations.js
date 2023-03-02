@@ -7,6 +7,7 @@ import { API, authToken } from "../../API";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
+    console.log("Register", credentials);
     const { data } = await API.post("/auth/users/signup", credentials);
     return data;
   } catch (error) {

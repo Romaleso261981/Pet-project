@@ -70,7 +70,7 @@ export const AuthForm = ({
       dispatch(logIn({ email, password }));
     } else {
       dispatch(Register({ email, password }));
-      navigate('/registri');
+      navigate('/');
     }
 
     resetForm();
