@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { notifySettings } from '../../utils/notifySettings';
 import { getPeriodTransactions } from "../../API";
-import hendlerError from 'redux/error/handleError';
+import hendlerError from '../error/handleError';
 // export const getPeriod = createAsyncThunk(
 //   'transactions/ADD',
 
