@@ -27,8 +27,10 @@ API.interceptors.response.use(
   async (error) => {
     if (error.response.status == 401) {
       const refreshToken = localStorage.getItem('refreshToken');
+      console.log(refreshToken);
       try {
-        const { data } = await API.post('auth/users/refresh', { refreshToken });
+        const { data } = await API.post('/auth/users/resend', { refreshToken });
+        console.log(data);
         authToken.set(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
         return API(error.config);
