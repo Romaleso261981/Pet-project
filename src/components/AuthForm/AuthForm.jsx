@@ -25,7 +25,7 @@ import {
   PasswordBtn,
   PasswordIcon,
 } from './AuthForm.styled';
-import { getLang } from 'redux/lang/langSelectors';
+import { getLang } from '../../redux/lang/langSelectors';
 
 export const AuthForm = ({
   formTitle,

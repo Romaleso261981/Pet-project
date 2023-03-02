@@ -1,11 +1,11 @@
-import Balance from "components/Balance/Balance";
+import Balance from "../../components/Balance/Balance";
 import { notifySettings } from "../../utils/notifySettings";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelectors";
 import {userBalance} from "../../redux/balance/selectorBalance";
 import styled from "./Wallet.module.scss";
-import { Transactions } from "components/Transactions/Transactions";
+import { Transactions } from "../../components/Transactions/Transactions";
 
 const Wallet = ({ isHintShown, setIsHintShown }) => {
   const savedBalance = Number(useSelector(userBalance)).toFixed(2);

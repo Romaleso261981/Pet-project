@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import { BackDrop, Close, Modal, Title, WrapBtn } from "./Popup.styled";
-import { Btn } from "components/Buttons/Btn";
+import { Btn } from "../Buttons/Btn";
 import sprite from "../../assets/image/icons_sprite.svg";
-import { getLang } from "redux/lang/langSelectors";
+import { getLang } from "../../redux/lang/langSelectors";
 import { useSelector } from "react-redux";
 
 export const Popup = ({ popup, setPopup }) => {

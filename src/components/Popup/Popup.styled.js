@@ -1,4 +1,4 @@
-import { BtnElement } from 'components/Buttons/Btn.styled';
+import { BtnElement } from '../Buttons/Btn.styled';
 import styled, { keyframes } from 'styled-components';
 
 export const WrapBtn = styled.div`

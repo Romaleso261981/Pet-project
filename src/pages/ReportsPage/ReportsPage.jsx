@@ -1,5 +1,5 @@
-import Reports from "components/Reports/Reports";
-import ReportsBalance from "components/ReportsBalance/ReportsBalance";
+import Reports from "../../components/Reports/Reports";
+import ReportsBalance from "../../components/ReportsBalance/ReportsBalance";
 import styled from "./ReportsPage.module.scss";
 
 
