@@ -41,14 +41,14 @@ export function App() {
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     setIsHintShown(false);
-  //     return;
-  //   }
-  //   dispatch(refreshUser());
-  //   // eslint-disable-next-line
-  // }, [dispatch]);
+  useEffect(() => {
+    if (!token) {
+      setIsHintShown(false);
+      return;
+    }
+    dispatch(refreshUser());
+    // eslint-disable-next-line
+  }, [dispatch]);
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();

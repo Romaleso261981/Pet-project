@@ -70,10 +70,11 @@ const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const state = getState();
-      const { token } = state.auth;
-      setToken(token);
-      const { data } = await API.get("/users/current");
+      console.log();
+      const refreshToken = localStorage.getItem("refreshToken");
+      const { data } = await API.post("/auth/users/refresh", { refreshToken });
+      authToken.set(data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
       return data;
     } catch ({ response }) {
       const { status, data } = response;
