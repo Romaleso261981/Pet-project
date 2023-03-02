@@ -1,6 +1,7 @@
-import axios from 'axios';
+// import axios from 'axios';
+import { API } from "../API";
 
-axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
+// axios.defaults.baseURL = 'https://back.kapusta.click/api/finances';
 
 export const fetchData = async ({ transaction, date }) => {
   try {
@@ -9,7 +10,7 @@ export const fetchData = async ({ transaction, date }) => {
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await axios.get('/finances/', { params: bodyRequest });
+    const response = await API.get('/api/finances/', { params: bodyRequest });
     return response.data;
   } catch (error) {
     console.log(error);
@@ -33,7 +34,7 @@ export const addTransaction = async ({
       year: date.yyyy,
     };
 
-    const response = await axios.post(`/${transaction}`, bodyRequest);
+    const response = await API.post(`/api/finances/${transaction}`, bodyRequest);
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -42,7 +43,7 @@ export const addTransaction = async ({
 
 export const deleteTransaction = async (_id) => {
   try {
-    const response = await axios.delete(`/${_id}`);
+    const response = await API.delete(`/api/finances/${_id}`);
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -55,7 +56,7 @@ export const summaryTransaction = async ({ transaction }) => {
       type: transaction,
       countmonth: 6,
     };
-    const response = await axios.get('/finances/summary', { params: bodyRequest });
+    const response = await API.get('/api/finances/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
     console.log(error);
