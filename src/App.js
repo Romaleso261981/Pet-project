@@ -20,7 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
-const Register = lazy(() => import("./pages/RegisterPage/Register"));
+// const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));

@@ -8,7 +8,6 @@ import { API, authToken } from "../../API";
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await API.post("/auth/users/signup", credentials);
-    console.log(data);
     return data;
   } catch (error) {
     toast.error("Server error, please try again later");
@@ -21,6 +20,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
     authToken.set(data.accessToken);
     const state = thunkAPI.getState();
     localStorage.setItem("refreshToken", data.refreshToken);
+    localStorage.setItem("accessToken", data.accessToken);
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.success(
@@ -46,6 +46,8 @@ const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
     await API.get("/auth/users/logout");
+    localStorage.setItem("refreshToken", "");
+    localStorage.setItem("accessToken", "");
     const { lang } = state.language.lang;
     lang === "en"
       ? Notiflix.Notify.info(
@@ -70,12 +72,10 @@ const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
     try {
-      console.log();
-      const refreshToken = localStorage.getItem("refreshToken");
-      const { data } = await API.post("/auth/users/refresh", { refreshToken });
-      authToken.set(data.accessToken);
-      localStorage.setItem("refreshToken", data.refreshToken);
-      return data;
+      console.log("refreshUser");
+      const accessToken = localStorage.getItem("refreshToken");
+      authToken.set(accessToken);
+      return accessToken;
     } catch ({ response }) {
       const { status, data } = response;
       const error = {
