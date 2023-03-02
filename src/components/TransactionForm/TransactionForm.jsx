@@ -4,7 +4,7 @@ import { SelectProducts } from './SelectProducts/SelectProducts';
 import { Calc } from './Calc/Calc';
 import { ButtonIC } from './Button/Button';
 import { CurrentDate } from "./CurrentDate/CurrentDate";
-import { addTransaction } from "services/transactionAPI";
+import { addTransaction } from "../../services/transactionAPI";
 import styled from "./TransactionForm.module.scss";
 
 export function TransactionForm({transaction, date, updateData}) {

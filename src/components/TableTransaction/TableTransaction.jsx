@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import { IoTrashOutline } from "react-icons/io5";
 import styled from "./TableTransaction.module.scss";
-import { deleteTransaction, fetchData } from "services/transactionAPI";
+import { deleteTransaction, fetchData } from "../../services/transactionAPI";
 
 const headers = ["date", "description", "category", "sum", ""];
 

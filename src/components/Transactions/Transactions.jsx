@@ -1,7 +1,7 @@
-import { TypeTransaction } from "components/BtnChangeTypeTransaction/TypeTransaction";
-import TableSummary from "components/TableSummary/TableSummary";
-import { TableTransaction } from "components/TableTransaction/TableTransaction";
-import { TransactionForm } from "components/TransactionForm/TransactionForm";
+import { TypeTransaction } from "../../components/BtnChangeTypeTransaction/TypeTransaction";
+import TableSummary from "../../components/TableSummary/TableSummary";
+import { TableTransaction } from "../../components/TableTransaction/TableTransaction";
+import { TransactionForm } from "../../components/TransactionForm/TransactionForm";
 import { useState } from "react";
 import styled from "./Transactions.module.scss";
 

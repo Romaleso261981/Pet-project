@@ -22,10 +22,10 @@ import { useAuth } from '../../hooks/useAuth';
 import { selectAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
-import { Popup } from "components/Popup/Popup";
-import { ThemeSwitcher } from "components/ThemeBtn/ThemeBtn";
-import { LangSwitcher } from "components/LanguageBtn/LangBtn";
-import { getLang } from "redux/lang/langSelectors";
+import { Popup } from "../Popup/Popup";
+import { ThemeSwitcher } from "../ThemeBtn/ThemeBtn";
+import { LangSwitcher } from "../LanguageBtn/LangBtn";
+import { getLang } from "../../redux/lang/langSelectors";
 
 export function Header() {
   const dispatch = useDispatch();

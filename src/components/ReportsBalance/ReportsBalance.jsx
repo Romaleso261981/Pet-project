@@ -2,8 +2,8 @@
 import { useMediaQuery } from 'react-responsive';
 import s from './ReportsBalance.module.scss';
 import Balance from '../Balance/Balance';
-import Pagination from 'components/Pagination/Pagination';
-import GooBack from 'components/GooBack/GooBack';
+import Pagination from '../Pagination/Pagination';
+import GooBack from '../GooBack/GooBack';
 
 const ReportsBalance = () => {
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });

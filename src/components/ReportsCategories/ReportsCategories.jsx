@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './ReportsCategories.module.scss';
 import icon from '../../assets/icons/icon.svg';
-import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
+import ReportsCategoryList from '../../components/ReportsCategoryList/ReportsCategoryList';
 
 export default function ReportsCategories({
   incomes,

@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import styled from "./TableSummary.module.scss";
 import { useEffect, useState } from 'react';
-import { summaryTransaction } from 'services/transactionAPI';
+import { summaryTransaction } from '../../services/transactionAPI';
 
 export default function TableSummary({transaction, needUpdate}) {
   const [summaryList, setSummaryList] = useState([]);

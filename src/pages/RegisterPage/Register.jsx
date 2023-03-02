@@ -1,11 +1,11 @@
 import { Container, ContentWrapper } from './Register.styled';
 
-import { AuthForm } from 'components/AuthForm/AuthForm';
-import { AnimatedCabbagesBg } from 'components/AnimatedBg/AnimatedBg';
-import { AnimatedBottomCabbages } from 'components/AnimatedCabbagesBottom/AnimatedCabbagesBottom';
-import { AuthPageLogo } from 'components/AuthPageLogo/AuthPageLogo';
+import { AuthForm } from '../../components/AuthForm/AuthForm';
+import { AnimatedCabbagesBg } from '../../components/AnimatedBg/AnimatedBg';
+import { AnimatedBottomCabbages } from '../../components/AnimatedCabbagesBottom/AnimatedCabbagesBottom';
+import { AuthPageLogo } from '../../components/AuthPageLogo/AuthPageLogo';
 import { useSelector } from 'react-redux';
-import { getLang } from 'redux/lang/langSelectors';
+import { getLang } from '../../redux/lang/langSelectors';
 
 const RegisterPage = () => {
   const lang = useSelector(getLang).lang;

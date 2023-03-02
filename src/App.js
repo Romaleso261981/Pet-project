@@ -47,7 +47,7 @@ export function App() {
       return;
     }
     dispatch(refreshUser());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [dispatch]);
 
   const [searchParams] = useSearchParams();

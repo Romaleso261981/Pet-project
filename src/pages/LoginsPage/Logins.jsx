@@ -1,10 +1,10 @@
 import { Container, ContentWrapper } from './Logins.styled';
 
-import { AuthForm } from 'components/AuthForm/AuthForm';
-import { AnimatedCabbagesBg } from 'components/AnimatedBg/AnimatedBg';
-import { AnimatedBottomCabbages } from 'components/AnimatedCabbagesBottom/AnimatedCabbagesBottom';
-import { AuthPageLogo } from 'components/AuthPageLogo/AuthPageLogo';
-import { getLang } from 'redux/lang/langSelectors';
+import { AuthForm } from '../../components/AuthForm/AuthForm';
+import { AnimatedCabbagesBg } from '../../components/AnimatedBg/AnimatedBg';
+import { AnimatedBottomCabbages } from '../../components/AnimatedCabbagesBottom/AnimatedCabbagesBottom';
+import { AuthPageLogo } from '../../components/AuthPageLogo/AuthPageLogo';
+import { getLang } from '../../redux/lang/langSelectors';
 import { useSelector } from 'react-redux';
 
 const LoginPage = () => {

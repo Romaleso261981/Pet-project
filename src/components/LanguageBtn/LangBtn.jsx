@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import sprite from "../../assets/image/icons_sprite.svg";
 import { Ball, Checkbox, Label, Switcher, FlagSvg } from "./LangBtn.styled";
-import { setLanguage } from "redux/lang/langSlice";
+import { setLanguage } from "../../redux/lang/langSlice";
 
 export const LangSwitcher = () => {
   const dispatch = useDispatch();
