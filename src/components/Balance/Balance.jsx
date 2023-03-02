@@ -14,8 +14,6 @@ const Balance = () => {
   const currentBalance = useSelector(userBalance);
   const arr = useSelector(getData);
   const location = useLocation();
-  console.log(arr);
-  // console.log(location.pathname);
   const walletPage = location.pathname === "/reports";
   // const walletPage = location.pathname === "/wallet";
 
@@ -29,7 +27,6 @@ const Balance = () => {
   //   dispatch(addBalanceByUser(newBalance));
   // };
   const getUserBalance = () => {
-    console.log("getUserBalance");
     // const newBalance = Number(balance);
     // if (newBalance < 0) {
     //   return alert("Balance should be positive :)");

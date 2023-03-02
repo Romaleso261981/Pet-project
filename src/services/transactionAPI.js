@@ -13,7 +13,7 @@ export const fetchData = async ({ transaction, date }) => {
     const response = await API.get('/api/finances/', { params: bodyRequest });
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -37,7 +37,7 @@ export const addTransaction = async ({
     const response = await API.post(`/api/finances/${transaction}`, bodyRequest);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -46,7 +46,7 @@ export const deleteTransaction = async (_id) => {
     const response = await API.delete(`/api/finances/${_id}`);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -59,6 +59,6 @@ export const summaryTransaction = async ({ transaction }) => {
     const response = await API.get('/api/finances/summary', { params: bodyRequest });
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };

@@ -12,7 +12,6 @@ const addBalanceByUser = createAsyncThunk(
   async (balance, { rejectWithValue }) => {
     try {
       const { data } = await API.put("", { balance });
-      console.log(data);
       return data.userBalance;
     } catch (error) {
       rejectWithValue(error);
