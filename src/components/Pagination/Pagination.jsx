@@ -35,7 +35,7 @@ const Pagination = () => {
 
   const [year, setYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(
-    `month=${nameMonth.id.toString().padStart(2, "")}&year=${year}`
+    `month=${nameMonth.id.toString().padStart(2, "0")}&year=${year}`
   );
 
   const nextMnth = () => {
@@ -57,7 +57,7 @@ const Pagination = () => {
   };
 
   useEffect(() => {
-    setSelectedDate(`month=${nameMonth.id.toString().padStart(2, "")}&year=${year}`);
+    setSelectedDate(`month=${nameMonth.id.toString().padStart(2, "0")}&year=${year}`);
   }, [nameMonth, year]);
   useEffect(() => {
     if (!email) {
