@@ -2,6 +2,7 @@
   "name": "final-project-team5-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Romaleso261981/Final-team-project/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -43,9 +44,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
