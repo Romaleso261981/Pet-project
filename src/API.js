@@ -16,7 +16,7 @@ const authToken = {
 
 // reports*****************************
 const getPeriodTransactions = async date => {
-  return await API.get(`api/finances/reports?${date} `);
+  return await API.get(`api/finances/reports?${date}`);
 };
 
 
