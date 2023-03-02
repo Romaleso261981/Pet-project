@@ -26,7 +26,7 @@ const Pagination = () => {
   const authBalance = useSelector(userBalance);
 
   // const email = "leso81@gmail.com";
-  const email = useSelector(getEmail) || "le@gmail.com";
+  const email = useSelector(getEmail);
   // console.log(email);
 
   const [nameMonth, setNameMonth] = useState(
@@ -35,7 +35,7 @@ const Pagination = () => {
 
   const [year, setYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(
-    `${year}-${nameMonth.id.toString().padStart(2, "0")}`
+    `month=${nameMonth.id.toString().padStart(2, "")}&year=${year}`
   );
 
   const nextMnth = () => {
@@ -57,7 +57,7 @@ const Pagination = () => {
   };
 
   useEffect(() => {
-    setSelectedDate(`${year}-${nameMonth.id.toString().padStart(2, "0")}`);
+    setSelectedDate(`month=${nameMonth.id.toString().padStart(2, "")}&year=${year}`);
   }, [nameMonth, year]);
   useEffect(() => {
     if (!email) {

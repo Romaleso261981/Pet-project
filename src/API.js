@@ -14,6 +14,14 @@ const authToken = {
   },
 };
 
+// reports*****************************
+const getPeriodTransactions = async date => {
+  return await API.get(`api/finances/reports?${date} `);
+};
+
+
+
+
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -31,4 +39,4 @@ API.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { API, authToken };
+export { API, authToken, getPeriodTransactions };

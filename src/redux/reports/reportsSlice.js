@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getPeriod } from './reportsOperation';
 
 const initialState = {
-  incomes: 10,
-  expenses: 10,
+  incomes: {},
+  expenses: {},
   error: null,
   isLoading: false,
 };
