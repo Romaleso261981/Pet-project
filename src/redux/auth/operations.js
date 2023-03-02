@@ -42,7 +42,7 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   }
 });
 
-const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
     await API.get("/auth/users/logout");
