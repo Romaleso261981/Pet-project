@@ -19,8 +19,9 @@ import { selectAccessToken } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const LoginPage = lazy(() => import("./components/AuthForm/LoginPage/LoginPage"));
-// const LoginPage = lazy(() => import("./pages/LoginsPage/Logins"));
+// const LoginPage = lazy(() => import("./components/AuthForm/LoginPage/LoginPage"));
+// const Register = lazy(() => import("./components/AuthForm/RegistriPage/RegistrationForm"));
+const LoginPage = lazy(() => import("./pages/LoginsPage/LoginPage"));
 const Register = lazy(() => import("./pages/RegisterPage/Register"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));

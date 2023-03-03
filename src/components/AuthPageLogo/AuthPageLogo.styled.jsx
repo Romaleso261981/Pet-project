@@ -40,8 +40,8 @@ export const LogoWrapper = styled.div`
   }
 `;
 
-export const LogoSvg = styled.svg`
-  fill: ${(props) => props.theme.colors.PrimaryBlack};
+export const MainTitle = styled.h1`
+  color: ${(props) => props.theme.colors.PrimaryBlack};
   width: 183px;
   height: 46px;
 
@@ -53,5 +53,6 @@ export const LogoSvg = styled.svg`
   @media screen and (min-width: 1280px) {
     width: 377px;
     height: 120px;
+    margin-bottom: 300px;
   }
 `;

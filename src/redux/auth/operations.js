@@ -15,24 +15,37 @@ const Register = createAsyncThunk("auth/register", async (credentials) => {
   }
 });
 
+// const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
+//   try {
+//     const { data } = await API.post("/auth/users/login", userData);
+//     authToken.set(data.accessToken);
+//     const state = thunkAPI.getState();
+//     localStorage.setItem("refreshToken", data.refreshToken);
+//     localStorage.setItem("accessToken", data.accessToken);
+//     const { lang } = state.language.lang;
+//     lang === "en"
+//       ? Notiflix.Notify.success(
+//           `Welcome back, ${data.user.email}!`,
+//           notifySettings
+//         )
+//       : Notiflix.Notify.success(
+//           `Радо вітаємо, ${data.user.email}!`,
+//           notifySettings
+//         );
+//     return data;
+//   } catch (error) {
+//     const state = thunkAPI.getState();
+//     const { lang } = state.language.lang;
+//     lang === "en"
+//       ? Notiflix.Notify.failure(`${error.message}`, notifySettings)
+//       : Notiflix.Notify.failure("Щось пішло не так...", notifySettings);
+//     return thunkAPI.rejectWithValue(error.request.status);
+//   }
+// });
+
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
-    const { data } = await API.post("/auth/users/login", userData);
-    authToken.set(data.accessToken);
-    const state = thunkAPI.getState();
-    localStorage.setItem("refreshToken", data.refreshToken);
-    localStorage.setItem("accessToken", data.accessToken);
-    const { lang } = state.language.lang;
-    lang === "en"
-      ? Notiflix.Notify.success(
-          `Welcome back, ${data.user.email}!`,
-          notifySettings
-        )
-      : Notiflix.Notify.success(
-          `Радо вітаємо, ${data.user.email}!`,
-          notifySettings
-        );
-    return data;
+    console.log(userData);
   } catch (error) {
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
