@@ -18,7 +18,7 @@ export const FormWrapper = styled.div`
   }
   @media screen and (min-width: 768px) {
     width: 426px;
-    padding: 56px 84px;
+    padding: 10px 20px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
 `;
