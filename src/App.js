@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 
-import { authToken } from "./API";
 
 import { theme, darkTheme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
@@ -27,42 +26,35 @@ const Layout = lazy(() => import("./components/Layout/Layout"));
 const Wallet = lazy(() => import("./pages/WalletPage/Wallet"));
 const ReportsPage = lazy(() => import("./pages/ReportsPage/ReportsPage"));
 
-const PrivateRoute = ({ children, token }) => {
-  return token ? children : <Navigate to="/" />;
-};
-
-const PublicRoute = ({ children, token }) => {
-  return !token ? children : <Navigate to="/wallet" />;
-};
 
 export function App() {
   const dispatch = useDispatch();
   const [isHintShown, setIsHintShown] = useState(false);
-  const token = useSelector(selectAccessToken);
-  // const token = null;
+  // const token = useSelector(selectAccessToken);
+  const token = true;
   const selectedMode = useSelector(getMode);
   const themeMode = selectedMode.mode === "light" ? darkTheme : theme;
 
-  useEffect(() => {
-    if (!token) {
-      setIsHintShown(false);
-      return;
-    }
-    dispatch(refreshUser());
-    // eslint-disable-next-line
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     setIsHintShown(false);
+  //     return;
+  //   }
+  //   dispatch(refreshUser());
+  //   // eslint-disable-next-line
+  // }, [dispatch]);
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const accessToken = searchParams.get("accessToken");
-    const refreshToken = searchParams.get("refreshToken");
-    const sid = searchParams.get("sid");
-    if (!accessToken) return;
-    dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
-    navigate("/wallet");
-  }, [searchParams, dispatch, navigate]);
+  // useEffect(() => {
+  //   const accessToken = searchParams.get("accessToken");
+  //   const refreshToken = searchParams.get("refreshToken");
+  //   const sid = searchParams.get("sid");
+  //   if (!accessToken) return;
+  //   dispatch(googleAuthUser({ accessToken, refreshToken, sid }));
+  //   navigate("/wallet");
+  // }, [searchParams, dispatch, navigate]);
 
   return (
     <ThemeProvider theme={themeMode}>
@@ -79,39 +71,31 @@ export function App() {
             index
             element={
               <Suspense fallback={<Loader />}>
-                <PublicRoute token={token}>
-                  <LoginPage />
-                </PublicRoute>
+                <LoginPage />
               </Suspense>
             }
           />
            <Route
             path="/register"
             element={
-              <PublicRoute token={token}>
-                <Register />
-              </PublicRoute>
+              <Register />
             }
           />
           <Route
             path="/wallet"
             element={
               <Suspense fallback={<Loader />}>
-                <PrivateRoute token={token}>
-                  <Wallet
+                 <Wallet
                     setIsHintShown={setIsHintShown}
                     isHintShown={isHintShown}
                   />
-                </PrivateRoute>
               </Suspense>
             }
           />
           <Route
             path="/reports"
             element={
-              <PrivateRoute token={token}>
-                <ReportsPage />
-              </PrivateRoute>
+              <ReportsPage />
             }
           />
           <Route path="*" element={<h1>Невірно прописаний шлях</h1>} />

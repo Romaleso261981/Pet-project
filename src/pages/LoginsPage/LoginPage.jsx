@@ -21,7 +21,7 @@ const LoginPage = () => {
           formTitle={lang === 'en' ? 'Login' : 'Логін'}
           btnText={lang === 'en' ? 'Log in' : 'Логін'}
           navLinkText={lang === 'en' ? 'Register' : 'Реєстрація'}
-          navLinkAdress="/register"
+          navLinkAdress="/wallet"
           MainText={
             lang === 'en'
               ? 'Or log in using an email and password, after registering:'

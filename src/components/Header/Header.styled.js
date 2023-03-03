@@ -91,6 +91,18 @@ export const Name = styled.p`
     display: none;
   }
 `;
+export const BtnsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    gap: 15px;
+  }
+`;
 
 export const Line = styled.div`
   height: 36px;

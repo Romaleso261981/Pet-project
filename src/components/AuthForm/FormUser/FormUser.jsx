@@ -4,8 +4,24 @@ import { useForm } from "react-hook-form";
 import { logIn } from "../../../redux/auth/operations";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import LoadingButton from "@mui/lab/LoadingButton";
+import { NavLink } from '../../NavLink/NavLink';
+import { Btn } from '../../Buttons/Btn';
 import { Typography } from "@mui/material";
+import {
+  Input,
+  Label,
+  BtnsWrapper,
+  FormWrapper,
+  InputWrapper,
+  Form,
+  InputsWrapper,
+  Hint,
+  HintLeft,
+  ErrorText,
+  GoogleLoginLink,
+  PasswordBtn,
+  PasswordIcon,
+} from './FormUser.styled';
 // import HowToRegIcon from 'npm i @mui/material/HowToReg';
 
 export const FormUser = ({
@@ -141,21 +157,10 @@ export const FormUser = ({
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
-      <LoadingButton
-        type="submit"
-        sx={{
-          marginTop:5,
-          fontSize: 35,
-          width: 100,
-          bgcolor: "rgb(146, 80 , 130)",
-          "&:hover": { bgcolor: "rgb(194, 120, 118)" },
-        }}
-        loadingPosition="start"
-        // startIcon={<HowToRegIcon />}
-        variant="contained"
-      >
-        Sing up
-      </LoadingButton>
+      <BtnsWrapper>
+          <Btn type="submit" text={btnText} />
+          <NavLink text={navLinkText} to={navLinkAdress} />
+        </BtnsWrapper>
         </Box>
   );
 };

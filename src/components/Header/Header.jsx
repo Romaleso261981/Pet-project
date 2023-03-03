@@ -13,16 +13,19 @@ import {
   ExitText,
   ExitSvg,
   ControlsWrapper,
+  BtnsWrapper,
 } from "./Header.styled";
 // import { useAuth } from "hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from "../../hooks/useAuth";
 import { selectAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "../Popup/Popup";
+import { Btn } from "../Buttons/Btn";
+import { NavLink } from "../NavLink/NavLink";
 import { ThemeSwitcher } from "../ThemeBtn/ThemeBtn";
 import { LangSwitcher } from "../LanguageBtn/LangBtn";
 import { getLang } from "../../redux/lang/langSelectors";
@@ -31,10 +34,10 @@ export function Header() {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const token = useSelector(selectAccessToken);
-  
+
   const [popup, setPopup] = useState({
     isShow: false,
-    title: '',
+    title: "",
     action: null,
   });
 
@@ -44,12 +47,12 @@ export function Header() {
     setPopup({
       isShow: true,
       title:
-        lang === 'en'
-          ? 'Do you really want to leave?'
-          : 'Ви дійсно бажаєте вийти?',
+        lang === "en"
+          ? "Do you really want to leave?"
+          : "Ви дійсно бажаєте вийти?",
       action: () => dispatch(logOut()),
     });
-    document.querySelector('#modal').classList.add('js-action');
+    document.querySelector("#modal").classList.add("js-action");
   };
 
   return (
@@ -61,6 +64,11 @@ export function Header() {
             <use href={`${svg}#logo`}></use>
           </LogoSvg>
         </LogoContainer>
+        <BtnsWrapper>
+          {/* <Btn type="submit" text="добавити" /> */}
+          <NavLink text="Добавити" to="/" />
+          <NavLink text="На головну" to="wallet" />
+        </BtnsWrapper>
         <ControlsWrapper>
           <ThemeSwitcher />
           <LangSwitcher />
@@ -74,7 +82,7 @@ export function Header() {
               <Name>{user.email}</Name>
               <Line />
               <Exit type="button" onClick={handleExit}>
-                {lang === 'en' ? (
+                {lang === "en" ? (
                   <ExitText>Exit</ExitText>
                 ) : (
                   <ExitText>Вийти</ExitText>
