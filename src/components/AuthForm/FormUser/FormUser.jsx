@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { logIn } from "../../../redux/auth/operations";
+import { Register } from "../../../redux/auth/operations";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { NavLink } from '../../NavLink/NavLink';
@@ -41,26 +42,24 @@ export const FormUser = ({
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      назваТехніки: "",
-      модельТехніки: "",
-      серійнийНомер: "",
-      комплектація: "",
-      несправність: "",
-      ФІО: "",
-      адреса: "",
-      телефон: ""
+      nameTechniques: "",
+      modelTechniques: "",
+      serialNumber: "",
+      completeSet: "",
+      malfunction: "",
+      name: "",
+      adress: "",
+      phone: ""
     },
   });
 
   const onSubmit = (dataUser) => {
-    console.log(dataUser);
-    alert(dataUser)
-    // dispatch(logIn(dataUser));
+    dispatch(Register(dataUser));
     reset();
   };
 
   return (
-    <Box
+    <FormWrapper
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
@@ -85,7 +84,7 @@ export const FormUser = ({
         {MainText}
       </Typography>
       <TextField
-        {...register("назваТехніки", {
+        {...register("nameTechniques", {
           required: "This field is required",
         })}
         color="secondary"
@@ -95,7 +94,7 @@ export const FormUser = ({
       />
      
      <TextField
-        {...register("модельТехніки", {
+        {...register("modelTechniques", {
           required: "This field is required",
         })}
         color="secondary"
@@ -104,7 +103,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("серійнийНомер", {
+        {...register("serialNumber", {
           required: "This field is required",
         })}
         color="secondary"
@@ -113,7 +112,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("комплектація", {
+        {...register("completeSet", {
           required: "This field is required",
         })}
         color="secondary"
@@ -122,7 +121,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("несправність", {
+        {...register("malfunction", {
           required: "This field is required",
         })}
         color="secondary"
@@ -131,7 +130,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
        <TextField
-        {...register("ФІО", {
+        {...register("name", {
           required: "This field is required",
         })}
         color="secondary"
@@ -140,7 +139,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("адреса", {
+        {...register("adress", {
           required: "This field is required",
         })}
         color="secondary"
@@ -149,7 +148,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("телефон", {
+        {...register("phone", {
           required: "This field is required",
         })}
         color="secondary"
@@ -161,6 +160,6 @@ export const FormUser = ({
           <Btn type="submit" text={btnText} />
           <NavLink text={navLinkText} to={navLinkAdress} />
         </BtnsWrapper>
-        </Box>
+        </FormWrapper>
   );
 };
