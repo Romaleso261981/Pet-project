@@ -59,7 +59,7 @@ export const FormUser = ({
   };
 
   return (
-    <FormWrapper
+    <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
@@ -160,6 +160,6 @@ export const FormUser = ({
           <Btn type="submit" text={btnText} />
           <NavLink text={navLinkText} to={navLinkAdress} />
         </BtnsWrapper>
-        </FormWrapper>
+        </Box>
   );
 };
