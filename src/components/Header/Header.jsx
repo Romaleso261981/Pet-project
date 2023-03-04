@@ -66,7 +66,6 @@ export function Header() {
         </LogoContainer>
         <BtnsWrapper>
           {/* <Btn type="submit" text="добавити" /> */}
-          <NavLink text="Добавити" to="/" />
           <NavLink text="На головну" to="wallet" />
         </BtnsWrapper>
         <ControlsWrapper>

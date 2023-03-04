@@ -1,22 +1,34 @@
 .container {
-    min-width: 100%;
-    position: absolute;
-    top: 56px;
+  min-width: 100%;
+  position: absolute;
+  top: 56px;
+}
+.wrapper {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 105px 20px;
+  max-width: 320px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 86px 32px 0 32px;
   }
-  .wrapper {
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px 105px 20px;
-    max-width: 320px;
-    
-    @media screen and (min-width: 768px) {
-      max-width: 768px;
-      padding: 86px 32px 0 32px;
-    }
-  
-    @media screen and (min-width: 1280px) {
-      max-width: 1280px;
-      padding: 117px 91px 125px 91px;
-    }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+    padding: 117px 91px 125px 91px;
   }
+}
+
+.BtnsWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  @media screen and (min-width: 768px) {
+    gap: 15px;
+  }
+}
