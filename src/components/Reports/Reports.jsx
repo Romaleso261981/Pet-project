@@ -30,7 +30,7 @@ export default function Reports() {
   return (
     <>
       <div>
-        <ReportsHeader incomes={incomes} expenses={expenses} />
+        {/* <ReportsHeader incomes={incomes} expenses={expenses} /> */}
         <ReportsCategories
           curCategory={curCategory}
           setCurCategory={setCurCategory}

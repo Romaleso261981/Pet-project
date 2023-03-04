@@ -9,25 +9,28 @@ import { IoTrashOutline } from "react-icons/io5";
 import styled from "./TableTransaction.module.scss";
 import { deleteTransaction, fetchData } from "../../services/transactionAPI";
 
-const headers = ["date", "description", "category", "sum", ""];
+const headers = ["Н/П", "ФІО клієнта","телефон", "тип техніки", "адресса"];
 
-export function TableTransaction({ transaction, date, needUpdate, updateData }) {
+export function TableTransaction({ transaction, date, needUpdate, updateData,toggleModal }) {
   const [transactionList, setTransactionList] = useState([]);
   const [updateList, setUpdateList] = useState(0);
+
+
+
   
   useEffect(() => {
     async function getTransactionForMonth({ transaction, date }) {
       try {
         const data = await fetchData({ transaction, date });
         const necessaryData = data
-          .map(({ _id, name, phone, nameTechniques, malfunction, adress }) => ({
+          .map(({ _id, name, phone, nameTechniques, malfunction, adress, number }) => ({
             _id,
-            date: new Date(date),
             name,
             nameTechniques,
             phone,
             malfunction,
-            adress
+            adress,
+            number
           }))
           .reverse();
         setTransactionList(necessaryData);
@@ -58,20 +61,22 @@ export function TableTransaction({ transaction, date, needUpdate, updateData }) 
         </TableHead>
         <TableBody>
           {transactionList.map(
-            ({ _id, name, phone, nameTechniques, malfunction, adress }) => (
+            ({ _id, name, phone, nameTechniques, malfunction, adress, number }) => (
               <TableRow key={_id}>
+                <TableCell>{number}</TableCell>
                 <TableCell component="th" scope="row">
                   {name}
                 </TableCell>
                 <TableCell>{phone}</TableCell>
                 <TableCell>{nameTechniques}</TableCell>
-                <TableCell>{malfunction}</TableCell>
+                {/* <TableCell>{malfunction}</TableCell> */}
                 <TableCell>{adress}</TableCell>
                 <TableCell>
                   <button
                     type="button"
                     className={styled.trash}
-                    onClick={() => onDelete(_id)}
+                    // onClick={() => onDelete(_id)}
+                    onClick={toggleModal}
                   >
                     <IoTrashOutline />
                   </button>

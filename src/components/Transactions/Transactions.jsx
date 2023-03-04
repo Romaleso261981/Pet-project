@@ -5,7 +5,7 @@ import { TransactionForm } from "../../components/TransactionForm/TransactionFor
 import { useState } from "react";
 import styled from "./Transactions.module.scss";
 
-export function Transactions() {
+export function Transactions({toggleModal}) {
   const [typeTransaction, setTypeTransaction] = useState('expenses');
   const [needUpdate, setNeedUpdate] = useState(0);
 
@@ -30,24 +30,16 @@ export function Transactions() {
     <>
       <TypeTransaction onClick={handleClick}/>
       <div className={styled.transaction_all}>
+      
         <div className={styled.transaction}>
-          <TransactionForm 
-            transaction={typeTransaction}
-            date={date}
-            updateData={updateData}
-          />
           <TableTransaction
+            toggleModal={toggleModal}
             transaction={typeTransaction}
             date={date}
             updateData={updateData}
             needUpdate={needUpdate}
           />
-        </div>
-        <TableSummary 
-          className={styled.transaction__summary} 
-          transaction={typeTransaction}
-          needUpdate={needUpdate}
-        />
+         </div>
       </div>
     </>
   );

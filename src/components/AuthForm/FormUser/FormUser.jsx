@@ -112,9 +112,7 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("completeSet", {
-          required: "This field is required",
-        })}
+        {...register("completeSet")}
         color="secondary"
         label="комплектація"
         error={errors?.email?.message ? true : false}
