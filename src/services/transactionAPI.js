@@ -5,12 +5,8 @@ import { API } from "../API";
 
 export const fetchData = async ({ transaction, date }) => {
   try {
-    const bodyRequest = {
-      type: transaction,
-      month: date.mm,
-      year: date.yyyy,
-    };
-    const response = await API.get('/api/finances/', { params: bodyRequest });
+    const response = await API.get("http://localhost:8081/user/");
+  console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -23,7 +19,7 @@ export const addTransaction = async ({
   productDescription,
   selectProduct,
   culc,
-  }) => {
+}) => {
   try {
     const bodyRequest = {
       type: transaction,
@@ -34,7 +30,10 @@ export const addTransaction = async ({
       year: date.yyyy,
     };
 
-    const response = await API.post(`/api/finances/${transaction}`, bodyRequest);
+    const response = await API.post(
+      `/api/finances/${transaction}`,
+      bodyRequest
+    );
     return response.data.results;
   } catch (error) {
     console.log(error.message);
@@ -56,7 +55,9 @@ export const summaryTransaction = async ({ transaction }) => {
       type: transaction,
       countmonth: 6,
     };
-    const response = await API.get('/api/finances/summary', { params: bodyRequest });
+    const response = await API.get("/api/finances/summary", {
+      params: bodyRequest,
+    });
     return response.data;
   } catch (error) {
     console.log(error.message);

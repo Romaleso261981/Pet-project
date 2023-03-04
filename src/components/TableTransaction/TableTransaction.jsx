@@ -20,12 +20,14 @@ export function TableTransaction({ transaction, date, needUpdate, updateData }) 
       try {
         const data = await fetchData({ transaction, date });
         const necessaryData = data
-          .map(({ _id, date, description, category, amount }) => ({
+          .map(({ _id, name, phone, nameTechniques, malfunction, adress }) => ({
             _id,
             date: new Date(date),
-            description,
-            category,
-            amount,
+            name,
+            nameTechniques,
+            phone,
+            malfunction,
+            adress
           }))
           .reverse();
         setTransactionList(necessaryData);
@@ -56,14 +58,15 @@ export function TableTransaction({ transaction, date, needUpdate, updateData }) 
         </TableHead>
         <TableBody>
           {transactionList.map(
-            ({ _id, date, description, category, amount }) => (
+            ({ _id, name, phone, nameTechniques, malfunction, adress }) => (
               <TableRow key={_id}>
                 <TableCell component="th" scope="row">
-                  {date.toLocaleDateString()}
+                  {name}
                 </TableCell>
-                <TableCell>{description}</TableCell>
-                <TableCell>{category}</TableCell>
-                <TableCell>{(transaction == 'expenses') ? '-' : '+'} {amount}</TableCell>
+                <TableCell>{phone}</TableCell>
+                <TableCell>{nameTechniques}</TableCell>
+                <TableCell>{malfunction}</TableCell>
+                <TableCell>{adress}</TableCell>
                 <TableCell>
                   <button
                     type="button"
