@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8081/user",
+  baseURL: "http://185.233.118.244:8081/user",
 });
 
 const authToken = {
   // set(token) {
   //   API.defaults.headers.common.Authorization = `Bearer ${token}`;
   // },
-
   // unset() {
   //   API.defaults.headers.common.Authorization = "";
   // },
