@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelectors";
 import { userBalance } from "../../redux/balance/selectorBalance";
 import styled from "./Wallet.module.scss";
-import {NavLink} from "../../components/NavLink/NavLink";
+
 import { Transactions } from "../../components/Transactions/Transactions";
 import { Btn } from "../../components/Buttons/Btn";
 import UniversalModal from "../../components/Modals/UniversalModal/UniversalModal";
@@ -43,7 +43,7 @@ const Wallet = ({ isHintShown, setIsHintShown }) => {
           <div className={styled.transaction_all}>
           <div className={styled.BtnsWrapper}>
           {/* <Btn type="submit" text="добавити" /> */}
-          <NavLink text="Добавити" to="/" />          
+                   
         </div>
             <Transactions toggleModal={toggleModal} />
             {isModalActive && <UniversalModal toggleModal={toggleModal} />}

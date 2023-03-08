@@ -6,7 +6,7 @@ import { useState } from "react";
 import styled from "./Transactions.module.scss";
 
 export function Transactions({toggleModal}) {
-  const [typeTransaction, setTypeTransaction] = useState('expenses');
+  const [typeTransaction, setTypeTransaction] = useState('inWork');
   const [needUpdate, setNeedUpdate] = useState(0);
 
   const today = new Date();

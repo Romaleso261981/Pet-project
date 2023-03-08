@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { logIn } from "../../../redux/auth/operations";
 import { Register } from "../../../redux/auth/operations";
@@ -32,6 +33,7 @@ export const FormUser = ({
   navLinkAdress,
   MainText,
 }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -56,6 +58,7 @@ export const FormUser = ({
   const onSubmit = (dataUser) => {
     dispatch(Register(dataUser));
     reset();
+    navigate("/wallet");
   };
 
   return (

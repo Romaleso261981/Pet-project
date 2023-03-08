@@ -1,30 +1,42 @@
 import styled from "./TypeTransaction.module.scss";
+import { useNavigate } from "react-router-dom";
+// import {NavLink} from "../NavLink/NavLink";
 
-export function TypeTransaction({onClick}) {
+export function TypeTransaction({ onClick }) {
+    const navigate = useNavigate();
 
     function handlClicks(e) {
         const id = e.target.id;
         onClick(id)
     }
+    function goTo() {
+        navigate("/");
+    }
 
   return (
     <>
-        <div className={styled.wrapper} >
+          <div className={styled.wrapper} >
+              {/* <NavLink text="Добавити" to="/" />  */}
+               <button 
+                type="button"
+                  className={styled.button}
+                 onClick={goTo}
+            >Добавити</button>
             <button 
                 type="button"
-                id="expenses"
+                id="done"
                 className={styled.button}
                 onClick={handlClicks}
             >
-                Expenses
+                Зробленні
             </button>
             <button
                 type="button"
-                id="income"
+                id="inWork"
                 className={styled.button}
                 onClick={handlClicks}
             >
-                Income
+                В роботі 
             </button>
         </div>
     </>

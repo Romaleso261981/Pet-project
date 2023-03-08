@@ -1,7 +1,7 @@
 import { Container, ContentWrapper } from "./Logins.styled";
 
 // import { AuthForm } from '../../components/AuthForm/AuthForm';
-import { FormUser } from "../../components/AuthForm/FormUser/FormUser";
+import { FormUser } from "../../components/AuthForm/FormUser/FormUser"
 import { AnimatedCabbagesBg } from "../../components/AnimatedBg/AnimatedBg";
 import { AnimatedBottomCabbages } from "../../components/AnimatedCabbagesBottom/AnimatedCabbagesBottom";
 import { AuthPageLogo } from "../../components/AuthPageLogo/AuthPageLogo";
