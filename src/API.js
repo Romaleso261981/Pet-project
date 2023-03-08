@@ -23,23 +23,6 @@ API.interceptors.response.use(
   (response) => response,
   async (error) => {
     console.log("interceptors");
-    // if (error.response.status == 401) {
-    //   console.log("==================================================read localStorage");
-    //   const refreshToken = localStorage.getItem("refreshToken");
-    //   console.log(refreshToken);
-    //   try {
-    //     // const { data } = await API.post("/auth/users/refresh", { refreshToken });
-    //     // if (accessToken) {
-    //     //   console.log("interceptors", accessToken);
-    //     //   authToken.set(data.accessToken);
-    //     //   localStorage.setItem("refreshToken", data.refreshToken);
-    //     // }
-    //     console.log(accessToken);
-    //     return API(error.config);
-    //   } catch (error) {
-    //     return Promise.reject(error);
-    //   }
-    // }
     return Promise.reject(error);
   }
 );

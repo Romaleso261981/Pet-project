@@ -6,7 +6,6 @@ import { API } from "../API";
 export const fetchData = async ({ transaction, date }) => {
   try {
     const response = await API.get("http://localhost:8081/user/");
-  console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -42,8 +41,9 @@ export const addTransaction = async ({
 
 export const deleteTransaction = async (_id) => {
   try {
-    const response = await API.delete(`/api/finances/${_id}`);
-    return response.data.results;
+    const response = await API.delete(`/${_id}`);
+    console.log(response);
+    return response;
   } catch (error) {
     console.log(error.message);
   }

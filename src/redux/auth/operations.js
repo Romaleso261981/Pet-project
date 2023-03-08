@@ -6,19 +6,15 @@ import axios from "axios";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
-    console.log(credentials);
     const data = await axios.post('http://localhost:8081/user/add', credentials);
-    console.log(data);
     return data;
   } catch (error) {
-    console.log("catch");
     toast.error("Server error, please try again later");
   }
 });
 
 const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
-    console.log("logIn");
   } catch (error) {
     const state = thunkAPI.getState();
     const { lang } = state.language.lang;
@@ -31,7 +27,6 @@ const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
 
 const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    console.log("logOut");
     // const state = thunkAPI.getState();
     // await API.get("/auth/users/logout");
     // localStorage.setItem("refreshToken", "");
@@ -60,7 +55,6 @@ const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
     try {
-      // console.log("refreshUser");
       // const accessToken = localStorage.getItem("refreshToken");
       // authToken.set(accessToken);
       // return accessToken;

@@ -17,7 +17,10 @@ export const BtnElement = styled.button`
   transition: 350ms ease-in-out;
   color: ${(props) =>
     props.status === "google" ? "#000000" : props.theme.colors.TextGray};
-  background-color: ${(p) => p.theme.colors.PrimaryGray};
+  background-color: ${(p) =>
+    p.text === "в роботу"
+      ? p.theme.colors.PrimaryGray
+      : p.theme.colors.SecondGray};
   padding: ${(props) =>
     props.status === "google" ? "10px 16px" : "12px 14px"};
   border-radius: ${(props) => (props.status === "google" ? "26px" : "16px")};

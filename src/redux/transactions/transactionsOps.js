@@ -9,7 +9,6 @@ export const addTransactionOp = createAsyncThunk(
 
   async ({ type, transaction }, thunkAPI) => {
     try {
-      console.log(API_TRANSACTION[type].apiAddTransactionEndpoint);
       const { data } = await instance.post(
         API_TRANSACTION[type].apiAddTransactionEndpoint,
         transaction
