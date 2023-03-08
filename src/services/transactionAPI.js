@@ -5,7 +5,7 @@ import { API } from "../API";
 
 export const fetchData = async ({ transaction, date }) => {
   try {
-    const response = await API.get("http://localhost:8081/user/");
+    const response = await API.get("user/");
     return response.data;
   } catch (error) {
     console.log(error.message);
