@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://185.233.118.244:8081/",
+  baseURL: "http://185.233.118.244:8081/user",
 });
 
 const authToken = {
