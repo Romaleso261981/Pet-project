@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { logIn } from "../../../redux/auth/operations";
 import { addTransaction } from "../../../services/transactionAPI";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";

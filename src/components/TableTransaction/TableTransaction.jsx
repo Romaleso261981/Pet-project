@@ -5,7 +5,6 @@ import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import { IoTrashOutline } from "react-icons/io5";
 import { Btn } from "../Buttons/Btn";
 import styled from "./TableTransaction.module.scss";
 import { deleteTransaction, fetchData } from "../../services/transactionAPI";
@@ -83,16 +82,7 @@ export function TableTransaction({
         </TableHead>
         <TableBody>
           {transactionList.map(
-            ({
-              _id,
-              name,
-              phone,
-              nameTechniques,
-              malfunction,
-              adress,
-              number,
-              type,
-            }) => (
+            ({ _id, name, phone, nameTechniques, adress, type }) => (
               <TableRow key={_id}>
                 <TableCell>{_id}</TableCell>
                 <TableCell component="th" scope="row">
