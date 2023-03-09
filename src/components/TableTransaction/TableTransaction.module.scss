@@ -1,18 +1,14 @@
 .wrapper {
-  max-width: 280px;
   border-radius: 15px;
 
   @media screen and (min-width: 768px) {
     box-sizing: border-box;
-    max-width: 824px;
     border: 1px solid var(----input-border);
-    height: 328px;
     overflow: auto;
     scrollbar-color: var(--accent-color) #f5f6fb;
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 846px;
   }
 }
 

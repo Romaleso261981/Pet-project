@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Register = createAsyncThunk("auth/register", async (credentials) => {
   try {
-    const data = await axios.post('user/add', credentials);
+    const data = await axios.post("/api/finances/add", credentials);
     return data;
   } catch (error) {
     toast.error("Server error, please try again later");

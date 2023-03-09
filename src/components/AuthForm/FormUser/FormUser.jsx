@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { logIn } from "../../../redux/auth/operations";
-import { Register } from "../../../redux/auth/operations";
+import { addTransaction } from "../../../services/transactionAPI";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { NavLink } from '../../NavLink/NavLink';
-import { Btn } from '../../Buttons/Btn';
+import { NavLink } from "../../NavLink/NavLink";
+import { Btn } from "../../Buttons/Btn";
 import { Typography } from "@mui/material";
 import {
   Input,
@@ -23,7 +23,7 @@ import {
   GoogleLoginLink,
   PasswordBtn,
   PasswordIcon,
-} from './FormUser.styled';
+} from "./FormUser.styled";
 // import HowToRegIcon from 'npm i @mui/material/HowToReg';
 
 export const FormUser = ({
@@ -51,12 +51,12 @@ export const FormUser = ({
       malfunction: "",
       name: "",
       adress: "",
-      phone: ""
+      phone: "",
     },
   });
 
   const onSubmit = (dataUser) => {
-    dispatch(Register(dataUser));
+    dispatch(addTransaction(dataUser));
     reset();
     navigate("/wallet");
   };
@@ -95,8 +95,8 @@ export const FormUser = ({
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
-     
-     <TextField
+
+      <TextField
         {...register("modelTechniques", {
           required: "This field is required",
         })}
@@ -130,7 +130,7 @@ export const FormUser = ({
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
-       <TextField
+      <TextField
         {...register("name", {
           required: "This field is required",
         })}
@@ -158,9 +158,9 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <BtnsWrapper>
-          <Btn type="submit" text={btnText} />
-          <NavLink text={navLinkText} to={navLinkAdress} />
-        </BtnsWrapper>
-        </Box>
+        <Btn type="submit" text={btnText} />
+        <NavLink text={navLinkText} to={navLinkAdress} />
+      </BtnsWrapper>
+    </Box>
   );
 };

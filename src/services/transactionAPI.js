@@ -2,35 +2,24 @@ import { API } from "../API";
 
 export const fetchData = async ({ transaction, date }) => {
   try {
-    const response = await API.get("/");
+    const bodyRequest = {
+      type: transaction,
+      month: date.mm,
+      year: date.yyyy,
+    };
+    const response = await API.get("/api/finances/", { params: bodyRequest });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export const addTransaction = async ({
-  transaction,
-  date,
-  productDescription,
-  selectProduct,
-  culc,
-}) => {
+export const addTransaction = async (credentials) => {
   try {
-    const bodyRequest = {
-      type: transaction,
-      description: productDescription,
-      category: selectProduct,
-      amount: culc,
-      month: date.mm,
-      year: date.yyyy,
-    };
-
-    const response = await API.post(
-      `/api/finances/${transaction}`,
-      bodyRequest
-    );
-    return response.data.results;
+    const response = await API.post("/api/finances/add", credentials);
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }

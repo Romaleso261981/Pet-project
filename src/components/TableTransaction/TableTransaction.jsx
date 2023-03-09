@@ -94,7 +94,7 @@ export function TableTransaction({
               type,
             }) => (
               <TableRow key={_id}>
-                <TableCell>{number}</TableCell>
+                <TableCell>{_id}</TableCell>
                 <TableCell component="th" scope="row">
                   {name}
                 </TableCell>
