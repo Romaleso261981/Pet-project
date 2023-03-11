@@ -9,22 +9,18 @@ import {
   Name,
   Line,
   Exit,
-  RegisterText,
   ExitText,
   ExitSvg,
   ControlsWrapper,
   BtnsWrapper,
 } from "./Header.styled";
-// import { useAuth } from "hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { selectAccessToken } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import svg from "../../assets/image/icons_sprite.svg";
 import { Popup } from "../Popup/Popup";
-import { Btn } from "../Buttons/Btn";
 import { NavLink } from "../NavLink/NavLink";
 import { ThemeSwitcher } from "../ThemeBtn/ThemeBtn";
 import { LangSwitcher } from "../LanguageBtn/LangBtn";
@@ -65,7 +61,6 @@ export function Header() {
           </LogoSvg>
         </LogoContainer>
         <BtnsWrapper>
-          {/* <Btn type="submit" text="добавити" /> */}
           <NavLink text="На головну" to="wallet" />
         </BtnsWrapper>
         <ControlsWrapper>

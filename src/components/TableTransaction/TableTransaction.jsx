@@ -90,7 +90,6 @@ export function TableTransaction({
                 </TableCell>
                 <TableCell>{phone}</TableCell>
                 <TableCell>{nameTechniques}</TableCell>
-                {/* <TableCell>{malfunction}</TableCell> */}
                 <TableCell>{adress}</TableCell>
                 <TableCell>
                   <Btn
