@@ -1,10 +1,12 @@
 import axios from "axios";
-axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
 const API = axios.create({
   baseURL: "http://185.233.118.244:8080/user",
+  headers: { "Content-Type": "application/json" },
+
+  // baseURL: "http://localhost:8080/user",
 });
 
-axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 const authToken = {
   // set(token) {
   //   API.defaults.headers.common.Authorization = `Bearer ${token}`;
