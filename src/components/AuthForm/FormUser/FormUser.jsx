@@ -96,18 +96,14 @@ export const FormUser = ({
       />
 
       <TextField
-        {...register("modelTechniques", {
-          required: "This field is required",
-        })}
+        {...register("modelTechniques")}
         color="secondary"
         label="модельТехніки"
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("serialNumber", {
-          required: "This field is required",
-        })}
+        {...register("serialNumber")}
         color="secondary"
         label="серійнийНомер"
         error={errors?.email?.message ? true : false}
@@ -121,43 +117,35 @@ export const FormUser = ({
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("malfunction", {
-          required: "This field is required",
-        })}
+        {...register("malfunction")}
         color="secondary"
         label="несправність"
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("name", {
-          required: "This field is required",
-        })}
+        {...register("name")}
         color="secondary"
         label="ФІО"
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("adress", {
-          required: "This field is required",
-        })}
+        {...register("adress")}
         color="secondary"
         label="адреса"
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
       <TextField
-        {...register("phone", {
-          required: "This field is required",
-        })}
+        {...register("phone")}
         color="secondary"
         label="телефон"
         error={errors?.email?.message ? true : false}
         helperText={errors?.email?.message}
       />
       <BtnsWrapper>
-        <Btn type="submit" text={btnText} />
+        <Btn type="submit" text="додати" />
         <NavLink text={navLinkText} to={navLinkAdress} />
       </BtnsWrapper>
     </Box>

@@ -11,10 +11,13 @@ import { deleteTransaction, fetchData } from "../../services/transactionAPI";
 
 const headers = [
   "Н/П",
+  "тип техніки",
+  "модель",
   "ФІО клієнта",
   "телефон",
-  "тип техніки",
   "адресса",
+  "опис ремонту",
+  "вартість ремонту / грн",
   "статус",
 ];
 
@@ -38,18 +41,24 @@ export function TableTransaction({
               name,
               phone,
               nameTechniques,
+              descriptionRepair,
+              modelTechniques,
               malfunction,
               adress,
               number,
+              cost,
               type,
             }) => ({
               _id,
               name,
               nameTechniques,
+              descriptionRepair,
+              modelTechniques,
               phone,
               malfunction,
               adress,
               number,
+              cost,
               type,
             })
           )
@@ -82,20 +91,34 @@ export function TableTransaction({
         </TableHead>
         <TableBody>
           {transactionList.map(
-            ({ _id, name, phone, nameTechniques, adress, type }) => (
+            ({
+              _id,
+              number,
+              name,
+              phone,
+              cost,
+              nameTechniques,
+              descriptionRepair,
+              modelTechniques,
+              adress,
+              type,
+            }) => (
               <TableRow key={_id}>
-                <TableCell>{_id}</TableCell>
+                <TableCell>{number}</TableCell>
+                <TableCell>{nameTechniques}</TableCell>
+                <TableCell>{modelTechniques}</TableCell>
                 <TableCell component="th" scope="row">
                   {name}
                 </TableCell>
                 <TableCell>{phone}</TableCell>
-                <TableCell>{nameTechniques}</TableCell>
                 <TableCell>{adress}</TableCell>
+                <TableCell>{descriptionRepair}</TableCell>
+                <TableCell>{cost}</TableCell>
                 <TableCell>
                   <Btn
                     onClick={() => onDelete(_id)}
                     type="button"
-                    text={type === "done" ? "в роботі" : "зроблено"}
+                    text={type === "inWork" ? "в роботі" : "зроблено"}
                   />
                 </TableCell>
               </TableRow>
