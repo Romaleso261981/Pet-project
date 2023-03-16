@@ -14,7 +14,6 @@ const RegisterPage = () => {
       <AnimatedCabbagesBg />
       <ContentWrapper>
         <AuthPageLogo />
-
         <AuthForm
           formTitle="register"
           btnText={lang === 'en' ? 'Register' : 'Реєстрація'}
