@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://185.233.118.244:8080/user",
+  baseURL: "http://185.233.118.244:8080/",
   mode: "cors",
   headers: {
     Accept: "application/json",
@@ -10,7 +10,6 @@ const API = axios.create({
 
   // baseURL: "http://localhost:8080/user",
 });
-
 
 API.interceptors.response.use(
   (response) => response,
