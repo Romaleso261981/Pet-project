@@ -12,16 +12,6 @@ import {
   Input,
   Label,
   BtnsWrapper,
-  FormWrapper,
-  InputWrapper,
-  Form,
-  InputsWrapper,
-  Hint,
-  HintLeft,
-  ErrorText,
-  GoogleLoginLink,
-  PasswordBtn,
-  PasswordIcon,
 } from "./FormUser.styled";
 // import HowToRegIcon from 'npm i @mui/material/HowToReg';
 
