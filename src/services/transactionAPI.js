@@ -7,7 +7,7 @@ export const fetchData = async ({ transaction, date }) => {
       month: date.mm,
       year: date.yyyy,
     };
-    const response = await API.get("sponsors", { params: bodyRequest });
+    const response = await API.get("sponsors");
     console.log(response.data);
     return response.data;
   } catch (error) {
