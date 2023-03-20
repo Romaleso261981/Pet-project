@@ -1,14 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "http://185.233.118.244:8080/",
-  // mode: "cors",
-  // headers: {
-  //   Accept: "application/json",
-  //   "Content-Type": "application/json",
-  // },
-
-  baseURL: "http://localhost:8081/user",
+  baseURL: "https://nodejs-rest-api.up.railway.app/user",
 });
 
 API.interceptors.response.use(
