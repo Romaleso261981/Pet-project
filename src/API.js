@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://185.233.118.244:8080/",
-  mode: "cors",
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
+  // baseURL: "http://185.233.118.244:8080/",
+  // mode: "cors",
+  // headers: {
+  //   Accept: "application/json",
+  //   "Content-Type": "application/json",
+  // },
 
-  // baseURL: "http://localhost:8080/user",
+  baseURL: "http://localhost:8081/user",
 });
 
 API.interceptors.response.use(
