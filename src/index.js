@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Global styles={GlobalStyles} />
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <BrowserRouter basename="/Pet-project">
+          <BrowserRouter basename="/Pet-project/">
             <App />
           </BrowserRouter>
         </PersistGate>
