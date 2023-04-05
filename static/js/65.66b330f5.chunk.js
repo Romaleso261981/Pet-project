@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpetly_site=self.webpackChunkpetly_site||[]).push([[65],{65:function(e,t,n){n.r(t);var i=n(184);t.default=function(){return(0,i.jsxs)("main",{style:{textAlign:"center",paddingTop:"10vh"},children:[(0,i.jsx)("b",{style:{fontSize:64},children:"404"}),(0,i.jsx)("p",{children:"Sorry, we couldn't find that page :("})]})}}}]);
-//# sourceMappingURL=65.66b330f5.chunk.js.map
